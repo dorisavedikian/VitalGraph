@@ -1,0 +1,49 @@
+@prefix : <https://w3id.org/MON/person.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:firstName a owl:DatatypeProperty ;
+    rdfs:label "first name"@en ;
+    rdfs:domain :Person ;
+    rdfs:range xsd:string .
+
+:hasGender a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has gender"@en ;
+    rdfs:domain :Person ;
+    rdfs:range :Sex ;
+    rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isClassifiedBy> .
+
+:lastName a owl:DatatypeProperty ;
+    rdfs:label "last name"@en ;
+    rdfs:domain :Person ;
+    rdfs:range xsd:string .
+
+:maidenName a owl:DatatypeProperty ;
+    rdfs:label "maiden name"@en ;
+    rdfs:comment "The original surname of a married woman who uses her husband's surname name after marriage."@en ;
+    rdfs:domain :Person ;
+    rdfs:range xsd:string .
+
+:Female a owl:Class,
+        owl:NamedIndividual,
+        :Sex ;
+    rdfs:label "Female"@en .
+
+:Male a owl:Class,
+        owl:NamedIndividual,
+        :Sex ;
+    rdfs:label "Male"@en .
+
+:Sex a owl:Class ;
+    rdfs:label "Sex" .
+
+:Person a owl:Class ;
+    rdfs:label "Person"@en ;
+    rdfs:comment "A human being regarded as an individual."@en .
+
+[] a owl:AllDifferent ;
+    owl:distinctMembers ( :Female :Male ) .
+

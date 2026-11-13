@@ -1,0 +1,736 @@
+@prefix : <https://www.ica.org/standards/RiC/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+:Record a owl:Class ;
+    rdfs:label "Record"@de,
+        "Record"@en,
+        "Documento"@es,
+        "Objet informationnel"@fr ;
+    rdfs:comment """Discrete information content formed and inscribed, at least once,
+         by any method on any carrier in any persistent, recoverable form by an Agent in the course
+         of life or work activity."""@en ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:subClassOf :RecordResource ;
+    skos:scopeNote """Record is a kind of Record Resource. A Record may itself contain
+         one or more Records, or may consist of one or more Record Parts. A Record must have or have
+         had at least one Instantiation. A Record may have more than one Instantiation. An
+         Instantiation derived from another Instantiation of a Record may be considered the
+         instantiation of the same Record or an instantiation of a new Record, depending on the
+         context. A Record may serve a variety of purposes, though it always documents or is
+         evidence of Activity."""@en .
+
+:expressedDate a owl:DatatypeProperty ;
+    rdfs:label "expressed date"@en,
+        "fecha expresada"@es,
+        "date en langage naturel"@fr ;
+    rdfs:comment """Natural language expression of a date. This property is a
+         specialization of the name property. In order that the precise meaning of the date can be
+         understood, information such as the calendar used or other specific context should be
+         included."""@en ;
+    rdfs:domain :Date ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range rdfs:Literal ;
+    rdfs:subPropertyOf :name,
+        :textualValue ;
+    skos:example "1550-1553, 1555 (date range)"@en,
+        "1925-1966 (date range)"@en,
+        "All of the years 1550, 1551, 1553, 1555"@en,
+        "October 24, 1999 (month day, year)"@en,
+        "One of the years 1550, 1551, 1553, 1555"@en,
+        "The Middle Ages"@en,
+        """The second semester of 1951 to 1952 (academic reference
+         system)"""@en,
+        """15 thermidor an IV (calendrier révolutionnaire
+         français)"""@fr,
+        "8 avril 1258 (a. st., style de Pâques)"@fr,
+        "XVIIe siècle"@fr,
+        """Die jovis ultima mensis martii anno domini millesimo quingentesimo
+         quadragesimo ante Pascha"""@la .
+
+:hasBirthDate a owl:ObjectProperty ;
+    rdfs:label "has birth date"@en,
+        "tiene como fecha de nacimiento"@es,
+        "a pour date de naissance"@fr ;
+    rdfs:comment "Inverse of 'is birth date of' object property."@en ;
+    rdfs:domain :Person ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range :Date ;
+    rdfs:subPropertyOf :hasBeginningDate ;
+    owl:inverseOf :isBirthDateOf .
+
+:hasDeathDate a owl:ObjectProperty ;
+    rdfs:label "has death date"@en,
+        "tiene como fecha de muerte"@es,
+        "a pour date de décès"@fr ;
+    rdfs:comment "Inverse of 'is death date of' object property."@en ;
+    rdfs:domain :Person ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range :Date ;
+    rdfs:subPropertyOf :hasEndDate ;
+    owl:inverseOf :isDeathDateOf .
+
+:hasOrHadSpouse a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "has or had spouse"@en,
+        "tiene o tenía como cónyuge a"@es,
+        "a ou a eu pour conjoint"@fr ;
+    rdfs:comment """Connects two Persons who are or were married. This relation is
+         symmetric."""@en ;
+    rdfs:domain :Person ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf :hasFamilyAssociationWith ;
+    owl:propertyChainAxiom ( :thingIsConnectedToRelation :spouseRelation_role :relationConnects ) .
+
+:identifier a owl:DatatypeProperty ;
+    rdfs:label "identifier"@en,
+        "identificador"@es,
+        "identifiant"@fr ;
+    rdfs:comment """A word, number, letter, symbol, or any combination of these used
+         to uniquely identify or reference an individual instance of an entity within a specific
+         information domain. Can include Global Persistent Identifiers (globally unique and
+         persistently resolvable identifier for the entity) and/or Local Identifiers. Both the
+         domain within which the identifier is unique, and the rules used in forming the identifier
+         value should be provided with the identifier value."""@en ;
+    rdfs:domain :Thing ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range rdfs:Literal ;
+    skos:example """B-000091 (example of a unique identifier for an instantiation
+         assigned by a repository)"""@en,
+        """BUD-01-F002 (example of a classification number from a corporate
+         file plan)"""@en,
+        """F 1204 (example of a local identifier for a record set assigned by
+         a repository)"""@en,
+        """NAS1/A/1.1 (example of a local identifier for a
+         record)"""@en,
+        """http://isni.org/0000000073572182 (example of a persistent
+         International Standard Name Identifier for a person)"""@en,
+        """http://n2t.net/ark:/99166/w6tz44ht (example of an Archival
+         Resource Key for a person)"""@en,
+        """http://n2t.net/ark:/99166/w6v1266v (example of an Archival
+         Resource Key for a record)"""@en ;
+    skos:scopeNote """Use only if you don't use Identifier class for handling
+         identifiers. Within a given domain (a closed system), identifiers are used to uniquely
+         reference instances of an entity. Identifiers are instruments of control that facilitate
+         management of the entities within the domain. The formulation of identifiers commonly is
+         based on rules. In addition to an identifier needing to be unique within a domain, it is
+         also highly desirable that it be persistent, that is, that the identifier uniquely
+         identifies the entity over time. A variety of organizations provide rules for the formation
+         of identifiers, and services designed to facilitate the persistence of identifiers. Such
+         identifiers are commonly referred to as Persistent Identifiers (or PIDs). PIDs conform to
+         RFC 3986, but impose additional rules. Common examples are Archival Resource Keys (ARKs)
+         and Digital Object Identifiers (DOIs). Within the global environment of the Internet, there
+         are special rules for the formation of identifiers to ensure that they are unique within
+         the domain of the Internet. Such identifiers must conform to the Internet Engineering Task
+         Force (IETF) Uniform Resource Identifier rules (RFC 3986)."""@en .
+
+:normalizedDateValue a owl:DatatypeProperty ;
+    rdfs:label "normalized date value"@en,
+        "valor normalizado de fecha"@es,
+        "valeur normalisée de la date"@fr ;
+    rdfs:comment """Machine readable representation of the date based on a public
+         technical standard."""@en ;
+    rdfs:domain :Date ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range rdfs:Literal ;
+    rdfs:subPropertyOf :normalizedValue ;
+    skos:example """1550,1551,1553,1555 (a date set in EDTF, meaning one of the years
+         1550, 1551, 1553, 1555)"""@en,
+        "1948-03 (an ISO 8601 form of a single date)"@en,
+        "1948-03-08 (an ISO 8601 form of a single date)"@en,
+        """1948-03~ (a single date in ETDF, meaning March 1948
+         approximately)"""@en,
+        """1948/ (a date range in EDTF, starting in 1948, end
+         unknown)"""@en,
+        """1948/.. (an open date range in EDTF, starting in
+         1948)"""@en,
+        """2012-02-14/2015-03-08 (an ISO 8601 form of a date
+         range)"""@en,
+        "2012/2015-03 (an ISO 8601 form of a date range)"@en,
+        """{1550,1551,1553,1555} (a date set in EDTF, meaning all of the
+         years 1550, 1551, 1553, 1555)"""@en,
+        """{1805,1815..1820} (a date set in EDTF, meaning all of the years
+         1805, 1815, 1816, 1817, 1818, 1819, 1820)"""@en ;
+    skos:scopeNote """Used to represent the date in a standardized format that can be
+         processed programmatically. The main standard used today is ISO 8601, which is based on the
+         Gregorian calendar. See also the Extended Date Time Format (EDTF), which is an extension of
+         ISO 8601, and enables, among other features, to represent a date set, and to indicate the
+         date is approximate."""@en .
+
+:title a owl:DatatypeProperty ;
+    rdfs:label "title"@en,
+        "título"@es,
+        "intitulé"@fr ;
+    rdfs:comment """An identifying name of a Record Resource, Instantiation or
+         Rule."""@en ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :Instantiation :RecordResource :Rule ) ] ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range rdfs:Literal ;
+    rdfs:subPropertyOf :name ;
+    skos:scopeNote """Use only if you don't use Title class for handling
+         titles."""@en .
+
+:ActivityType a owl:Class ;
+    rdfs:label "Aktivitätskategorie"@de,
+        "Activity Type"@en,
+        "Tipo de actividad"@es,
+        "Type d’activité"@fr ;
+    rdfs:comment "Categorization of an Activity."@en ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:subClassOf :Type ;
+    skos:scopeNote """Can be extended with any number of subclasses, e.g.
+         “function/action” and “activity domain”. This allows for a faceted approach that enables an
+         Activity to be categorized using a combination of components, general or more specific. For
+         example, “monitoring” can be used in combination with “election polls” or “water
+         resources”."""@en .
+
+:documentedBy a owl:ObjectProperty ;
+    rdfs:label "documented by"@en,
+        "se documenta en"@es,
+        "est documenté par"@fr ;
+    rdfs:comment "Inverse of 'documents' object property."@en ;
+    rdfs:domain :Activity ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( :Instantiation :RecordResource ) ] ;
+    rdfs:subPropertyOf :isOrganicOrFunctionalProvenanceOf,
+        :resultsOrResultedIn ;
+    owl:inverseOf :documents ;
+    owl:propertyChainAxiom ( :thingIsTargetOfRelation :activityDocumentationRelation_role :relationHasSource ) .
+
+:documents a owl:ObjectProperty ;
+    rdfs:label "documents"@en,
+        "documenta"@es,
+        "documente"@fr ;
+    rdfs:comment """Connects a Record Resource or an Instantiation to the Activity
+         that generates the Record Resource or Instantiation."""@en ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :Instantiation :RecordResource ) ] ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range :Activity ;
+    rdfs:subPropertyOf :hasOrganicOrFunctionalProvenance,
+        :resultsOrResultedFrom ;
+    owl:inverseOf :documentedBy ;
+    owl:propertyChainAxiom ( :thingIsSourceOfRelation :activityDocumentationRelation_role :relationHasTarget ) ;
+    skos:scopeNote """To be used to describe the functional provenance of a Record
+         Resource or Instantiation."""@en .
+
+:hasBirthPlace a owl:ObjectProperty ;
+    rdfs:label "has birth place"@en,
+        "tiene como lugar de nacimiento"@es,
+        "a pour lieu de naissance"@fr ;
+    rdfs:comment "Inverse of 'is birth place of' object property."@en ;
+    rdfs:domain :Person ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range :Place ;
+    rdfs:subPropertyOf :isAgentAssociatedWithPlace ;
+    owl:inverseOf :isBirthPlaceOf .
+
+:hasChild a owl:ObjectProperty ;
+    rdfs:label "has child"@en,
+        "tiene como hijo o hija a"@es,
+        "a pour enfant"@fr ;
+    rdfs:comment "Connects a Person to one of their children."@en ;
+    rdfs:domain :Person ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf :hasDescendant ;
+    owl:inverseOf :isChildOf ;
+    owl:propertyChainAxiom ( :thingIsSourceOfRelation :childRelation_role :relationHasTarget ) .
+
+:hasDeathPlace a owl:ObjectProperty ;
+    rdfs:label "has death place"@en,
+        "tiene como lugar de muerte"@es,
+        "a pour lieu de décès"@fr ;
+    rdfs:comment "Inverse of 'is death place of' object property."@en ;
+    rdfs:domain :Person ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range :Place ;
+    rdfs:subPropertyOf :isAgentAssociatedWithPlace ;
+    owl:inverseOf :isDeathPlaceOf .
+
+:hasEventType a owl:ObjectProperty ;
+    rdfs:label "has event type"@en,
+        "tiene como tipo de evento"@es,
+        "a pour type d’événement"@fr ;
+    rdfs:comment """Connects an Event to an Event Type which categorizes
+         it."""@en ;
+    rdfs:domain :Event ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range :EventType ;
+    rdfs:subPropertyOf :hasOrHadType ;
+    owl:inverseOf :isEventTypeOf .
+
+:hasOrHadName a owl:ObjectProperty ;
+    rdfs:label "has or had name"@en,
+        "tiene o tenía como nombre"@es,
+        "a ou a eu pour nom"@fr ;
+    rdfs:comment """Connects a Thing to one of its past or present
+         Names."""@en ;
+    rdfs:domain :Thing ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range :Name ;
+    rdfs:subPropertyOf :hasOrHadAppellation ;
+    owl:inverseOf :isOrWasNameOf .
+
+:hasOrHadOccupationOfType a owl:ObjectProperty ;
+    rdfs:label "has or had occupation of type"@en,
+        "tiene o tenía como tipo de ocupación"@es,
+        "a ou a eu pour type d’occupation"@fr ;
+    rdfs:comment """Connects a Person to an Occupation Type that categorized or
+         categorizes his/her occupation (profession, trade or craft)."""@en ;
+    rdfs:domain :Person ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range :OccupationType ;
+    rdfs:subPropertyOf :hasOrHadDemographicGroup ;
+    owl:inverseOf :isOrWasOccupationTypeOf .
+
+:hasOrHadParticipant a owl:ObjectProperty ;
+    rdfs:label "has or had participant"@en,
+        "tiene o tenía como participante"@es,
+        "a ou a eu pour participant"@fr ;
+    rdfs:comment """Connects an Event to a Thing that is or was actively or passively
+         involved in it."""@en ;
+    rdfs:domain :Event ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range :Thing ;
+    rdfs:subPropertyOf :isEventAssociatedWith ;
+    owl:inverseOf :isOrWasParticipantIn .
+
+:hasOrHadSubject a owl:ObjectProperty ;
+    rdfs:label "has or had subject"@en,
+        "tiene o tenía como materia"@es,
+        "a ou a eu pour sujet"@fr ;
+    rdfs:comment """Connects a Record Resource to a Thing that is or was its
+         subject."""@en ;
+    rdfs:domain :RecordResource ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range :Thing ;
+    rdfs:subPropertyOf :isRelatedTo ;
+    owl:inverseOf :isOrWasSubjectOf ;
+    skos:scopeNote """The subject of a Record Set may be affected if the Record Set
+         loses some of the Records."""@en .
+
+:isBirthPlaceOf a owl:ObjectProperty ;
+    rdfs:label "is birth place of"@en,
+        "es lugar de nacimiento de"@es,
+        "est le lieu de naissance de"@fr ;
+    rdfs:comment """Connects a Place to a Person who was born in that
+         Place."""@en ;
+    rdfs:domain :Place ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf :isPlaceAssociatedWithAgent ;
+    owl:inverseOf :hasBirthPlace .
+
+:isChildOf a owl:ObjectProperty ;
+    rdfs:label "is child of"@en,
+        "es hijo o hija de"@es,
+        "est l’enfant de"@fr ;
+    rdfs:comment "Inverse of 'has child' object property."@en ;
+    rdfs:domain :Person ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf :hasAncestor ;
+    owl:inverseOf :hasChild ;
+    owl:propertyChainAxiom ( :thingIsTargetOfRelation :childRelation_role :relationHasSource ) .
+
+:isDeathPlaceOf a owl:ObjectProperty ;
+    rdfs:label "is death place of"@en,
+        "es lugar de muerte de"@es,
+        "est le lieu de décès de"@fr ;
+    rdfs:comment """Connects a Place to a Person who died in that
+         Place."""@en ;
+    rdfs:domain :Place ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf :isPlaceAssociatedWithAgent ;
+    owl:inverseOf :hasDeathPlace .
+
+:isEventTypeOf a owl:ObjectProperty ;
+    rdfs:label "is event type of"@en,
+        "es tipo de evento de"@es,
+        "est le type d’événement de"@fr ;
+    rdfs:comment """Connects an Event Type to an Event that it
+         categorizes."""@en ;
+    rdfs:domain :EventType ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range :Event ;
+    rdfs:subPropertyOf :isOrWasTypeOf ;
+    owl:inverseOf :hasEventType .
+:isOrWasNameOf a owl:ObjectProperty ;
+    rdfs:label "is or was name of"@en,
+        "es o era nombre de"@es,
+        "est ou a été le nom de"@fr ;
+    rdfs:comment """Connects a Name to a Thing that it designated or
+         designates."""@en ;
+    rdfs:domain :Name ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range :Thing ;
+    rdfs:subPropertyOf :isOrWasAppellationOf ;
+    owl:inverseOf :hasOrHadName .
+
+:isOrWasOccupationTypeOf a owl:ObjectProperty ;
+    rdfs:label "is or was occupation type of"@en,
+        "es o era tipo de ocupación de"@es,
+        "est ou a été le type d’occupation de"@fr ;
+    rdfs:comment """Connects an Occupation Type to a Person whose occupation is or was
+         categorized by it."""@en ;
+    rdfs:domain :OccupationType ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf :isOrWasDemographicGroupOf ;
+    owl:inverseOf :hasOrHadOccupationOfType .
+
+:isOrWasParticipantIn a owl:ObjectProperty ;
+    rdfs:label "is or was participant in"@en,
+        "es o era participante de"@es,
+        "participe ou a participé à"@fr ;
+    rdfs:comment """Inverse of 'has or had participant' object
+         property."""@en ;
+    rdfs:domain :Thing ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range :Event ;
+    rdfs:subPropertyOf :isAssociatedWithEvent ;
+    owl:inverseOf :hasOrHadParticipant .
+
+:isOrWasSubjectOf a owl:ObjectProperty ;
+    rdfs:label "is or was subject of"@en,
+        "es o era materia de"@es,
+        "est ou a été le sujet de"@fr ;
+    rdfs:comment "Inverse of 'has or had subject' object property."@en ;
+    rdfs:domain :Thing ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range :RecordResource ;
+    rdfs:subPropertyOf :isRelatedTo ;
+    owl:inverseOf :hasOrHadSubject .
+
+:textualValue a owl:DatatypeProperty ;
+    rdfs:label "textual value"@en,
+        "valor textual"@es,
+        "valeur textuelle"@fr ;
+    rdfs:comment "A textual expression of an Appellation or Date."@en ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :Appellation :Date :Extent ) ] ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range rdfs:Literal .
+
+:Activity a owl:Class ;
+    rdfs:label "Aktivität"@de,
+        "Activity"@en,
+        "Actividad"@es,
+        "Activité"@fr ;
+    rdfs:comment "The doing of something for some human purpose."@en ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:subClassOf :Event ;
+    skos:scopeNote """Activity is a kind of Event. Activity is specifically used to
+         designate purposeful human activity. Activity may be understood from two perspectives.
+         First it can be understood as leading to an end. The end is the purpose of the Activity, or
+         why the Activity is performed. Second, it can be understood in terms of the processes that
+         lead to achieving the end, how the end is realized through coordinated actions. Purpose and
+         process are complementary understandings of Activity. Together the two perspectives address
+         why the Activity is performed, the expected ends or outcomes; and how the Activity fulfills
+         the purpose. While activity has an intended end, it also has unintended consequences and
+         results, or side-effects. By and large, these may not be the focus of the description, but
+         they are, unquestionably, context. |In a corporate or government context an Activity may
+         also be called a 'function'. An Activity exists in a specific social and cultural context,
+         and within that context is subject to change over time. An Activity may be composed of
+         other Activities."""@en .
+
+:Agent a owl:Class ;
+    rdfs:label "Akteur"@de,
+        "Agent"@en,
+        "Agente"@es,
+        "Agent"@fr ;
+    rdfs:comment """A Person, or Group, or an entity created by a Person or Group
+         (Mechanism), or a Position, that acts in the world."""@en ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:subClassOf :Thing ;
+    skos:scopeNote """An Agent may have one or more identities; an identity is a
+         constellation of properties or relations that together “identify” the Agent. A Person or
+         Group commonly has one identity, though each also may have one or more alternative
+         identities. Such alternative identities may be shared by more than one Person or Group.
+         Alternative identities include but are not limited to pseudonyms, heteronyms, DBA (Doing
+         Business As), and trade identities. An alternative identity should not be confused with a
+         Position in a Group, for example, presidents, prime ministers, governors, popes, royalty,
+         or bishops. Nor should an alternative identity be confused with a variant name or
+         identifier of the same identity. Agent also includes entities created by a Person or Group
+         that act on behalf of the creating Agent in an autonomous or semi-autonomous manner.
+         Examples of a Mechanism include software agents, robots, and space and underwater probes
+         that generate data (records) in the course of Activity assigned to and in conformance with
+         the instructions given to them by the creating Person or Group."""@en .
+
+:Appellation a owl:Class ;
+    rdfs:label "Bezeichnung"@de,
+        "Appellation"@en,
+        "Denominación"@es,
+        "Appellation"@fr ;
+    rdfs:comment """A concept of any kind that is used for designating an Entity and
+         referring to it."""@en ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:subClassOf :Concept .
+
+:Concept a owl:Class ;
+    rdfs:label "Konzept"@de,
+        "Concept"@en,
+        "Concepto"@es,
+        "Concept"@fr ;
+    rdfs:comment """An idea, unit of thought, abstract cultural object or
+         category"""@en ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:subClassOf :Thing .
+
+:EventType a owl:Class ;
+    rdfs:label "Ereigniskategorie"@de,
+        "Event Type"@en,
+        "Tipo de evento"@es,
+        "Type d’événement"@fr ;
+    rdfs:comment "Categorization of an Event."@en ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:subClassOf :Type ;
+    skos:scopeNote """Events of all kinds can be categorized. Curation event types
+         include creation; acquisition; transfer; arrangement; description; digitization, etc.
+         Biographical event types include birth, marriage, death, etc."""@en .
+
+:Name a owl:Class ;
+    rdfs:label "Name"@de,
+        "Name"@en,
+        "Nombre"@es,
+        "Nom"@fr ;
+    rdfs:comment """A label, title or term designating an entity in order to make it
+         distinguishable from other similar entities."""@en ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:subClassOf :Appellation ;
+    skos:scopeNote """Provides brief information about the content or other individual
+         characteristics of the entity being described, necessary to distinguish it from other
+         perhaps similar entities."""@en .
+
+:OccupationType a owl:Class ;
+    rdfs:label "Beschäftigungskategorie"@de,
+        "Occupation Type"@en,
+        "Tipo de ocupación"@es,
+        "Type d’occupation"@fr ;
+    rdfs:comment """Categorization of a profession, trade, or craft pursued by a
+         Person in fulfilment of an Activity."""@en ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:subClassOf :ActivityType,
+        :DemographicGroup ;
+    skos:scopeNote """The pursuit of an occupation involves the performance of an
+         Activity. Successful performance of the Activity is based on the ability to perform related
+         competencies successfully. Such competencies may be acquired through education or
+         experience, or a combination of both. The authority of the Person to pursue the occupation
+         may be derived tacitly or explicitly from an external Agent, based on a demonstrated
+         mastery of the competency. An occupation may be pursued independently by a Person or a
+         Group, thereby contributing to the fulfilment of the function (activity) of the group.
+         Should not be confused with Position where, for example, an agent with the occupation type
+         "lawyer" holds the position of "legal counsel" in an agency. Related to but should not be
+         confused with the domain or field of activity, such as an archivist who works in the domain
+         of archival science."""@en .
+
+:hasOrHadDemographicGroup a owl:ObjectProperty ;
+    rdfs:label "has or had demographic group"@en,
+        "tiene o tenía como grupo demográfico"@es,
+        "a ou a eu pour groupe démographique"@fr ;
+    rdfs:comment """Connects a Person or a Group to a Demographic Group to which it
+         belongs or belonged."""@en ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :Group :Person ) ] ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range :DemographicGroup ;
+    rdfs:subPropertyOf :hasOrHadType ;
+    owl:inverseOf :isOrWasDemographicGroupOf .
+
+:isOrWasDemographicGroupOf a owl:ObjectProperty ;
+    rdfs:label "is or was demographic group of"@en,
+        "es o era grupo demográfico de"@es,
+        "est ou a été le groupe démographique de"@fr ;
+    rdfs:comment """Connects a Demographic Group to a Person or Group which belongs or
+         belonged to it."""@en ;
+    rdfs:domain :DemographicGroup ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( :Group :Person ) ] ;
+    rdfs:subPropertyOf :isOrWasTypeOf ;
+    owl:inverseOf :hasOrHadDemographicGroup .
+
+:name a owl:DatatypeProperty ;
+    rdfs:label "name"@en,
+        "nombre"@es,
+        "nom"@fr ;
+    rdfs:comment """A label, title or term designating an entity in order to make it
+         distinguishable from other similar entities."""@en ;
+    rdfs:domain :Thing ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:range rdfs:Literal ;
+    skos:example "D-Day (about a Date or Event)"@en,
+        """Digital copy of the Pomarius archival inventory from 1575 (about
+         an Instantiation)"""@en,
+        """Fundraising, University of Glasgow (about an
+         Activity)"""@en,
+        "Halloween 2016 (about a Date)"@en,
+        "Nelson Mandela (about a Person)"@en,
+        """Papers of the Earls of Liverpool (about a Record
+         Set)"""@en,
+        "Paris (about a Place)"@en,
+        "Prime Minister (about a Position)"@en,
+        "Providing hearing services (about an Activity)"@en,
+        "Sketch Map of the Qatar Peninsula (about a Record)"@en,
+        """The Letter of Neacsu from Campulung to the Mayor of Brasov (about
+         a Record)"""@en ;
+    skos:scopeNote """Use only if you don't use Name class for handling names.
+         Provides brief information about the content or other individual characteristics of the
+         entity being described, necessary to distinguish it from other perhaps similar
+         entities."""@en .
+
+:DemographicGroup a owl:Class ;
+    rdfs:label "Demographische Gruppe"@de,
+        "Demographic Group"@en,
+        "Grupo demográfico"@es,
+        "Groupe démographique"@fr ;
+    rdfs:comment """Categorization of a Person or Group based on shared
+         characteristics."""@en ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:subClassOf :Type ;
+    skos:scopeNote """Can be extended with any number of specific subclasses. Among
+         possible specific demographic groups are gender, (biological) sex, education, identity,
+         place, ancestry, ethnic/cultural identification, and religion."""@en .
+
+:Type a owl:Class ;
+    rdfs:label "Kategorie"@de,
+        "Type"@en,
+        "Tipo"@es,
+        "Type"@fr ;
+    rdfs:comment """A superclass for any type of some thing. A type characterizes an
+         entity."""@en ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:subClassOf :Concept .
+
+:Place a owl:Class ;
+    rdfs:label "Geografikum"@de,
+        "Place"@en,
+        "Lugar"@es,
+        "Lieu"@fr ;
+    rdfs:comment "Bounded, named geographic area or region."@en ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:subClassOf :Thing ;
+    skos:scopeNote """A jurisdiction is the bounded geographic area within which an
+         Agent has the authority to perform specified activities constrained by rules.
+         Jurisdictions, man-made structures, and natural features are historical entities. A Place
+         thus may have a beginning date and ending date and changing boundaries that result from
+         human or natural events. A Place may be systematically referenced to a location on the
+         earth (geographic coordinates)."""@en .
+
+:Date a owl:Class ;
+    rdfs:label "Datum"@de,
+        "Date"@en,
+        "Fecha"@es,
+        "Date"@fr ;
+    rdfs:comment """Chronological information associated with an entity that
+         contributes to its identification and contextualization."""@en ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:subClassOf :Thing ;
+    skos:scopeNote """A Date may be represented in natural language, based on a
+         digital standard, or both. Digital standard dates will typically be based on ISO 8601, or
+         Extended Date-Time Format (EDTF)"""@en .
+
+:Event a owl:Class ;
+    rdfs:label "Ereignis"@de,
+        "Event"@en,
+        "Evento"@es,
+        "Événement"@fr ;
+    rdfs:comment "Something that happens or occurs in time and space."@en ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:subClassOf :Thing ;
+    skos:scopeNote """An event may be caused by nature, an agent, or a combination of
+         nature and agent. Events have temporal and spatial boundaries. An event may actively
+         involve some agent(s) and affect any entity. An event may be discrete, happening at a
+         specific moment in time, or may occur over an extended period of time. Events may have
+         events as parts, and events may precede or follow one another. Multiple agents may
+         participate in the same event, and in different roles."""@en ;
+    :closeTo "LODE Event class (http://linkedevents.org/ontology/#Event)"@en .
+
+:RecordResource a owl:Class ;
+    rdfs:label "Recordressource"@de,
+        "Record Resource"@en,
+        "Recurso documental"@es,
+        "Ressource archivistique"@fr ;
+    rdfs:comment """Information produced or acquired and retained by an Agent in the
+         course of life or work activity."""@en ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:subClassOf :Thing ;
+    skos:scopeNote """Record resource is a kind of Thing. Producing a record resource
+         may imply either its initial creation or a reuse of previous existing information by
+         combination, rearrangement, selecting, reformatting, etc. Record set, record, and record
+         part are kinds of record resource. A record resource is evidence of the activity of an
+         agent. More than one agent may be involved in the creation of a record resource. The role
+         of the agent in creating the record resource may take different forms, for example,
+         authoring of an individual record, accumulating a record set, or arranging a record set.
+         Though a record, record set, and record part, under most circumstances, may be easily
+         distinguished from one another, identifying the boundary of each may frequently present
+         particular challenges. Documentary forms provide the rules governing the structure of many
+         types of records, providing criteria for identifying a record's boundary, and identifying
+         its essential parts. Many records, though, do not have well-established documentary forms,
+         particularly in the case of digital records, where it may be difficult to determine whether
+         individual elements represented in separate bitstreams are record parts, records, or record
+         sets. For example, is photographic information represented independently in a bitstream
+         embedded in a text document a record or a record part? Or is the same photographic
+         information attached to an email that maintains its independent representation, a record or
+         a record part? Information grouped for some purpose, for example, ZIP or TAR "file
+         compression" for saving storage space, presents a further challenge. One file comprises
+         multiple bitstreams subjected to techniques that remove bits that can be losslessly
+         recovered when decompressed. Under what circumstances is such a compressed bitstream a
+         record or a record set? Determining when an information object is a record, record set, or
+         record part is based on perspective and judgement exercised in a particular context. In one
+         context, the agent describing an information object may designate it a record, while
+         another agent in a different context may designate it a record part. Both designations are
+         supported by RiC-CM, and the significance of the difference for users of the records is
+         ameliorated by the fact that all of the attributes and relations employed in describing
+         record and record part are shared, as are many of the attributes and relations employed in
+         describing a record set."""@en .
+
+:Thing a owl:Class ;
+    rdfs:label "Ding"@de,
+        "Thing"@en,
+        "Cosa"@es,
+        "Chose"@fr ;
+    rdfs:comment """Any idea, material thing, or event within the realm of human
+         experience."""@en ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    skos:scopeNote """Includes all RiC entities as well as any concept, material
+         thing, or event that may be the subject of a Record Resource or associated with an
+         Activity. Examples of entities not explicitly addressed in RiC includes but is not limited
+         to the following: abstract concepts; cultural movements, named periods and events; named
+         things, objects and works; legendary, mythical or fictitious figures, characters or
+         beings."""@en .
+
+:Person a owl:Class ;
+    rdfs:label "Person"@de,
+        "Person"@en,
+        "Persona"@es,
+        "Personne"@fr ;
+    rdfs:comment "An individual human being."@en ;
+    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+    rdfs:subClassOf :Agent ;
+    owl:disjointWith :Position ;
+    skos:scopeNote """Person is a kind of Agent. Most commonly, a human being
+         (biological person) has a single socially constructed identity or persona. Less common
+         though not rare, one or more personae in addition to the original persona which emerges at
+         or near birth may be associated with the human being over the course of that human being’s
+         lifetime. Such "alternative personae" are most often created by the original person for
+         specific purposes. The original persona may, in everyday discourse, be regarded as “the
+         real person”. Under some circumstances, an alternative persona might eclipse or replace the
+         original person (Mark Twain eclipsing Samuel Clemens; John Wayne eclipsing Marion Mitchell
+         Morrison), that is, the alternative identity becomes the predominant identity. Less common
+         is when two or more persons collaborate to create a shared persona. A persona shared by two
+         or more persons constitutes a kind of group. Within the archival context, the description
+         of a person commonly will focus on the original associated persona, with alternative
+         personae noted. Exceptionally, an alternative persona may displace the original persona as
+         the focus of the description. Under some circumstances, for example, when record resources
+         are associated with two or more different personae of one person, describing the different
+         personae as separate though related persons may be desirable. Alternatively, a person may
+         change their identity over the course of their lifetime."""@en .
+
