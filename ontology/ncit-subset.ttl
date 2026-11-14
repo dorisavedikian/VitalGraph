@@ -1,0 +1,18 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ncit:C25155 rdfs:label "Birth" ;
+    ncit:P97 "The event of being born." .
+
+ncit:C28554 rdfs:label "Dead" ;
+    ncit:P97 "The cessation of life." .
+
+ncit:C48033 rdfs:label "Marriage" ;
+    ncit:P97 "The social institution involving legal and/or religious sanction whereby men and women are joined together for the purpose of founding a family unit; the state of being a married couple." .
+
+<https://example.org/vitalgraph/ncit-subset> a owl:Ontology ;
+    dcterms:source <https://api-evsrest.nci.nih.gov/api/v1/concept/ncit?list=C25155%2CC28554%2CC48033&include=summary> ;
+    owl:versionInfo "26.10d" .
+

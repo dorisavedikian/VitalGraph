@@ -1,0 +1,21 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+rdfs:Literal a rdfs:Class ;
+    rdfs:label "Literal" ;
+    rdfs:comment "The class of literal values, eg. textual strings and integers." ;
+    rdfs:isDefinedBy rdfs: ;
+    rdfs:subClassOf rdfs:Resource .
+
+rdfs:Resource a rdfs:Class ;
+    rdfs:label "Resource" ;
+    rdfs:comment "The class resource, everything." ;
+    rdfs:isDefinedBy rdfs: .
+
+rdfs:seeAlso a rdf:Property ;
+    rdfs:label "seeAlso" ;
+    rdfs:comment "Further information about the subject resource." ;
+    rdfs:domain rdfs:Resource ;
+    rdfs:isDefinedBy rdfs: ;
+    rdfs:range rdfs:Resource .
+

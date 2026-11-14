@@ -1,8 +1,14 @@
 # VitalGraph Development Roadmap
 
-VitalGraph is being developed incrementally, beginning with an RDF knowledge graph constructed from family birth, marriage, and death certificates. Initial development focuses on ontology reuse, data integration, SHACL validation, and SPARQL querying.
+VitalGraph is being developed incrementally, beginning with an RDF knowledge graph constructed from family birth, marriage, and death certificates. Initial development focuses on ontology reuse, CSV-to-RDF integration, GraphDB visualization, and SPARQL querying.
 
 The following areas outline opportunities to extend the project beyond its initial proof of concept. For background and project scope, see the [README](README.md).
+
+## Current Pilot
+
+- Build TriG from the five CSVs with `scripts/build_graph.py`.
+- Import the TriG with **From data** and check the certificate graphs in GraphDB Workbench.
+- Use SPARQL to verify parent and grandparent links, literal values, and source certificates. Compare these results with Family Knowledge agent answers.
 
 ## Planned Development
 
@@ -16,11 +22,17 @@ RiC-O will remain the foundation for representing records, people, and activitie
 
 ### 2. Natural-Language Knowledge Graph Queries
 
-Explore integrating the OpenAI API with SPARQL to support natural-language questions about family history.
+Refine the existing Family Knowledge agent in GraphDB’s Talk to Your Graph. Retest relationship direction, multistep queries across certificates, and retrieval of recorded values alongside their certificate IDs. Save verified SPARQL queries for repeatable checks.
 
-Responses will be grounded in authorized knowledge graph data, reference supporting records, and distinguish documented facts from inferred relationships or unresolved identity matches.
+### 3. Armenian Display Labels
 
-### 3. Vital-Records Interoperability
+Add reviewed Armenian labels using `rdfs:label` with `@hy`, starting with the people and terms visible in the graph. Test an Armenian-language question against its verified SPARQL result.
+
+### 4. SHACL Validation
+
+Introduce SHACL in a later phase. Run the shapes against the pilot dataset and a separate deliberately invalid example to verify that the expected violation is reported.
+
+### 5. Vital-Records Interoperability
 
 Investigate how vital-record information is collected, registered, and exchanged across U.S. government and healthcare systems, including processes involving state registrars, the Social Security Administration, and CDC's National Center for Health Statistics.
 
@@ -31,7 +43,7 @@ This work will examine birth, death, and marriage registration workflows and eva
 
 The goal is to identify common data elements, differences in definitions and value sets, and opportunities for semantic interoperability.
 
-### 4. Historical and Archival Records
+### 6. Historical and Archival Records
 
 Expand beyond vital certificates to explore immigration, naturalization, and other historical federal records as additional evidence of family identities, relationships, and life events.
 

@@ -7,6 +7,9 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 vg:death-record-001 {
+    vg:death-record-001-birth-date-001 a rico:Date ;
+        rico:expressedDate "1/10/1927" .
+
     vg:death-record-001-birth-place-001 a rico:Place ;
         rico:isBirthPlaceOf vg:person-004 ;
         rico:name "CA" .
@@ -56,6 +59,7 @@ vg:death-record-001 {
         person:firstName "Paul"^^xsd:string ;
         person:hasGender person:Male ;
         person:lastName "Ohannesian "^^xsd:string ;
+        rico:hasBirthDate vg:death-record-001-birth-date-001 ;
         rico:hasBirthPlace vg:death-record-001-birth-place-001 ;
         rico:hasDeathDate vg:death-record-001-death-date-001 ;
         rico:hasDeathPlace vg:death-record-001-death-place-001 ;
@@ -173,7 +177,7 @@ vg:death-record-001 {
 
 vg:birth-record-002 {
     vg:birth-record-002-birth-date-001 a rico:Date ;
-        rico:expressedDate "June 18, 1959" .
+        rico:expressedDate "6/18/59" .
 
     vg:birth-record-002-birth-place-001 a rico:Place ;
         rdfs:seeAlso <https://en.wikipedia.org/wiki/Community_Regional_Medical_Center> ;
@@ -231,7 +235,7 @@ vg:birth-record-001 {
         rico:expressedDate "August 25, 1990" .
 
     vg:birth-record-001-birth-date-002 a rico:Date ;
-        rico:expressedDate "6/18/59" .
+        rico:expressedDate "June 18, 1959" .
 
     vg:birth-record-001-birth-date-003 a rico:Date ;
         rico:expressedDate "8/6/44" .
@@ -250,8 +254,8 @@ vg:birth-record-001 {
         rico:name "Syrian RP" .
 
     vg:person-003 a rico:Person ;
-        person:firstName "Paulette "^^xsd:string ;
-        person:maidenName "Ohannesian"^^xsd:string ;
+        person:firstName "Kevork"^^xsd:string ;
+        person:lastName "Avedikian"^^xsd:string ;
         rico:hasBirthDate vg:birth-record-001-birth-date-003 ;
         rico:hasBirthPlace vg:birth-record-001-birth-place-003 ;
         rico:hasChild vg:person-001 .
@@ -265,8 +269,8 @@ vg:birth-record-001 {
             vg:person-003 .
 
     vg:person-002 a rico:Person ;
-        person:firstName "Kevork"^^xsd:string ;
-        person:lastName "Avedikian"^^xsd:string ;
+        person:firstName "Paulette "^^xsd:string ;
+        person:maidenName "Ohannesian"^^xsd:string ;
         rico:hasBirthDate vg:birth-record-001-birth-date-002 ;
         rico:hasBirthPlace vg:birth-record-001-birth-place-002 ;
         rico:hasChild vg:person-001 .

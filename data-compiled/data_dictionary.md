@@ -1,8 +1,8 @@
 # VitalGraph CSV data dictionary
 
-The script reads the five CSVs in `data/` and writes `vitalgraph.trig` beside the script. The header-only templates produce a valid empty dataset. Fill the templates with your transcriptions and rerun to rebuild the file. 
+The script reads the five CSVs in `data/` and writes TriG to `data-compiled/data_instances/vg-instance-data.trig` by default. Use `--data-dir` and `--output` to select different paths. The header-only templates produce a valid empty dataset. Fill the templates with your transcriptions and rerun to rebuild the file. 
 
-Save the CSVs as UTF-8 and keep every header. Use text cell formatting when entering dates, ages, and identifiers in a spreadsheet so the spreadsheet preserves spelling, precision, and leading zeros. CSV quoting supports commas, quotes, and embedded line breaks. Empty optional fields produce no literal. Nonempty text is copied exactly as supplied, including whitespace and line breaks.
+Save the CSVs as UTF-8 and keep every header. Use text cell formatting when entering dates, ages, and identifiers in a spreadsheet so the spreadsheet preserves spelling, precision, and leading zeros. CSV quoting supports commas, quotes, and embedded line breaks. Empty optional fields produce no corresponding triple. Nonempty text is copied exactly as supplied, including whitespace and line breaks.
 
 ## Model and identifiers
 
@@ -68,9 +68,8 @@ One row per certificate and person pair. Subject and participant roles reflect y
 | `first_name` | No | `person:firstName` as `xsd:string`. |
 | `last_name` | No | `person:lastName` as `xsd:string`. |
 | `maiden_name` | No | `person:maidenName` as `xsd:string`. |
-| `gender` | No | Enter `Female` or `Male` only if explicitly mapped by you. Emits `person:hasGender person:Female` or `person:hasGender person:Male`. |
+| `gender` | No | Enter `Female` or `F` for `person:Female`, or `Male` or `M` for `person:Male`, only if explicitly mapped by you. Emits `person:hasGender`. |
 | `age` | No | `foaf:age` as `xsd:string`, including qualifiers or units if present. |
-| `gender_as_written` | No | Exact source wording as `xsd:string` under `vg:recordedGender`. This is a local extension because the template's `person:hasGender` takes a resource. This field is independent of the controlled `gender` field. |
 
 ## record_relationships.csv
 
@@ -95,6 +94,9 @@ One row per attribute resource as recorded on a particular certificate.
 | `attribute_type` | Yes | Selects the resource class and links from the table below. |
 | `expressed_value` | Yes unless a normalized date is supplied | Exact source wording. Uses `rico:expressedDate` on dates and `rico:name` on other attributes. |
 | `normalized_value` | No | Date attributes only. Adds `rico:normalizedDateValue` as supplied. The generator does not calculate or validate date normalization. |
+| `see_also_url` | No (header required) | Enter a full HTTP(S) URL. Adds `rdfs:seeAlso` from the attribute resource to the URL as an IRI in the certificate’s named graph. Leave blank to omit the link. The formal range is `rdfs:Resource`. |
+
+The generator accepts `see_also_url` for every attribute type. For a `birth_place` or `death_place` row, it links the `rico:Place` resource to a reference. Keep the place name as written on the certificate in `expressed_value`.
 
 | Attribute type | Class | Person → resource | Resource → Person |
 | --- | --- | --- | --- |

@@ -1,6 +1,6 @@
 record_id,person_id,role,first_name,last_name,maiden_name,gender,age
 birth-record-001,person-001,subject_participant,Doris,Avedikian,,Female,
-birth-record-001,person-002,mentioned,Paulette ,,Ohannesian,,Kevork,Avedikian,,,
+birth-record-001,person-002,mentioned,Paulette ,,Ohannesian,,
 birth-record-001,person-003,mentioned,Kevork,Avedikian,,,
 birth-record-002,person-002,subject_participant,Paulette ,Ohannesian,,Female,
 birth-record-002,person-004,mentioned,Paul ,Ohannesian,,,32

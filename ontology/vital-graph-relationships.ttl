@@ -59,6 +59,7 @@ ncit:C48033 rdf:type :EventType . # Marriage - reconsider
 :Record            :title                      rdfs:Literal
 :Record            :identifier                 rdfs:Literal # Local or state file number
 :Place             :name                       rdfs:Literal
+:Place             rdfs:seeAlso                <URI>
 :DemographicGroup  :name                       rdfs:Literal
 :OccupationType    :name                       rdfs:Literal
 :Name              :textualValue               rdfs:Literal

@@ -1,3 +1,4 @@
+
 # VitalGraph
 
 **An RDF knowledge graph for genealogical research and historical vital records, built through the reuse and integration of established Semantic Web ontologies and controlled vocabularies.**
@@ -8,11 +9,9 @@ VitalGraph began with a personal goal: documenting my Armenian ancestry and gath
 
 Simple enough, right? Not quite.
 
-As I began examining birth, marriage, and death certificates across generations, I discovered numerous discrepancies in names, spellings, and identifying information. Some records listed Armenia as a birthplace and contained recognizably Armenian surnames, yet did not explicitly identify the individual's ethnicity as Armenian. Even when names and other details were recorded correctly, fields designated for 'race or color' often listed "White" or "Caucasian" rather than Armenian. Across generations, I encountered many variations in how the same individuals and their identities were documented.
+As I examined birth, marriage, and death certificates across several generations, I found differences in the names and other identifying details recorded for the same people. Fortunately, the records contain enough consistent evidence to document my Armenian ancestry and establish each family relationship connecting me to my ancestor. Other historical records point to Armenian origins. If I had to rely on those clues alone, I would need to look for additional ways to document my Armenian ethnicity.
 
-Fortunately, I do have sufficient records with consistent, accurate information that explicitly establish my Armenian ancestry and the necessary chain of kinship. Without that evidence, however, I would have to explore alternative methods of establishing my ethnicity, despite having historical records that strongly suggest Armenian origins.
-
-I encountered a similar issue when accompanying a family member to the Social Security Administration, where their birth certificate didn't match the information on file.
+I encountered a similar discrepancy when I accompanied a family member to the Social Security Administration (SSA). Information on their birth certificate differed from what SSA had on file.
 
 I couldn't help but see a broader problem: **Why is connecting and reconciling information across official records so difficult?**
 
@@ -33,8 +32,9 @@ The objective is to demonstrate how information from multiple certificates can b
 - Associate historical certificates with the events and individuals they document.
 - Represent dates, places, occupations, and demographic information.
 - Preserve information recorded in the original documents.
-- Validate RDF data against defined structural constraints.
-- Query family relationships and historical information using SPARQL.
+- Explore people, relationships, and recorded values in GraphDB.
+- Query family relationships and their supporting certificates using SPARQL.
+- Test natural-language questions with the Family Knowledge agent.
 
 ## Ontology and Terminology
 
@@ -45,15 +45,15 @@ VitalGraph reuses established ontologies and controlled vocabularies to represen
 - **Person Ontology** provides properties for representing personal information, including names and gender.
 - **FOAF** provides additional properties for representing personal information, including reported age.
 
-**Armenian labels.** VitalGraph uses `rdfs:label` with the `@hy` language tag to support Armenian-language labels alongside other languages, while preserving the original text recorded in certificates.
+**Armenian labels.** Armenian display labels are planned using `rdfs:label` with the `@hy` language tag. Original certificate text is preserved in the source graphs.
 
 ## Knowledge Graph Model
 
 VitalGraph uses RiC-O and other established ontologies to represent people, family relationships, life events, and vital records in a connected knowledge graph. Each person has a unique, persistent identifier that connects information across multiple certificates.
 
-Instance data is stored in TriG, with a default graph representing established identities and relationships and named graphs preserving information from individual certificates. This approach supports data provenance, preserves original source information, and accommodates discrepancies across records.
+Instance data is stored in TriG, with a default graph representing persistent person identities and record and event metadata and named graphs preserving individual certificates’ transcriptions and relationship evidence. This approach supports data provenance, preserves original source information, and accommodates discrepancies across records.
 
-SHACL is used to validate the graph against defined structural and data quality constraints, supporting consistency, integrity, and traceability.
+The Python build checks CSV structure and references. SPARQL checks confirm that expected relationships and recorded values appear in their supporting certificate graphs.
 
 ## Technologies and Standards
 
@@ -64,14 +64,17 @@ The project uses or plans to use the following technologies:
 | RDF / Turtle / TriG | Represent genealogical data and named graphs |
 | OWL / RDFS | Reuse established ontologies and semantic definitions |
 | SKOS | Represent controlled terminology where needed |
-| SHACL | Validate graph structure and data constraints |
 | SPARQL | Query family relationships and historical records |
-| Python / RDFLib | Construct, validate, and query RDF datasets |
+| Python / RDFLib | Build TriG from the certificate CSVs |
+| GraphDB Workbench | Import TriG, visualize the graph, and run SPARQL |
+| Talk to Your Graph | Test natural-language questions through the Family Knowledge agent |
 
 ## Development Status
 
-VitalGraph is being developed incrementally, beginning with an RDF knowledge graph constructed from historical family birth, marriage, and death certificates. Initial development focuses on ontology reuse, data integration, provenance, SHACL validation, and SPARQL querying.
+VitalGraph is being developed incrementally, starting with historical family birth, marriage, and death certificates. The pilot converts certificate transcriptions from CSV to TriG, preserving original wording and keeping each certificate’s evidence in its own named graph. GraphDB Workbench is used to visualize the dataset and run SPARQL queries that connect recorded values and family relationships to their supporting certificates.
 
-Future work will expand provenance modeling, incorporate additional archival records, and explore interoperability with vital records standards. The project will also evaluate integrating the OpenAI API to support natural-language questions grounded in the knowledge graph and its supporting source records.
+The **Family Knowledge** agent is being tested through GraphDB’s **Talk to Your Graph** feature. Its natural-language answers are compared with verified SPARQL results to check that they return the recorded values and cite the correct certificates.
 
-See the [Development Roadmap](DEVELOPMENT.md) for planned extensions.
+Later phases will add Armenian display labels and SHACL validation, extend provenance modeling, incorporate additional archival records, and explore interoperability with vital records standards.
+
+See the [Development Roadmap](DEVELOPMENT.md) for details.
