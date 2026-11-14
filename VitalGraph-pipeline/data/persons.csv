@@ -1,1 +1,8 @@
-person_id,name_id,preferred_name,identity_status
+person_id,name_id,preferred_name
+person-001,name-001,Doris Veronica Avedikian
+person-002,name-002,Paulette Ann Ohannesian-Avedikian
+person-003,name-003,Kevork Boghos Avedikian
+person-004,name-004,Paul Boghos Ohannesian
+person-005,name-005,Doris Veronica Krikorian-Ohannesian
+person-006,name-006,Henry Ohannesian
+person-007,name-007,Siranoush Yazmajian

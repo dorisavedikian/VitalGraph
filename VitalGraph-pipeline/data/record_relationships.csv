@@ -1,1 +1,8 @@
 record_id,subject_person_id,predicate,object_person_id
+birth-record-001,person-001,child_of,person-002
+birth-record-001,person-001,child_of,person-003
+birth-record-002,person-002,child_of,person-004
+birth-record-002,person-002,child_of,person-005
+death-record-001,person-004,spouse_of,person-005
+death-record-001,person-004,child_of,person-006
+death-record-001,person-004,child_of,person-007

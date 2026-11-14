@@ -8,13 +8,17 @@ VitalGraph began with a personal goal: documenting my Armenian ancestry and gath
 
 Simple enough, right? Not quite.
 
-As I began examining birth, marriage, and death certificates across generations, I discovered discrepancies in names and identifying information, along with records that didn't explicitly document Armenian ethnicity. I encountered a similar issue when accompanying a family member to the Social Security Administration, where their birth certificate didn't match the information on file.
+As I began examining birth, marriage, and death certificates across generations, I discovered numerous discrepancies in names, spellings, and identifying information. Some records listed Armenia as a birthplace and contained recognizably Armenian surnames, yet did not explicitly identify the individual's ethnicity as Armenian. Even when names and other details were recorded correctly, fields designated for 'race or color' often listed "White" or "Caucasian" rather than Armenian. Across generations, I encountered many variations in how the same individuals and their identities were documented.
+
+Fortunately, I do have sufficient records with consistent, accurate information that explicitly establish my Armenian ancestry and the necessary chain of kinship. Without that evidence, however, I would have to explore alternative methods of establishing my ethnicity, despite having historical records that strongly suggest Armenian origins.
+
+I encountered a similar issue when accompanying a family member to the Social Security Administration, where their birth certificate didn't match the information on file.
 
 I couldn't help but see a broader problem: **Why is connecting and reconciling information across official records so difficult?**
 
 In an ideal world, vital records would already be represented using interoperable standards, persistent identifiers, and shared vocabularies, making it easier to connect information across systems and generations.
 
-But we don't quite live in that world. So here I am, building my own multi-lingual knowledge graph.
+But we don't quite live in that world. So here I am, building my own multi-lingual knowledge graph. 
 
 VitalGraph uses RDF, established ontologies, and Semantic Web technologies to connect historical records, represent family relationships, preserve provenance, and identify discrepancies without losing the original evidence. What began as a citizenship application has become a personal exploration of how linked data can make historical information more accessible, connected, and meaningful.
 

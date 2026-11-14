@@ -5,7 +5,6 @@ import csv
 import re
 from pathlib import Path
 from tempfile import NamedTemporaryFile
-
 from rdflib import Dataset, Literal, Namespace, RDF, RDFS, URIRef, XSD
 
 VG = Namespace("https://example.org/vitalgraph/")
@@ -15,11 +14,11 @@ FOAF = Namespace("http://xmlns.com/foaf/0.1/")
 NCIT = Namespace("http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#")
 
 SCHEMAS = {
-    "persons": "person_id,name_id,preferred_name,identity_status",
+    "persons": "person_id,name_id,preferred_name",
     "records": "record_id,record_type,event_id,activity_id,title,identifier",
-    "record_persons": "record_id,person_id,role,first_name,last_name,maiden_name,gender,age,gender_as_written",
+    "record_persons": "record_id,person_id,role,first_name,last_name,maiden_name,gender,age",
     "record_relationships": "record_id,subject_person_id,predicate,object_person_id",
-    "record_attributes": "record_id,person_id,attribute_id,attribute_type,expressed_value,normalized_value",
+    "record_attributes": "record_id,person_id,attribute_id,attribute_type,expressed_value,normalized_value,see_also_url",
 }
 
 EVENT_TYPES = {
@@ -33,13 +32,12 @@ ROLES = {
     "subject_participant": (True, True),
     "mentioned": (False, False),
 }
-GENDERS = {"Female": PERSON.Female, "Male": PERSON.Male}
+GENDERS = {"Female": PERSON.Female, "Male": PERSON.Male, "F": PERSON.Female, "M": PERSON.Male}
 PERSON_FIELDS = {
     "first_name": PERSON.firstName,
     "last_name": PERSON.lastName,
     "maiden_name": PERSON.maidenName,
     "age": FOAF.age,
-    "gender_as_written": VG.recordedGender,
 }
 RELATIONSHIPS = {
     "child_of": (RICO.isChildOf, RICO.hasChild),
@@ -229,6 +227,11 @@ def build_graph(directory):
             add_literal(graph, attribute, RICO.normalizedDateValue, normalized)
         else:
             add_literal(graph, attribute, RICO.name, expressed)
+        url = row["see_also_url"]
+        if url:
+            if not ABSOLUTE_ID.fullmatch(url):
+                raise ValueError(f"{where}: see_also_url must be a full HTTP(S) URL")
+            graph.add((attribute, RDFS.seeAlso, URIRef(url)))
 
     for record in records:
         graph = dataset.graph(record)
@@ -252,7 +255,7 @@ def main():
     root = Path(__file__).resolve().parent
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data-dir", type=Path, default=root / "data")
-    parser.add_argument("--output", type=Path, default=root / "vitalgraph.trig")
+    parser.add_argument("--output", type=Path, default=root / "data_instances" / "vg-instance-data.trig")
     args = parser.parse_args()
     try:
         output = args.output.resolve()

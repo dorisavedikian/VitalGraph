@@ -32,7 +32,6 @@ One row per persistent person.
 | `person_id` | Yes | Subject IRI of `rdf:type rico:Person` in the default graph. Unique. |
 | `name_id` | With `preferred_name` | Unique IRI typed `rico:Name`. Connects Person → Name with `rico:hasOrHadName` and Name → Person with `rico:isOrWasNameOf`. |
 | `preferred_name` | No | `rico:textualValue` on the Name resource. Enter the name you have chosen for the registry. |
-| `identity_status` | No | CSV-only notes for your identity review. The template has no RDF property for this field. |
 
 ## records.csv
 

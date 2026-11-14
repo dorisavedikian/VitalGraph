@@ -1,0 +1,274 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#> .
+@prefix person: <https://w3id.org/MON/person.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rico: <https://www.ica.org/standards/RiC/ontology#> .
+@prefix vg: <https://example.org/vitalgraph/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vg:death-record-001 {
+    vg:death-record-001-birth-place-001 a rico:Place ;
+        rico:isBirthPlaceOf vg:person-004 ;
+        rico:name "CA" .
+
+    vg:death-record-001-birth-place-002 a rico:Place ;
+        rico:isBirthPlaceOf vg:person-006 ;
+        rico:name "AM" .
+
+    vg:death-record-001-birth-place-003 a rico:Place ;
+        rico:isBirthPlaceOf vg:person-007 ;
+        rico:name "AM" .
+
+    vg:death-record-001-death-date-001 a rico:Date ;
+        rico:expressedDate "8/12/03" .
+
+    vg:death-record-001-death-place-001 a rico:Place ;
+        rdfs:seeAlso <https://www.va.gov/central-california-health-care/locations/fresno-va-medical-center/> ;
+        rico:isDeathPlaceOf vg:person-004 ;
+        rico:name "VACCHCS" .
+
+    vg:death-record-001-demographic-group-001 a rico:DemographicGroup ;
+        rico:isOrWasDemographicGroupOf vg:person-004 ;
+        rico:name "Armenian" .
+
+    vg:death-record-001-occupation-001 a rico:OccupationType ;
+        rico:isOrWasOccupationTypeOf vg:person-004 ;
+        rico:name "Farmer" .
+
+    vg:person-005 a rico:Person ;
+        person:firstName "Doris"^^xsd:string ;
+        person:maidenName "Krikorian"^^xsd:string ;
+        rico:hasOrHadSpouse vg:person-004 .
+
+    vg:person-006 a rico:Person ;
+        person:firstName "Harry"^^xsd:string ;
+        person:lastName "Ohannesian"^^xsd:string ;
+        rico:hasBirthPlace vg:death-record-001-birth-place-002 ;
+        rico:hasChild vg:person-004 .
+
+    vg:person-007 a rico:Person ;
+        person:firstName "Blanche"^^xsd:string ;
+        person:maidenName "Basmajian"^^xsd:string ;
+        rico:hasBirthPlace vg:death-record-001-birth-place-003 ;
+        rico:hasChild vg:person-004 .
+
+    vg:person-004 foaf:age "76"^^xsd:string ;
+        person:firstName "Paul"^^xsd:string ;
+        person:hasGender person:Male ;
+        person:lastName "Ohannesian "^^xsd:string ;
+        rico:hasBirthPlace vg:death-record-001-birth-place-001 ;
+        rico:hasDeathDate vg:death-record-001-death-date-001 ;
+        rico:hasDeathPlace vg:death-record-001-death-place-001 ;
+        rico:hasOrHadDemographicGroup vg:death-record-001-demographic-group-001 ;
+        rico:hasOrHadOccupationOfType vg:death-record-001-occupation-001 ;
+        rico:hasOrHadSpouse vg:person-005 ;
+        rico:isChildOf vg:person-006,
+            vg:person-007 .
+}
+
+{
+    ncit:C28554 a rico:EventType ;
+        rdfs:label "Dead"@en ;
+        rico:isEventTypeOf vg:death-001 .
+
+    vg:birth-registration-001 a rico:Activity ;
+        rico:documentedBy vg:birth-record-001 .
+
+    vg:birth-registration-002 a rico:Activity ;
+        rico:documentedBy vg:birth-record-002 .
+
+    vg:death-registration-001 a rico:Activity ;
+        rico:documentedBy vg:death-record-001 .
+
+    vg:name-001 a rico:Name ;
+        rico:isOrWasNameOf vg:person-001 ;
+        rico:textualValue "Doris Veronica Avedikian" .
+
+    vg:name-002 a rico:Name ;
+        rico:isOrWasNameOf vg:person-002 ;
+        rico:textualValue "Paulette Ann Ohannesian-Avedikian" .
+
+    vg:name-003 a rico:Name ;
+        rico:isOrWasNameOf vg:person-003 ;
+        rico:textualValue "Kevork Boghos Avedikian" .
+
+    vg:name-004 a rico:Name ;
+        rico:isOrWasNameOf vg:person-004 ;
+        rico:textualValue "Paul Boghos Ohannesian" .
+
+    vg:name-005 a rico:Name ;
+        rico:isOrWasNameOf vg:person-005 ;
+        rico:textualValue "Doris Veronica Krikorian-Ohannesian" .
+
+    vg:name-006 a rico:Name ;
+        rico:isOrWasNameOf vg:person-006 ;
+        rico:textualValue "Henry Ohannesian" .
+
+    vg:name-007 a rico:Name ;
+        rico:isOrWasNameOf vg:person-007 ;
+        rico:textualValue "Siranoush Yazmajian" .
+
+    ncit:C25155 a rico:EventType ;
+        rdfs:label "Birth"@en ;
+        rico:isEventTypeOf vg:birth-001,
+            vg:birth-002 .
+
+    vg:birth-001 a rico:Event ;
+        rico:hasEventType ncit:C25155 ;
+        rico:hasOrHadParticipant vg:person-001 .
+
+    vg:birth-002 a rico:Event ;
+        rico:hasEventType ncit:C25155 ;
+        rico:hasOrHadParticipant vg:person-002 .
+
+    vg:birth-record-001 a rico:Record ;
+        rico:documents vg:birth-registration-001 ;
+        rico:hasOrHadSubject vg:person-001 ;
+        rico:identifier "190100 10216" ;
+        rico:title "Certificate Of Live Birth" .
+
+    vg:birth-record-002 a rico:Record ;
+        rico:documents vg:birth-registration-002 ;
+        rico:hasOrHadSubject vg:person-002 ;
+        rico:identifier "1001 4367" ;
+        rico:title "Certificate Of Live Birth" .
+
+    vg:death-001 a rico:Event ;
+        rico:hasEventType ncit:C28554 ;
+        rico:hasOrHadParticipant vg:person-004 .
+
+    vg:death-record-001 a rico:Record ;
+        rico:documents vg:death-registration-001 ;
+        rico:hasOrHadSubject vg:person-004 ;
+        rico:identifier "3200310 003654" ;
+        rico:title "Certificate Of Death" .
+
+    vg:person-003 a rico:Person ;
+        rico:hasOrHadName vg:name-003 .
+
+    vg:person-006 a rico:Person ;
+        rico:hasOrHadName vg:name-006 .
+
+    vg:person-007 a rico:Person ;
+        rico:hasOrHadName vg:name-007 .
+
+    vg:person-005 a rico:Person ;
+        rico:hasOrHadName vg:name-005 .
+
+    vg:person-001 a rico:Person ;
+        rico:hasOrHadName vg:name-001 ;
+        rico:isOrWasParticipantIn vg:birth-001 ;
+        rico:isOrWasSubjectOf vg:birth-record-001 .
+
+    vg:person-002 a rico:Person ;
+        rico:hasOrHadName vg:name-002 ;
+        rico:isOrWasParticipantIn vg:birth-002 ;
+        rico:isOrWasSubjectOf vg:birth-record-002 .
+
+    vg:person-004 a rico:Person ;
+        rico:hasOrHadName vg:name-004 ;
+        rico:isOrWasParticipantIn vg:death-001 ;
+        rico:isOrWasSubjectOf vg:death-record-001 .
+}
+
+vg:birth-record-002 {
+    vg:birth-record-002-birth-date-001 a rico:Date ;
+        rico:expressedDate "June 18, 1959" .
+
+    vg:birth-record-002-birth-place-001 a rico:Place ;
+        rdfs:seeAlso <https://en.wikipedia.org/wiki/Community_Regional_Medical_Center> ;
+        rico:isBirthPlaceOf vg:person-002 ;
+        rico:name "Fresno Community Hospital" .
+
+    vg:birth-record-002-birth-place-002 a rico:Place ;
+        rico:isBirthPlaceOf vg:person-004 ;
+        rico:name "California" .
+
+    vg:birth-record-002-birth-place-003 a rico:Place ;
+        rico:isBirthPlaceOf vg:person-005 ;
+        rico:name "California" .
+
+    vg:birth-record-002-demographic-group-001 a rico:DemographicGroup ;
+        rico:isOrWasDemographicGroupOf vg:person-004 ;
+        rico:name "White" .
+
+    vg:birth-record-002-demographic-group-002 a rico:DemographicGroup ;
+        rico:isOrWasDemographicGroupOf vg:person-005 ;
+        rico:name "White" .
+
+    vg:birth-record-002-occuptation-001 a rico:OccupationType ;
+        rico:isOrWasOccupationTypeOf vg:person-004 ;
+        rico:name "Self Employed" .
+
+    vg:person-002 person:firstName "Paulette "^^xsd:string ;
+        person:hasGender person:Female ;
+        person:lastName "Ohannesian"^^xsd:string ;
+        rico:hasBirthDate vg:birth-record-002-birth-date-001 ;
+        rico:hasBirthPlace vg:birth-record-002-birth-place-001 ;
+        rico:isChildOf vg:person-004,
+            vg:person-005 .
+
+    vg:person-005 a rico:Person ;
+        foaf:age "28"^^xsd:string ;
+        person:firstName "Doris"^^xsd:string ;
+        person:maidenName "Krikorian"^^xsd:string ;
+        rico:hasBirthPlace vg:birth-record-002-birth-place-003 ;
+        rico:hasChild vg:person-002 ;
+        rico:hasOrHadDemographicGroup vg:birth-record-002-demographic-group-002 .
+
+    vg:person-004 a rico:Person ;
+        foaf:age "32"^^xsd:string ;
+        person:firstName "Paul "^^xsd:string ;
+        person:lastName "Ohannesian"^^xsd:string ;
+        rico:hasBirthPlace vg:birth-record-002-birth-place-002 ;
+        rico:hasChild vg:person-002 ;
+        rico:hasOrHadDemographicGroup vg:birth-record-002-demographic-group-001 ;
+        rico:hasOrHadOccupationOfType vg:birth-record-002-occuptation-001 .
+}
+
+vg:birth-record-001 {
+    vg:birth-record-001-birth-date-001 a rico:Date ;
+        rico:expressedDate "August 25, 1990" .
+
+    vg:birth-record-001-birth-date-002 a rico:Date ;
+        rico:expressedDate "6/18/59" .
+
+    vg:birth-record-001-birth-date-003 a rico:Date ;
+        rico:expressedDate "8/6/44" .
+
+    vg:birth-record-001-birth-place-001 a rico:Place ;
+        rdfs:seeAlso <https://www.samc.com> ;
+        rico:isBirthPlaceOf vg:person-001 ;
+        rico:name "St. Agnes Hospital" .
+
+    vg:birth-record-001-birth-place-002 a rico:Place ;
+        rico:isBirthPlaceOf vg:person-002 ;
+        rico:name "CA" .
+
+    vg:birth-record-001-birth-place-003 a rico:Place ;
+        rico:isBirthPlaceOf vg:person-003 ;
+        rico:name "Syrian RP" .
+
+    vg:person-003 a rico:Person ;
+        person:firstName "Paulette "^^xsd:string ;
+        person:maidenName "Ohannesian"^^xsd:string ;
+        rico:hasBirthDate vg:birth-record-001-birth-date-003 ;
+        rico:hasBirthPlace vg:birth-record-001-birth-place-003 ;
+        rico:hasChild vg:person-001 .
+
+    vg:person-001 person:firstName "Doris"^^xsd:string ;
+        person:hasGender person:Female ;
+        person:lastName "Avedikian"^^xsd:string ;
+        rico:hasBirthDate vg:birth-record-001-birth-date-001 ;
+        rico:hasBirthPlace vg:birth-record-001-birth-place-001 ;
+        rico:isChildOf vg:person-002,
+            vg:person-003 .
+
+    vg:person-002 a rico:Person ;
+        person:firstName "Kevork"^^xsd:string ;
+        person:lastName "Avedikian"^^xsd:string ;
+        rico:hasBirthDate vg:birth-record-001-birth-date-002 ;
+        rico:hasBirthPlace vg:birth-record-001-birth-place-002 ;
+        rico:hasChild vg:person-001 .
+}
+

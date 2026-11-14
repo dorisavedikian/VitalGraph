@@ -1,0 +1,21 @@
+﻿record_id,person_id,attribute_id,attribute_type,expressed_value,normalized_value,see_also_url
+birth-record-001,person-001,birth-record-001-birth-date-001,birth_date,"August 25, 1990",,
+birth-record-001,person-001,birth-record-001-birth-place-001,birth_place,St. Agnes Hospital,,https://www.samc.com
+birth-record-001,person-002,birth-record-001-birth-date-002,birth_date,6/18/59,,
+birth-record-001,person-002,birth-record-001-birth-place-002,birth_place,CA,,
+birth-record-001,person-003,birth-record-001-birth-date-003,birth_date,8/6/44,,
+birth-record-001,person-003,birth-record-001-birth-place-003,birth_place,Syrian RP,,
+birth-record-002,person-002,birth-record-002-birth-date-001,birth_date,"June 18, 1959",,
+birth-record-002,person-002,birth-record-002-birth-place-001,birth_place,Fresno Community Hospital,,https://en.wikipedia.org/wiki/Community_Regional_Medical_Center
+birth-record-002,person-004,birth-record-002-demographic-group-001,demographic_group,White,,
+birth-record-002,person-004,birth-record-002-occuptation-001,occupation,Self Employed,,
+birth-record-002,person-004,birth-record-002-birth-place-002,birth_place,California,,
+birth-record-002,person-005,birth-record-002-demographic-group-002,demographic_group,White,,
+birth-record-002,person-005,birth-record-002-birth-place-003,birth_place,California,,
+death-record-001,person-004,death-record-001-death-date-001,death_date,8/12/03,,
+death-record-001,person-004,death-record-001-death-place-001,death_place,VACCHCS,,https://www.va.gov/central-california-health-care/locations/fresno-va-medical-center/
+death-record-001,person-004,death-record-001-occupation-001,occupation,Farmer,,
+death-record-001,person-004,death-record-001-demographic-group-001,demographic_group,Armenian,,
+death-record-001,person-004,death-record-001-birth-place-001,birth_place,CA,,
+death-record-001,person-006,death-record-001-birth-place-002,birth_place,AM,,
+death-record-001,person-007,death-record-001-birth-place-003,birth_place,AM,,
