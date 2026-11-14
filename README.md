@@ -1,8 +1,3 @@
-
-# VitalGraph
-
-**An RDF knowledge graph for genealogical research and historical vital records, built through the reuse and integration of established Semantic Web ontologies and controlled vocabularies.**
-
 ## Overview
 
 VitalGraph began with a personal goal: documenting my Armenian ancestry and gathering the official records needed to apply for Armenian citizenship. According to guidance I received from the Armenian Consulate in Los Angeles, I need to establish an ancestor's Armenian ethnicity and a complete chain of kinship connecting that ancestor to me.

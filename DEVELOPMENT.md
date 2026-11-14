@@ -12,7 +12,15 @@ The following areas outline opportunities to extend the project beyond its initi
 
 ## Planned Development
 
-### 1. Provenance and Data Lineage
+### 1. Armenian Display Labels
+
+Add reviewed Armenian labels using `rdfs:label` with `@hy`, starting with the people and terms visible in the graph. Test an Armenian-language question against its verified SPARQL result.
+
+### 2. SHACL Validation
+
+Introduce SHACL in a later phase. Run the shapes against the pilot dataset and a separate deliberately invalid example to verify that the expected violation is reported.
+
+### 3. Provenance and Data Lineage
 
 Extend the existing source-tracking approach by evaluating the W3C Provenance Ontology (PROV-O) to document how information is extracted, transformed, and derived from historical records.
 
@@ -20,19 +28,7 @@ RiC-O will remain the foundation for representing records, people, and activitie
 
 [W3C PROV-O documentation](https://www.w3.org/TR/prov-o/)
 
-### 2. Natural-Language Knowledge Graph Queries
-
-Refine the existing Family Knowledge agent in GraphDB’s Talk to Your Graph. Retest relationship direction, multistep queries across certificates, and retrieval of recorded values alongside their certificate IDs. Save verified SPARQL queries for repeatable checks.
-
-### 3. Armenian Display Labels
-
-Add reviewed Armenian labels using `rdfs:label` with `@hy`, starting with the people and terms visible in the graph. Test an Armenian-language question against its verified SPARQL result.
-
-### 4. SHACL Validation
-
-Introduce SHACL in a later phase. Run the shapes against the pilot dataset and a separate deliberately invalid example to verify that the expected violation is reported.
-
-### 5. Vital-Records Interoperability
+### 4. Vital-Records Interoperability
 
 Investigate how vital-record information is collected, registered, and exchanged across U.S. government and healthcare systems, including processes involving state registrars, the Social Security Administration, and CDC's National Center for Health Statistics.
 
@@ -43,7 +39,7 @@ This work will examine birth, death, and marriage registration workflows and eva
 
 The goal is to identify common data elements, differences in definitions and value sets, and opportunities for semantic interoperability.
 
-### 6. Historical and Archival Records
+### 5. Historical and Archival Records
 
 Expand beyond vital certificates to explore immigration, naturalization, and other historical federal records as additional evidence of family identities, relationships, and life events.
 
