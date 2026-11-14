@@ -105,6 +105,5 @@ One row per attribute resource as recorded on a particular certificate.
 | `death_place` | `rico:Place` | `rico:hasDeathPlace` | `rico:isDeathPlaceOf` |
 | `demographic_group` | `rico:DemographicGroup` | `rico:hasOrHadDemographicGroup` | `rico:isOrWasDemographicGroupOf` |
 | `occupation` | `rico:OccupationType` | `rico:hasOrHadOccupationOfType` | `rico:isOrWasOccupationTypeOf` |
-| `school` | `rico:Group` | `rico:studiesOrStudiedAt` | `rico:isOrWasAttendedByStudent` |
 
 Relationship and attribute rows can refer directly to a registered person. Add a `record_persons.csv` row when the certificate also supplies personal fields or an explicit appearance role.

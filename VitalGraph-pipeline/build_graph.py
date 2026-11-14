@@ -55,7 +55,6 @@ ATTRIBUTES = {
                           RICO.isOrWasDemographicGroupOf),
     "occupation": (RICO.OccupationType, RICO.hasOrHadOccupationOfType,
                    RICO.isOrWasOccupationTypeOf),
-    "school": (RICO.Group, RICO.studiesOrStudiedAt, RICO.isOrWasAttendedByStudent),
 }
 LOCAL_ID = re.compile(r"[A-Za-z0-9_][A-Za-z0-9._~-]*")
 ABSOLUTE_ID = re.compile(r"https?://(?=[^/?#])[^\s<>\x00-\x1f{}|^\x60\\\x22]*")
