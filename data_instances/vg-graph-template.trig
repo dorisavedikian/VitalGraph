@@ -9,11 +9,11 @@
 # To do: Add rdfs:Label ""@hy
 vg:person-001 a rico:Person ;                                                           
     rico:hasOrHadName vg:name-001 ;
-    rico:isOrWasParticipantIn vg:birth, vg:death, vg:marriage ;
+    rico:isOrWasParticipantIn vg:birth-001, vg:death-001, vg:marriage-001 ;
     rico:isOrWasSubjectOf vg:birth-record-001, vg:death-record-001, vg:marriage-record-001 .
 vg:person-002 a rico:Person ;                                                           
     rico:hasOrHadName vg:name-002 ;
-    rico:isOrWasParticipantIn vg:marriage ;
+    rico:isOrWasParticipantIn vg:marriage-001 ;
     rico:isOrWasSubjectOf vg:marriage-record-001 .
 vg:person-003 a rico:Person ; rico:hasOrHadName vg:name-003 .
 vg:person-004 a rico:Person ; rico:hasOrHadName vg:name-004 .
@@ -39,20 +39,20 @@ vg:name-006 a rico:Name ;
     rico:isOrWasNameOf vg:person-006 .
 ncit:C25155 a rico:EventType ;
     rdfs:label "Birth"@en ;
-    rico:isEventTypeOf vg:birth .
+    rico:isEventTypeOf vg:birth-001 .
 ncit:C48033 a rico:EventType ;
     rdfs:label "Marriage"@en ;
-    rico:isEventTypeOf vg:marriage .
+    rico:isEventTypeOf vg:marriage-001 .
 ncit:C28554 a rico:EventType ;
     rdfs:label "Dead"@en ;
-    rico:isEventTypeOf vg:death .
-vg:birth a rico:Event ;
+    rico:isEventTypeOf vg:death-001 .
+vg:birth-001 a rico:Event ;
     rico:hasEventType ncit:C25155 ;
     rico:hasOrHadParticipant vg:person-001 .
-vg:marriage a rico:Event ;
+vg:marriage-001 a rico:Event ;
     rico:hasEventType ncit:C48033 ;
     rico:hasOrHadParticipant vg:person-001, vg:person-002 .
-vg:death a rico:Event ;
+vg:death-001 a rico:Event ;
     rico:hasEventType ncit:C28554 ;
     rico:hasOrHadParticipant vg:person-001 .
 vg:birth-registration a rico:Activity ; rico:documentedBy vg:birth-record-001 .
@@ -73,7 +73,6 @@ vg:death-record-001 a rico:Record ;
     rico:identifier [rdfs:Literal] ;
     rico:hasOrHadSubject vg:person-001 ;
     rico:documents vg:death-registration .
-
 vg:birth-record-001 {
     vg:person-001
         person:hasGender [person:Female OR person:Male] ;                     
