@@ -1,14 +1,8 @@
 # VitalGraph Development Roadmap
 
-VitalGraph is being developed incrementally, beginning with an RDF knowledge graph constructed from family birth, marriage, and death certificates. Initial development focuses on ontology reuse, CSV-to-RDF integration, GraphDB visualization, and SPARQL querying.
+VitalGraph is being developed incrementally, starting with an RDF knowledge graph built from family birth, marriage, and death certificates. The initial pilot reuses established ontologies, converts certificate transcriptions from CSV to RDF, and uses GraphDB to visualize the dataset and run SPARQL queries. It also tests the Family Knowledge agent’s ability to answer natural-language questions and cite the certificates that support its answers.
 
 The following areas outline opportunities to extend the project beyond its initial proof of concept. For background and project scope, see the [README](README.md).
-
-## Current Pilot
-
-- Build TriG from the five CSVs with `scripts/build_graph.py`.
-- Import the TriG with **From data** and check the certificate graphs in GraphDB Workbench.
-- Use SPARQL to verify parent and grandparent links, literal values, and source certificates. Compare these results with Family Knowledge agent answers.
 
 ## Planned Development
 

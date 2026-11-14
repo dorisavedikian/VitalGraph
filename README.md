@@ -66,9 +66,9 @@ The project uses or plans to use the following technologies:
 
 ## Development Status
 
-VitalGraph is being developed incrementally, starting with historical family birth, marriage, and death certificates. The pilot converts certificate transcriptions from CSV to TriG, preserving original wording and keeping each certificate’s evidence in its own named graph. GraphDB Workbench is used to visualize the dataset and run SPARQL queries that connect recorded values and family relationships to their supporting certificates.
+VitalGraph is being developed incrementally, starting with historical family birth, marriage, and death certificates. The pilot reuses established ontologies and converts certificate transcriptions from CSV to TriG. It preserves the original wording and keeps each certificate’s evidence in its own named graph. GraphDB Workbench is used to visualize the dataset and run SPARQL queries that trace recorded values and family relationships to their supporting certificates.
 
-The **Family Knowledge** agent is being tested through GraphDB’s **Talk to Your Graph** feature. Its natural-language answers are compared with verified SPARQL results to check that they return the recorded values and cite the correct certificates.
+The **Family Knowledge** agent uses GraphDB’s **Talk to Your Graph** feature to answer natural-language questions. Its answers are tested against verified SPARQL results to check that they report the recorded values and cite the correct certificates.
 
 Later phases will add Armenian display labels and SHACL validation, extend provenance modeling, incorporate additional archival records, and explore interoperability with vital records standards.
 
