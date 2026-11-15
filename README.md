@@ -1,16 +1,16 @@
 ## Overview
 
-VitalGraph began with a personal goal: documenting my Armenian ancestry and gathering the official records needed to apply for Armenian citizenship. According to guidance I received from the Armenian Consulate in Los Angeles, I need to establish an ancestor's Armenian ethnicity and a complete chain of kinship connecting that ancestor to me.
+VitalGraph began with a personal goal: documenting my Armenian ancestry and gathering the official records needed to apply for Armenian citizenship. According to guidance I received from the Armenian Consulate in Los Angeles, I need to establish an ancestor's Armenian ethnicity and a complete chain of kinship connecting that ancestor to me. I also need every document for my application translated into Armenian.
 
 Simple enough, right? Not quite.
 
-As I examined birth, marriage, and death certificates across several generations, I found that records referring to the same person sometimes gave different names or other identifying details. Despite those discrepancies, I found enough consistent evidence to document an ancestor’s Armenian ethnicity and establish each family relationship connecting that ancestor to me. If I’d had only records that suggested Armenian origins, I would have needed other evidence to meet the documentation requirements for my application.
+I went through birth, marriage, and death certificates across several generations. Sometimes two records that pointed to the same person gave different names or disagreed on other details. I eventually found enough evidence to document my ancestor’s Armenian ethnicity and trace each generation down to me. What stuck with me was how much of that work came down to piecing together what each record actually said.
 
-I encountered a similar discrepancy when I accompanied a family member to the Social Security Administration (SSA). Information on their birth certificate differed from what SSA had on file.
+I ran into the same kind of problem when I went with a family member to the Social Security Administration. What SSA had on file differed from what was on their birth certificate.
 
 I couldn't help but see a broader problem: **Why is connecting and reconciling information across official records so difficult?**
 
-In an ideal world, vital records would already use interoperable standards, persistent identifiers, and shared vocabularies with labels in multiple languages. That would make it easier to connect records across government systems and generations, even when names are spelled differently, and to assemble the evidence needed for an application like mine.
+I started thinking about what would have made the process easier. In an ideal world, vital records would already use interoperable standards, persistent identifiers, and shared vocabularies with labels in multiple languages. That would make it easier to connect records across government systems and generations, even when names are spelled differently. I could explore those records in Armenian, still see exactly what each certificate says, and assemble the evidence I need for my citizenship application.
 
 But we don't quite live in that world. So here I am, building my own multi-lingual knowledge graph. 
 
@@ -33,12 +33,12 @@ The objective is to demonstrate how information from multiple certificates can b
 
 ## Ontology and Terminology
 
-VitalGraph reuses established ontologies and controlled vocabularies to represent information from family birth, marriage, and death certificates.
+VitalGraph reuses [subsets](/Volumes/SIROD/development/vitalGraph/ontology) of established ontologies and controlled vocabularies to represent information from family birth, marriage, and death certificates.
 
-- **Records in Contexts Ontology (RiC-O 1.1)** provides the core graph structure for representing people, family relationships, life events, registration activities, and historical records, along with associated dates, places, occupations, and demographic information.
-- **NCI Thesaurus (NCIt)** provides controlled identifiers for categorizing birth, death, and marriage events.
-- **Person Ontology** provides properties for representing personal information, including names and gender.
-- **FOAF** provides additional properties for representing personal information, including reported age.
+- **Records in Contexts Ontology (RiC-O 1.1)** provides the core graph structure for people, family relationships, life events, registration activities, and historical records, along with dates, places, occupations, and demographic information. [RiC-O 1.1 reference](https://www.ica.org/standards/RiC/RiC-O_1-1.html)
+- **NCI Thesaurus (NCIt)** provides controlled identifiers for categorizing birth, marriage, and death events. [NCIt browser](https://evsexplore.semantics.cancer.gov/evsexplore/overview)
+- **Person Ontology** provides properties for representing names and gender. [Person Ontology reference](https://w3id.org/MON/person.owl)
+- **FOAF** provides the `foaf:age` property for representing reported age. [FOAF vocabulary specification](https://xmlns.com/foaf/spec/#term_age)
 
 **Armenian labels.** Armenian display labels are planned using `rdfs:label` with the `@hy` language tag. Original certificate text is preserved in the source graphs.
 
@@ -48,19 +48,25 @@ VitalGraph uses RiC-O and other established ontologies to represent people, fami
 
 Instance data is stored in TriG, with a default graph representing persistent person identities and record and event metadata and named graphs preserving individual certificates’ transcriptions and relationship evidence. This approach supports data provenance, preserves original source information, and accommodates discrepancies across records.
 
+The [model reference](ontology/model-reference.txt) summarizes the classes, properties, and controlled terms used to represent people, relationships, life events, and certificates.
+
+The [single-person example](data-compiled/data_instances/single-person.txt) uses placeholders to illustrate how VitalGraph structures data for one person across birth, marriage, and death certificates. The default graph uses a unique person identifier to link that person to all three life events and their corresponding records. Each certificate’s named graph uses the same identifier and preserves the details and relationships documented by that source.
+
 ## Technologies and Standards
 
 The project uses or plans to use the following technologies:
 
 | Technology | Purpose |
 | --- | --- |
-| RDF / Turtle / TriG | Represent genealogical data and named graphs |
-| OWL / RDFS | Reuse established ontologies and semantic definitions |
-| SKOS | Represent controlled terminology where needed |
-| SPARQL | Query family relationships and historical records |
-| Python / RDFLib | Build TriG from the certificate CSVs |
-| GraphDB Workbench | Import TriG, visualize the graph, and run SPARQL |
-| Talk to Your Graph | Test natural-language questions through the Family Knowledge agent |
+| [RDF](https://www.w3.org/TR/rdf11-concepts/) | Represent people, relationships, events, and records as triples |
+| [Turtle](https://www.w3.org/TR/turtle/) | Write individual RDF graphs in a readable text format |
+| [TriG](https://www.w3.org/TR/trig/) | Store the default graph and certificate-specific named graphs in one dataset |
+| [OWL](https://www.w3.org/TR/owl2-overview/) / [RDFS](https://www.w3.org/TR/rdf-schema/) | Reuse established ontologies and semantic definitions |
+| [SKOS](https://www.w3.org/TR/skos-reference/) | Represent controlled terminology where needed |
+| [SPARQL](https://www.w3.org/TR/sparql11-overview/) | Query family relationships and historical records |
+| [Python](https://docs.python.org/3/) / [RDFLib](https://rdflib.readthedocs.io/) | Build TriG from the certificate CSVs |
+| [GraphDB Workbench](https://graphdb.ontotext.com/documentation/10.8/working-with-workbench.html) | Import TriG, visualize the graph, and run SPARQL |
+| [Talk to Your Graph](https://graphdb.ontotext.com/documentation/11.5/talk-to-graph.html) | Test natural-language questions through the Family Knowledge agent |
 
 ## Development Status
 

@@ -1,2 +1,4 @@
-/source-data/*
 .DS_Store
+/source-data/
+/data-compiled/data/
+/data-compiled/data_instances/vg-instance-data.trig
