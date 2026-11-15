@@ -52,6 +52,8 @@ The [model reference](ontology/model-reference.txt) summarizes the classes, prop
 
 The [single-person example](data-compiled/data_instances/single-person.txt) uses placeholders to illustrate how VitalGraph structures data for one person across birth, marriage, and death certificates. The default graph uses a unique person identifier to link that person to all three life events and their corresponding records. Each certificate’s named graph uses the same identifier and preserves the details and relationships documented by that source.
 
+The [CSV data dictionary](data-compiled/CSV-DATA-DICTIONARY.md) explains how to enter certificate data, reuse person identifiers across records, and see how each CSV field maps to RDF.
+
 ## Technologies and Standards
 
 The project uses or plans to use the following technologies:

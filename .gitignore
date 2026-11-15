@@ -2,3 +2,9 @@
 /source-data/
 /data-compiled/data/
 /data-compiled/data_instances/vg-instance-data.trig
+
+/scripts/extract_foaf.py
+/scripts/extract_ncit.py
+/scripts/extract_person_properties.py
+/scripts/extract_vitalgraph_rico.py
+/scripts/extract_rdfs.py
