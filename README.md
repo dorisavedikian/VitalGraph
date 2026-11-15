@@ -4,13 +4,13 @@ VitalGraph began with a personal goal: documenting my Armenian ancestry and gath
 
 Simple enough, right? Not quite.
 
-As I examined birth, marriage, and death certificates across several generations, I found differences in the names and other identifying details recorded for the same people. Fortunately, the records contain enough consistent evidence to document my Armenian ancestry and establish each family relationship connecting me to my ancestor. Other historical records point to Armenian origins. If I had to rely on those clues alone, I would need to look for additional ways to document my Armenian ethnicity.
+As I examined birth, marriage, and death certificates across several generations, I found that records referring to the same person sometimes gave different names or other identifying details. Despite those discrepancies, I found enough consistent evidence to document an ancestor’s Armenian ethnicity and establish each family relationship connecting that ancestor to me. If I’d had only records that suggested Armenian origins, I would have needed other evidence to meet the documentation requirements for my application.
 
 I encountered a similar discrepancy when I accompanied a family member to the Social Security Administration (SSA). Information on their birth certificate differed from what SSA had on file.
 
 I couldn't help but see a broader problem: **Why is connecting and reconciling information across official records so difficult?**
 
-In an ideal world, vital records would already be represented using interoperable standards, persistent identifiers, and shared vocabularies, making it easier to connect information across systems and generations.
+In an ideal world, vital records would already use interoperable standards, persistent identifiers, and shared vocabularies with labels in multiple languages. That would make it easier to connect records across government systems and generations, even when names are spelled differently, and to assemble the evidence needed for an application like mine.
 
 But we don't quite live in that world. So here I am, building my own multi-lingual knowledge graph. 
 
@@ -47,8 +47,6 @@ VitalGraph reuses established ontologies and controlled vocabularies to represen
 VitalGraph uses RiC-O and other established ontologies to represent people, family relationships, life events, and vital records in a connected knowledge graph. Each person has a unique, persistent identifier that connects information across multiple certificates.
 
 Instance data is stored in TriG, with a default graph representing persistent person identities and record and event metadata and named graphs preserving individual certificates’ transcriptions and relationship evidence. This approach supports data provenance, preserves original source information, and accommodates discrepancies across records.
-
-The Python build checks CSV structure and references. SPARQL checks confirm that expected relationships and recorded values appear in their supporting certificate graphs.
 
 ## Technologies and Standards
 

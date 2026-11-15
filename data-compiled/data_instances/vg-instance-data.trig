@@ -6,6 +6,95 @@
 @prefix vg: <https://example.org/vitalgraph/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+vg:marriage-record-001 {
+    vg:marriage-001 rico:hasOrHadParticipant vg:person-006,
+            vg:person-007 .
+
+    vg:marriage-record-001-birth-place-001 a rico:Place ;
+        rico:isBirthPlaceOf vg:person-006 ;
+        rico:name "Armenia" .
+
+    vg:marriage-record-001-birth-place-002 a rico:Place ;
+        rico:isBirthPlaceOf vg:person-007 ;
+        rico:name "Armenia" .
+
+    vg:marriage-record-001-birth-place-003 a rico:Place ;
+        rico:isBirthPlaceOf vg:person-012 ;
+        rico:name "Armenia" .
+
+    vg:marriage-record-001-birth-place-004 a rico:Place ;
+        rico:isBirthPlaceOf vg:person-013 ;
+        rico:name "Armenia" .
+
+    vg:marriage-record-001-birth-place-005 a rico:Place ;
+        rico:isBirthPlaceOf vg:person-014 ;
+        rico:name "Armenia" .
+
+    vg:marriage-record-001-birth-place-006 a rico:Place ;
+        rico:isBirthPlaceOf vg:person-015 ;
+        rico:name "Armenia" .
+
+    vg:marriage-record-001-demographic-group-001 a rico:DemographicGroup ;
+        rico:isOrWasDemographicGroupOf vg:person-006 ;
+        rico:name "white" .
+
+    vg:marriage-record-001-demographic-group-002 a rico:DemographicGroup ;
+        rico:isOrWasDemographicGroupOf vg:person-007 ;
+        rico:name "white" .
+
+    vg:marriage-record-001-occupation-001 a rico:OccupationType ;
+        rico:isOrWasOccupationTypeOf vg:person-006 ;
+        rico:name "Farming" .
+
+    vg:marriage-record-001-occupation-002 a rico:OccupationType ;
+        rico:isOrWasOccupationTypeOf vg:person-007 ;
+        rico:name "home" .
+
+    vg:person-012 a rico:Person ;
+        person:firstName "Paul"^^xsd:string ;
+        person:lastName "Ohannesian"^^xsd:string ;
+        rico:hasBirthPlace vg:marriage-record-001-birth-place-003 ;
+        rico:hasChild vg:person-006 .
+
+    vg:person-013 a rico:Person ;
+        person:firstName "Crist"^^xsd:string ;
+        person:lastName "Ohannesian"^^xsd:string ;
+        rico:hasBirthPlace vg:marriage-record-001-birth-place-004 ;
+        rico:hasChild vg:person-006 .
+
+    vg:person-014 a rico:Person ;
+        person:firstName "Misak"^^xsd:string ;
+        person:lastName "Yazmajian"^^xsd:string ;
+        rico:hasBirthPlace vg:marriage-record-001-birth-place-005 ;
+        rico:hasChild vg:person-007 .
+
+    vg:person-015 a rico:Person ;
+        person:firstName "Paris"^^xsd:string ;
+        person:maidenName "Haroutian"^^xsd:string ;
+        rico:hasBirthPlace vg:marriage-record-001-birth-place-006 ;
+        rico:hasChild vg:person-007 .
+
+    vg:person-006 foaf:age "24"^^xsd:string ;
+        person:firstName "Henry"^^xsd:string ;
+        person:lastName "Ohannesian"^^xsd:string ;
+        rico:hasBirthPlace vg:marriage-record-001-birth-place-001 ;
+        rico:hasOrHadDemographicGroup vg:marriage-record-001-demographic-group-001 ;
+        rico:hasOrHadOccupationOfType vg:marriage-record-001-occupation-001 ;
+        rico:hasOrHadSpouse vg:person-007 ;
+        rico:isChildOf vg:person-012,
+            vg:person-013 .
+
+    vg:person-007 foaf:age "19"^^xsd:string ;
+        person:firstName "Siranoush"^^xsd:string ;
+        person:maidenName "Yazmajian"^^xsd:string ;
+        rico:hasBirthPlace vg:marriage-record-001-birth-place-002 ;
+        rico:hasOrHadDemographicGroup vg:marriage-record-001-demographic-group-002 ;
+        rico:hasOrHadOccupationOfType vg:marriage-record-001-occupation-002 ;
+        rico:hasOrHadSpouse vg:person-006 ;
+        rico:isChildOf vg:person-014,
+            vg:person-015 .
+}
+
 vg:death-record-001 {
     vg:death-record-001-birth-date-001 a rico:Date ;
         rico:expressedDate "1/10/1927" .
@@ -43,18 +132,6 @@ vg:death-record-001 {
         person:maidenName "Krikorian"^^xsd:string ;
         rico:hasOrHadSpouse vg:person-004 .
 
-    vg:person-006 a rico:Person ;
-        person:firstName "Harry"^^xsd:string ;
-        person:lastName "Ohannesian"^^xsd:string ;
-        rico:hasBirthPlace vg:death-record-001-birth-place-002 ;
-        rico:hasChild vg:person-004 .
-
-    vg:person-007 a rico:Person ;
-        person:firstName "Blanche"^^xsd:string ;
-        person:maidenName "Basmajian"^^xsd:string ;
-        rico:hasBirthPlace vg:death-record-001-birth-place-003 ;
-        rico:hasChild vg:person-004 .
-
     vg:person-004 foaf:age "76"^^xsd:string ;
         person:firstName "Paul"^^xsd:string ;
         person:hasGender person:Male ;
@@ -68,111 +145,18 @@ vg:death-record-001 {
         rico:hasOrHadSpouse vg:person-005 ;
         rico:isChildOf vg:person-006,
             vg:person-007 .
-}
-
-{
-    ncit:C28554 a rico:EventType ;
-        rdfs:label "Dead"@en ;
-        rico:isEventTypeOf vg:death-001 .
-
-    vg:birth-registration-001 a rico:Activity ;
-        rico:documentedBy vg:birth-record-001 .
-
-    vg:birth-registration-002 a rico:Activity ;
-        rico:documentedBy vg:birth-record-002 .
-
-    vg:death-registration-001 a rico:Activity ;
-        rico:documentedBy vg:death-record-001 .
-
-    vg:name-001 a rico:Name ;
-        rico:isOrWasNameOf vg:person-001 ;
-        rico:textualValue "Doris Veronica Avedikian" .
-
-    vg:name-002 a rico:Name ;
-        rico:isOrWasNameOf vg:person-002 ;
-        rico:textualValue "Paulette Ann Ohannesian-Avedikian" .
-
-    vg:name-003 a rico:Name ;
-        rico:isOrWasNameOf vg:person-003 ;
-        rico:textualValue "Kevork Boghos Avedikian" .
-
-    vg:name-004 a rico:Name ;
-        rico:isOrWasNameOf vg:person-004 ;
-        rico:textualValue "Paul Boghos Ohannesian" .
-
-    vg:name-005 a rico:Name ;
-        rico:isOrWasNameOf vg:person-005 ;
-        rico:textualValue "Doris Veronica Krikorian-Ohannesian" .
-
-    vg:name-006 a rico:Name ;
-        rico:isOrWasNameOf vg:person-006 ;
-        rico:textualValue "Henry Ohannesian" .
-
-    vg:name-007 a rico:Name ;
-        rico:isOrWasNameOf vg:person-007 ;
-        rico:textualValue "Siranoush Yazmajian" .
-
-    ncit:C25155 a rico:EventType ;
-        rdfs:label "Birth"@en ;
-        rico:isEventTypeOf vg:birth-001,
-            vg:birth-002 .
-
-    vg:birth-001 a rico:Event ;
-        rico:hasEventType ncit:C25155 ;
-        rico:hasOrHadParticipant vg:person-001 .
-
-    vg:birth-002 a rico:Event ;
-        rico:hasEventType ncit:C25155 ;
-        rico:hasOrHadParticipant vg:person-002 .
-
-    vg:birth-record-001 a rico:Record ;
-        rico:documents vg:birth-registration-001 ;
-        rico:hasOrHadSubject vg:person-001 ;
-        rico:identifier "190100 10216" ;
-        rico:title "Certificate Of Live Birth" .
-
-    vg:birth-record-002 a rico:Record ;
-        rico:documents vg:birth-registration-002 ;
-        rico:hasOrHadSubject vg:person-002 ;
-        rico:identifier "1001 4367" ;
-        rico:title "Certificate Of Live Birth" .
-
-    vg:death-001 a rico:Event ;
-        rico:hasEventType ncit:C28554 ;
-        rico:hasOrHadParticipant vg:person-004 .
-
-    vg:death-record-001 a rico:Record ;
-        rico:documents vg:death-registration-001 ;
-        rico:hasOrHadSubject vg:person-004 ;
-        rico:identifier "3200310 003654" ;
-        rico:title "Certificate Of Death" .
-
-    vg:person-003 a rico:Person ;
-        rico:hasOrHadName vg:name-003 .
 
     vg:person-006 a rico:Person ;
-        rico:hasOrHadName vg:name-006 .
+        person:firstName "Harry"^^xsd:string ;
+        person:lastName "Ohannesian"^^xsd:string ;
+        rico:hasBirthPlace vg:death-record-001-birth-place-002 ;
+        rico:hasChild vg:person-004 .
 
     vg:person-007 a rico:Person ;
-        rico:hasOrHadName vg:name-007 .
-
-    vg:person-005 a rico:Person ;
-        rico:hasOrHadName vg:name-005 .
-
-    vg:person-001 a rico:Person ;
-        rico:hasOrHadName vg:name-001 ;
-        rico:isOrWasParticipantIn vg:birth-001 ;
-        rico:isOrWasSubjectOf vg:birth-record-001 .
-
-    vg:person-002 a rico:Person ;
-        rico:hasOrHadName vg:name-002 ;
-        rico:isOrWasParticipantIn vg:birth-002 ;
-        rico:isOrWasSubjectOf vg:birth-record-002 .
-
-    vg:person-004 a rico:Person ;
-        rico:hasOrHadName vg:name-004 ;
-        rico:isOrWasParticipantIn vg:death-001 ;
-        rico:isOrWasSubjectOf vg:death-record-001 .
+        person:firstName "Blanche"^^xsd:string ;
+        person:maidenName "Basmajian"^^xsd:string ;
+        rico:hasBirthPlace vg:death-record-001-birth-place-003 ;
+        rico:hasChild vg:person-004 .
 }
 
 vg:birth-record-002 {
@@ -200,7 +184,7 @@ vg:birth-record-002 {
         rico:isOrWasDemographicGroupOf vg:person-005 ;
         rico:name "White" .
 
-    vg:birth-record-002-occuptation-001 a rico:OccupationType ;
+    vg:birth-record-002-occupation-001 a rico:OccupationType ;
         rico:isOrWasOccupationTypeOf vg:person-004 ;
         rico:name "Self Employed" .
 
@@ -227,7 +211,263 @@ vg:birth-record-002 {
         rico:hasBirthPlace vg:birth-record-002-birth-place-002 ;
         rico:hasChild vg:person-002 ;
         rico:hasOrHadDemographicGroup vg:birth-record-002-demographic-group-001 ;
-        rico:hasOrHadOccupationOfType vg:birth-record-002-occuptation-001 .
+        rico:hasOrHadOccupationOfType vg:birth-record-002-occupation-001 .
+}
+
+vg:birth-record-003 {
+    vg:birth-record-003-birth-date-001 a rico:Date ;
+        rico:expressedDate "Jan. 10 1927" .
+
+    vg:birth-record-003-birth-place-001 a rico:Place ;
+        rdfs:seeAlso <https://calisphere.org/item/ark:/13030/kt2d5nc59w/> ;
+        rico:isBirthPlaceOf vg:person-004 ;
+        rico:name "General Hospital of Fresno County" .
+
+    vg:birth-record-003-birth-place-002 a rico:Place ;
+        rico:isBirthPlaceOf vg:person-006 ;
+        rico:name "Armenia" .
+
+    vg:birth-record-003-birth-place-003 a rico:Place ;
+        rico:isBirthPlaceOf vg:person-007 ;
+        rico:name "Armenia" .
+
+    vg:birth-record-003-demographic-group-001 a rico:DemographicGroup ;
+        rico:isOrWasDemographicGroupOf vg:person-006 ;
+        rico:name "White" .
+
+    vg:birth-record-003-demographic-group-002 a rico:DemographicGroup ;
+        rico:isOrWasDemographicGroupOf vg:person-007 ;
+        rico:name "white" .
+
+    vg:birth-record-003-occupation-001 a rico:OccupationType ;
+        rico:isOrWasOccupationTypeOf vg:person-006 ;
+        rico:name "laborer" .
+
+    vg:birth-record-003-occupation-002 a rico:OccupationType ;
+        rico:isOrWasOccupationTypeOf vg:person-007 ;
+        rico:name "housewife" .
+
+    vg:person-006 a rico:Person ;
+        foaf:age "30"^^xsd:string ;
+        person:firstName "Humige"^^xsd:string ;
+        person:lastName "Ohannesian"^^xsd:string ;
+        rico:hasBirthPlace vg:birth-record-003-birth-place-002 ;
+        rico:hasChild vg:person-004 ;
+        rico:hasOrHadDemographicGroup vg:birth-record-003-demographic-group-001 ;
+        rico:hasOrHadOccupationOfType vg:birth-record-003-occupation-001 .
+
+    vg:person-007 a rico:Person ;
+        foaf:age "24"^^xsd:string ;
+        person:firstName "Blanche"^^xsd:string ;
+        person:maidenName "Esmajian"^^xsd:string ;
+        rico:hasBirthPlace vg:birth-record-003-birth-place-003 ;
+        rico:hasChild vg:person-004 ;
+        rico:hasOrHadDemographicGroup vg:birth-record-003-demographic-group-002 ;
+        rico:hasOrHadOccupationOfType vg:birth-record-003-occupation-002 .
+
+    vg:person-004 person:firstName "Polk"^^xsd:string ;
+        person:hasGender person:Male ;
+        person:lastName "Ohannesian"^^xsd:string ;
+        rico:hasBirthDate vg:birth-record-003-birth-date-001 ;
+        rico:hasBirthPlace vg:birth-record-003-birth-place-001 ;
+        rico:isChildOf vg:person-006,
+            vg:person-007 .
+}
+
+{
+    ncit:C28554 a rico:EventType ;
+        rdfs:label "Dead"@en ;
+        rico:isEventTypeOf vg:death-001 .
+
+    ncit:C48033 a rico:EventType ;
+        rdfs:label "Marriage"@en ;
+        rico:isEventTypeOf vg:marriage-001 .
+
+    vg:birth-registration-001 a rico:Activity ;
+        rico:documentedBy vg:birth-record-001 .
+
+    vg:birth-registration-002 a rico:Activity ;
+        rico:documentedBy vg:birth-record-002 .
+
+    vg:birth-registration-003 a rico:Activity ;
+        rico:documentedBy vg:birth-record-003 .
+
+    vg:death-registration-001 a rico:Activity ;
+        rico:documentedBy vg:death-record-001 .
+
+    vg:marriage-registration-001 a rico:Activity ;
+        rico:documentedBy vg:marriage-record-001 .
+
+    vg:name-001 a rico:Name ;
+        rico:isOrWasNameOf vg:person-001 ;
+        rico:textualValue "Doris Veronica Avedikian" .
+
+    vg:name-002 a rico:Name ;
+        rico:isOrWasNameOf vg:person-002 ;
+        rico:textualValue "Paulette Ann Ohannesian-Avedikian" .
+
+    vg:name-003 a rico:Name ;
+        rico:isOrWasNameOf vg:person-003 ;
+        rico:textualValue "Kevork Boghos Avedikian" .
+
+    vg:name-004 a rico:Name ;
+        rico:isOrWasNameOf vg:person-004 ;
+        rico:textualValue "Paul Boghos Ohannesian" .
+
+    vg:name-005 a rico:Name ;
+        rico:isOrWasNameOf vg:person-005 ;
+        rico:textualValue "Doris Veronica Krikorian-Ohannesian" .
+
+    vg:name-006 a rico:Name ;
+        rico:isOrWasNameOf vg:person-006 ;
+        rico:textualValue "Henry Boghos Ohannesian" .
+
+    vg:name-007 a rico:Name ;
+        rico:isOrWasNameOf vg:person-007 ;
+        rico:textualValue "Siranoush Yazmajian-Ohannesian" .
+
+    vg:name-008 a rico:Name ;
+        rico:isOrWasNameOf vg:person-008 ;
+        rico:textualValue "Boghos Avedikian (Zobian)" .
+
+    vg:name-009 a rico:Name ;
+        rico:isOrWasNameOf vg:person-009 ;
+        rico:textualValue "Osanna Minasian-Avedikian" .
+
+    vg:name-010 a rico:Name ;
+        rico:isOrWasNameOf vg:person-010 ;
+        rico:textualValue "Garabed Krikor Krikorian" .
+
+    vg:name-011 a rico:Name ;
+        rico:isOrWasNameOf vg:person-011 ;
+        rico:textualValue "Veronic Harikian-Krikorian" .
+
+    vg:name-012 a rico:Name ;
+        rico:isOrWasNameOf vg:person-012 ;
+        rico:textualValue "Boghos Ohannesian" .
+
+    vg:name-013 a rico:Name ;
+        rico:isOrWasNameOf vg:person-013 ;
+        rico:textualValue "Crist Ohannesian" .
+
+    vg:name-014 a rico:Name ;
+        rico:isOrWasNameOf vg:person-014 ;
+        rico:textualValue "Misak Yazmajian" .
+
+    vg:name-015 a rico:Name ;
+        rico:isOrWasNameOf vg:person-015 ;
+        rico:textualValue "Paris Haroutian-Yazmajian" .
+
+    vg:person-008 a rico:Person ;
+        rico:hasOrHadName vg:name-008 .
+
+    vg:person-009 a rico:Person ;
+        rico:hasOrHadName vg:name-009 .
+
+    vg:person-010 a rico:Person ;
+        rico:hasOrHadName vg:name-010 .
+
+    vg:person-011 a rico:Person ;
+        rico:hasOrHadName vg:name-011 .
+
+    ncit:C25155 a rico:EventType ;
+        rdfs:label "Birth"@en ;
+        rico:isEventTypeOf vg:birth-001,
+            vg:birth-002 .
+
+    vg:birth-001 a rico:Event ;
+        rico:hasEventType ncit:C25155 ;
+        rico:hasOrHadParticipant vg:person-001 .
+
+    vg:birth-record-001 a rico:Record ;
+        rico:documents vg:birth-registration-001 ;
+        rico:hasOrHadSubject vg:person-001 ;
+        rico:identifier "190100 10216" ;
+        rico:title "Certificate Of Live Birth" .
+
+    vg:birth-record-002 a rico:Record ;
+        rico:documents vg:birth-registration-002 ;
+        rico:hasOrHadSubject vg:person-002 ;
+        rico:identifier "1001 4367" ;
+        rico:title "Certificate Of Live Birth" .
+
+    vg:birth-record-003 a rico:Record ;
+        rico:documents vg:birth-registration-003 ;
+        rico:hasOrHadSubject vg:person-004 ;
+        rico:identifier "38" ;
+        rico:title "Standard Certificate Of Birth" .
+
+    vg:death-001 a rico:Event ;
+        rico:hasEventType ncit:C28554 ;
+        rico:hasOrHadParticipant vg:person-004 .
+
+    vg:death-record-001 a rico:Record ;
+        rico:documents vg:death-registration-001 ;
+        rico:hasOrHadSubject vg:person-004 ;
+        rico:identifier "3200310 003654" ;
+        rico:title "Certificate Of Death" .
+
+    vg:person-003 a rico:Person ;
+        rico:hasOrHadName vg:name-003 .
+
+    vg:person-012 a rico:Person ;
+        rico:hasOrHadName vg:name-012 .
+
+    vg:person-013 a rico:Person ;
+        rico:hasOrHadName vg:name-013 .
+
+    vg:person-014 a rico:Person ;
+        rico:hasOrHadName vg:name-014 .
+
+    vg:person-015 a rico:Person ;
+        rico:hasOrHadName vg:name-015 .
+
+    vg:birth-002 a rico:Event ;
+        rico:hasEventType ncit:C25155 ;
+        rico:hasOrHadParticipant vg:person-002,
+            vg:person-004 .
+
+    vg:marriage-record-001 a rico:Record ;
+        rico:documents vg:marriage-registration-001 ;
+        rico:hasOrHadSubject vg:person-006,
+            vg:person-007 ;
+        rico:identifier "1518" ;
+        rico:title "Standard Certificate Of Marriage" .
+
+    vg:marriage-001 a rico:Event ;
+        rico:hasEventType ncit:C48033 ;
+        rico:hasOrHadParticipant vg:person-006,
+            vg:person-007 .
+
+    vg:person-005 a rico:Person ;
+        rico:hasOrHadName vg:name-005 .
+
+    vg:person-001 a rico:Person ;
+        rico:hasOrHadName vg:name-001 ;
+        rico:isOrWasParticipantIn vg:birth-001 ;
+        rico:isOrWasSubjectOf vg:birth-record-001 .
+
+    vg:person-002 a rico:Person ;
+        rico:hasOrHadName vg:name-002 ;
+        rico:isOrWasParticipantIn vg:birth-002 ;
+        rico:isOrWasSubjectOf vg:birth-record-002 .
+
+    vg:person-006 a rico:Person ;
+        rico:hasOrHadName vg:name-006 ;
+        rico:isOrWasParticipantIn vg:marriage-001 ;
+        rico:isOrWasSubjectOf vg:marriage-record-001 .
+
+    vg:person-007 a rico:Person ;
+        rico:hasOrHadName vg:name-007 ;
+        rico:isOrWasParticipantIn vg:marriage-001 ;
+        rico:isOrWasSubjectOf vg:marriage-record-001 .
+
+    vg:person-004 a rico:Person ;
+        rico:hasOrHadName vg:name-004 ;
+        rico:isOrWasParticipantIn vg:birth-002,
+            vg:death-001 ;
+        rico:isOrWasSubjectOf vg:birth-record-003,
+            vg:death-record-001 .
 }
 
 vg:birth-record-001 {

@@ -94,7 +94,7 @@ One row per attribute resource as recorded on a particular certificate.
 | `attribute_type` | Yes | Selects the resource class and links from the table below. |
 | `expressed_value` | Yes unless a normalized date is supplied | Exact source wording. Uses `rico:expressedDate` on dates and `rico:name` on other attributes. |
 | `normalized_value` | No | Date attributes only. Adds `rico:normalizedDateValue` as supplied. The generator does not calculate or validate date normalization. |
-| `see_also_url` | No (header required) | Enter a full HTTP(S) URL. Adds `rdfs:seeAlso` from the attribute resource to the URL as an IRI in the certificate’s named graph. Leave blank to omit the link. The formal range is `rdfs:Resource`. |
+| `see_also_url` | No | Enter a full HTTP(S) URL. Adds `rdfs:seeAlso` from the attribute resource to the URL as an IRI in the certificate’s named graph. Leave blank to omit the link. The formal range is `rdfs:Resource`. |
 
 The generator accepts `see_also_url` for every attribute type. For a `birth_place` or `death_place` row, it links the `rico:Place` resource to a reference. Keep the place name as written on the certificate in `expressed_value`.
 

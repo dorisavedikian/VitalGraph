@@ -1,4 +1,6 @@
 record_id,record_type,event_id,activity_id,title,identifier
 birth-record-001,birth,birth-001,birth-registration-001,Certificate Of Live Birth,190100 10216
 birth-record-002,birth,birth-002,birth-registration-002,Certificate Of Live Birth,1001 4367
+birth-record-003,birth,birth-002,birth-registration-003,Standard Certificate Of Birth,38
 death-record-001,death,death-001,death-registration-001,Certificate Of Death,3200310 003654
+marriage-record-001,marriage,marriage-001,marriage-registration-001,Standard Certificate Of Marriage,1518

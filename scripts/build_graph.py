@@ -32,7 +32,7 @@ ROLES = {
     "subject_participant": (True, True),
     "mentioned": (False, False),
 }
-GENDERS = {"Female": PERSON.Female, "Male": PERSON.Male, "F": PERSON.Female, "M": PERSON.Male}
+GENDERS = {"Female": PERSON.Female, "Male": PERSON.Male,"female": PERSON.Female, "male": PERSON.Male, "F": PERSON.Female, "M": PERSON.Male,  "f": PERSON.Female, "m": PERSON.Male}
 PERSON_FIELDS = {
     "first_name": PERSON.firstName,
     "last_name": PERSON.lastName,
@@ -267,7 +267,9 @@ def main():
         write_trig(dataset, output)
     except (OSError, ValueError) as exc:
         parser.exit(1, f"VitalGraph: {exc}\n")
+    triple_count = sum(1 for _ in dataset.quads((None, None, None, None)))
     print(f"Wrote {output}")
+    print(f"RDF triples across all graphs: {triple_count:,}")
 
 
 if __name__ == "__main__":
