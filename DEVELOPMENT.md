@@ -1,6 +1,3 @@
-Here’s the full `DEVELOPMENT.md`, ready to copy and paste.
-
-```markdown
 # VitalGraph Development Roadmap
 
 VitalGraph is being developed incrementally, starting with an RDF knowledge graph built from family birth, marriage, and death certificates. The initial pilot reuses established ontologies, converts certificate transcriptions from CSV to RDF, and uses GraphDB to visualize the dataset and run SPARQL queries. It also tests the Family Knowledge agent’s ability to answer natural-language questions and cite the certificates that support its answers.
@@ -59,4 +56,3 @@ Use the [National Archives Catalog API v2](https://catalog.archives.gov/api/v2/a
 Potential sources include Alien Files (A-Files) held by the National Archives and Records Administration (NARA). The USCIS Genealogy Program is a separate research avenue for naturalization Certificate Files (C-Files).
 
 Review the underlying documents and check that they refer to the right person before adding facts to the graph. Link each new assertion to its archival source and, where available, the page or field that supports it.
-```
