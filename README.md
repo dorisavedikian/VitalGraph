@@ -68,6 +68,8 @@ VitalGraph is being developed incrementally, starting with historical family bir
 
 The **Family Knowledge** agent uses GraphDB’s **Talk to Your Graph** feature to answer natural-language questions. Its answers are tested against verified SPARQL results to check that they report the recorded values and cite the correct certificates.
 
-Later phases will add Armenian display labels and SHACL validation, extend provenance modeling, incorporate additional archival records, and explore interoperability with vital records standards.
+Next, I plan to add the eight remaining family certificates and capture more of what they document, including residences, medical information, and burial details. I also plan to automate data entry from scanned PDFs, spreadsheets, and CSV files by mapping source data into the existing CSV-to-RDF workflow.
+
+Later work will add family photographs and use the National Archives Catalog API to find immigration, naturalization, and military service records. The roadmap also covers Armenian display labels, SHACL validation, expanded provenance, and interoperability with vital-records standards.
 
 See the [Development Roadmap](DEVELOPMENT.md) for details.
