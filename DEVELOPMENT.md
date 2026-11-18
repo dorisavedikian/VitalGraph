@@ -23,9 +23,9 @@ Build an import step that maps scanned PDFs and tabular sources into the existin
 
 Add reviewed Armenian labels using `rdfs:label` with `@hy`, starting with the people and terms visible in the graph. Test an Armenian-language question against its verified SPARQL result.
 
-### 4. SHACL Validation
+### 4. Application Profile and Validation
 
-Introduce SHACL in a later phase. Run the shapes against the pilot dataset and a separate deliberately invalid example to verify that the expected violation is reported.
+Evaluate DCTAP as a spreadsheet-based way to maintain VitalGraph’s application profile and generate SHACL shapes. Compare it with writing a small set of SHACL shapes directly before adopting it.
 
 ### 5. Historical and Archival Records
 
