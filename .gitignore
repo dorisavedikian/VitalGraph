@@ -1,10 +1,17 @@
 .DS_Store
+
 /source-data/
 /data-compiled/data/
 /data-compiled/data_instances/vg-instance-data.trig
 
 /scripts/extract_foaf.py
-/scripts/extract_ncit.py
-/scripts/extract_person_properties.py
-/scripts/extract_vitalgraph_rico.py
+/scripts/extract_rico.py
 /scripts/extract_rdfs.py
+/scripts/extract_person.py
+/scripts/extract_ncit_terms.py
+
+/Vault-LD_VG/
+
+/Talk-2-VG/chat_to_html.py
+/Talk-2-VG/chit-chat_thread.json
+/Talk-2-VG/chat_template.html

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Family Knowledge Conversation</title>
+  <style>
+    body {
+      max-width: 850px;
+      margin: 30px auto;
+      padding: 0 16px;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f2eff8;
+    }
+    .question, .answer {
+      border: 1px solid #bbb;
+      padding: 16px;
+      margin: 12px 0;
+      overflow-wrap: anywhere;
+    }
+    .question { background: #f3f3f3; margin-top: 28px; }
+    .answer { background: white; }
+    pre { overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #bbb; padding: 8px; text-align: left; }
+    @media print { button { display: none; } }
+  </style>
+</head>
+<body>
+<main>
+  <div>VitalGraph</div>
+  <h1>Family Knowledge Conversation</h1>
+  <p>GraphDB chat export · 12 messages</p>
+  <p>These answers are reproduced from the exported agent conversation. They may contain mistakes and should be checked against the source records and verified SPARQL results.</p>
+  <button type="button" onclick="window.print()">Print / Save as PDF</button>
+  
+  <div class="question">
+    <p><strong>Doris:</strong></p>
+    <p>How many certificate records are in VitalGraph? Break the count down by birth, death, and marriage.</p>
+  </div>
+  
+  <div class="answer">
+    <p><strong>Family Knowledge:</strong></p>
+    <p>There are a total of 5 certificate records in VitalGraph, broken down as follows:</p>
+<ul>
+<li>Birth certificates: 3</li>
+<li>Death certificates: 1</li>
+<li>Marriage certificates: 1</li>
+</ul>
+<p>Let me know if you need details about the individual records or their contents.</p>
+  </div>
+  
+  <div class="question">
+    <p><strong>Doris:</strong></p>
+    <p>Give as much information as you can about each.</p>
+  </div>
+  
+  <div class="answer">
+    <p><strong>Family Knowledge:</strong></p>
+    <p>Here is an overview of each certificate record in VitalGraph, grouped by type. For each, I include all available details found in the records and cite the supporting certificate identifier.</p>
+<hr>
+<h2>Birth Certificates</h2>
+<h3>1. Certificate Of Live Birth</h3>
+<ul>
+<li>Identifier: 190100 10216</li>
+<li>Record IRI: vg:birth-record-001</li>
+</ul>
+<h4>People:</h4>
+<ul>
+<li>Doris Avedikian (child)</li>
+<li>First name: Doris</li>
+<li>Last name: Avedikian</li>
+<li>Gender: Female</li>
+<li>Birth date: August 25, 1990</li>
+<li>Birth place: St. Agnes Hospital</li>
+<li>Parents: Paulette Ohannesian (mother), Kevork Avedikian (father)</li>
+<li>Paulette Ohannesian (parent)</li>
+<li>First name: Paulette</li>
+<li>Maiden name: Ohannesian</li>
+<li>Birth date: June 18, 1959</li>
+<li>Birth place: CA</li>
+<li>Kevork Avedikian (parent)</li>
+<li>First name: Kevork</li>
+<li>Last name: Avedikian</li>
+<li>Birth date: 8/6/44</li>
+<li>Birth place: Syrian RP</li>
+</ul>
+<hr>
+<h3>2. Certificate Of Live Birth</h3>
+<ul>
+<li>Identifier: 1001 4367</li>
+<li>Record IRI: vg:birth-record-002</li>
+</ul>
+<h4>People:</h4>
+<ul>
+<li>Paulette Ohannesian (child)</li>
+<li>First name: Paulette</li>
+<li>Last name: Ohannesian</li>
+<li>Gender: Female</li>
+<li>Birth date: 6/18/59</li>
+<li>Birth place: Fresno Community Hospital</li>
+<li>Parents: Paul Ohannesian (father), Doris Krikorian (mother)</li>
+<li>Paul Ohannesian (parent)</li>
+<li>First name: Paul</li>
+<li>Last name: Ohannesian</li>
+<li>Age: 32 (at time of record)</li>
+<li>Birth place: California</li>
+<li>Demographic group: White</li>
+<li>Occupation: Self Employed</li>
+<li>Doris Krikorian (parent)</li>
+<li>First name: Doris</li>
+<li>Maiden name: Krikorian</li>
+<li>Age: 28 (at time of record)</li>
+<li>Birth place: California</li>
+<li>Demographic group: White</li>
+</ul>
+<hr>
+<h3>3. Standard Certificate Of Birth</h3>
+<ul>
+<li>Identifier: 38</li>
+<li>Record IRI: vg:birth-record-003</li>
+</ul>
+<h4>People:</h4>
+<ul>
+<li>Polk Ohannesian (child)</li>
+<li>First name: Polk</li>
+<li>Last name: Ohannesian</li>
+<li>Gender: Male</li>
+<li>Birth date: Jan. 10 1927</li>
+<li>Birth place: General Hospital of Fresno County</li>
+<li>Parents: Humige Ohannesian (father), Blanche Esmajian (mother)</li>
+<li>Humige Ohannesian (parent)</li>
+<li>First name: Humige</li>
+<li>Last name: Ohannesian</li>
+<li>Age: 30</li>
+<li>Birth place: Armenia</li>
+<li>Demographic group: White</li>
+<li>Occupation: laborer</li>
+<li>Blanche Esmajian (parent)</li>
+<li>First name: Blanche</li>
+<li>Maiden name: Esmajian</li>
+<li>Age: 24</li>
+<li>Birth place: Armenia</li>
+<li>Demographic group: white</li>
+<li>Occupation: housewife</li>
+</ul>
+<hr>
+<h2>Death Certificate</h2>
+<h3>1. Certificate Of Death</h3>
+<ul>
+<li>Identifier: 3200310 003654</li>
+<li>Record IRI: vg:death-record-001</li>
+</ul>
+<h4>Deceased:</h4>
+<ul>
+<li>Paul Ohannesian</li>
+<li>First name: Paul</li>
+<li>Last name: Ohannesian</li>
+<li>Gender: Male</li>
+<li>Age: 76 (at time of death)</li>
+<li>Birth date: 1/10/1927</li>
+<li>Birth place: CA</li>
+<li>Death date: 8/12/03</li>
+<li>Death place: VACCHCS (VA Central California Health Care System)</li>
+<li>Demographic group: Armenian</li>
+<li>Occupation: Farmer</li>
+<li>Spouse: Doris Krikorian</li>
+<li>Parents: Harry Ohannesian (father), Blanche Basmajian (mother)</li>
+<li>Doris Krikorian (spouse)</li>
+<li>First name: Doris</li>
+<li>Maiden name: Krikorian</li>
+</ul>
+<hr>
+<h2>Marriage Certificate</h2>
+<h3>1. Standard Certificate Of Marriage</h3>
+<ul>
+<li>Identifier: 1518</li>
+<li>Record IRI: vg:marriage-record-001</li>
+</ul>
+<h4>Spouses:</h4>
+<ul>
+<li>Henry Ohannesian</li>
+<li>First name: Henry</li>
+<li>Last name: Ohannesian</li>
+<li>Age: 24</li>
+<li>Birth place: Armenia</li>
+<li>Demographic group: white</li>
+<li>Occupation: Farming</li>
+<li>Parents: Paul Ohannesian, Crist Ohannesian</li>
+<li>Siranoush Yazmajian</li>
+<li>First name: Siranoush</li>
+<li>Maiden name: Yazmajian</li>
+<li>Age: 19</li>
+<li>Birth place: Armenia</li>
+<li>Demographic group: white</li>
+<li>Occupation: home</li>
+<li>Parents: Misak Yazmajian, Paris Haroutian</li>
+</ul>
+<h4>Additional people (parents of spouses):</h4>
+<ul>
+<li>Paul Ohannesian (parent of Henry)</li>
+<li>Crist Ohannesian (parent of Henry)</li>
+<li>Misak Yazmajian (parent of Siranoush)</li>
+<li>Paris Haroutian (parent of Siranoush)</li>
+</ul>
+<hr>
+<p>If you need detailed contents for any certificate or a breakdown by individual (with their registry names), please specify the record or person of interest.</p>
+  </div>
+  
+  <div class="question">
+    <p><strong>Doris:</strong></p>
+    <p>If Paulette Avedikian is Doris Avedikians mother than Paul Ohannesian is Doris Avedikians grandfather correct?</p>
+  </div>
+  
+  <div class="answer">
+    <p><strong>Family Knowledge:</strong></p>
+    <p>Yes, your reasoning is correct and supported by the evidence in VitalGraph:</p>
+<ul>
+<li>Doris Veronica Avedikian's mother is Paulette Ann Ohannesian-Avedikian (supported by birth certificate vg:birth-record-001).</li>
+<li>Paulette Ann Ohannesian-Avedikian's father is Paul Boghos Ohannesian (supported by birth certificate vg:birth-record-002).</li>
+</ul>
+<p>Therefore, Paul Ohannesian is Doris Avedikian's grandfather, as documented in these records:</p>
+<ul>
+<li>Doris’s mother: Paulette Ann Ohannesian-Avedikian (vg:birth-record-001)</li>
+<li>Paulette’s father: Paul Boghos Ohannesian (vg:birth-record-002)</li>
+</ul>
+<p>Let me know if you want a full family tree or the details from the supporting certificates.</p>
+  </div>
+  
+  <div class="question">
+    <p><strong>Doris:</strong></p>
+    <p>What ethnicity is Paul Ohannesian?</p>
+  </div>
+  
+  <div class="answer">
+    <p><strong>Family Knowledge:</strong></p>
+    <p>Paul Ohannesian's ethnicity is recorded as:</p>
+<ul>
+<li>"White" in birth certificate vg:birth-record-002</li>
+<li>"Armenian" in death certificate vg:death-record-001</li>
+</ul>
+<p>Both are supported by their respective certificates. If you need the exact text or further details from either certificate, let me know!</p>
+  </div>
+  
+  <div class="question">
+    <p><strong>Doris:</strong></p>
+    <p>Does that mean that Doris Avedikian is ethnically Armenian?</p>
+  </div>
+  
+  <div class="answer">
+    <p><strong>Family Knowledge:</strong></p>
+    <p>There is no direct evidence in VitalGraph that records Doris Avedikian's ethnicity. Her own certificates do not explicitly state her ethnicity.</p>
+<p>However, her maternal grandfather, Paul Ohannesian, is recorded as "Armenian" in his death certificate (vg:death-record-001). This suggests Armenian ancestry on her maternal side, but the ethnicity of Doris herself is not directly documented in any certificate.</p>
+<p>If you need to infer ancestry or want to see any related demographic information for other relatives, let me know!</p>
+  </div>
+  
+  <div class="question">
+    <p><strong>Doris:</strong></p>
+    <p>Where is Doris Avedikians father from?</p>
+  </div>
+  
+  <div class="answer">
+    <p><strong>Family Knowledge:</strong></p>
+    <p>Doris Avedikian's father, Kevork Boghos Avedikian, is recorded as being from "Syrian RP" (Syrian Republic), according to birth certificate vg:birth-record-001.</p>
+<p>If you need further details or the full statement from the certificate, let me know!</p>
+  </div>
+  
+</main>
+</body>
+</html>
