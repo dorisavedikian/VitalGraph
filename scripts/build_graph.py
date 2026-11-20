@@ -254,7 +254,7 @@ def write_trig(dataset, output):
 def main():
     root = Path(__file__).resolve().parent.parent / "data-compiled"
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--data-dir", type=Path, default=root / "data")
+    parser.add_argument("--data-dir", type=Path, default=root / "data_csv")
     parser.add_argument("--output", type=Path, default=root / "data_instances" / "vg-instance-data.trig")
     args = parser.parse_args()
     try:

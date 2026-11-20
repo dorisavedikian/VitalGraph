@@ -1,12 +1,12 @@
 # VitalGraph CSV data dictionary
 
-The script reads the five CSVs in `data/` and writes TriG to `data-compiled/data_instances/vg-instance-data.trig` by default. Use `--data-dir` and `--output` to select different paths. The header-only templates produce a valid empty dataset. Fill the templates with your transcriptions and rerun to rebuild the file. 
+The `scripts/build_graph.py` script reads the five CSVs in `data_csv/` and writes TriG to `data-compiled/data_instances/vg-instance-data.trig` by default. 
 
-Save the CSVs as UTF-8 and keep every header. Use text cell formatting when entering dates, ages, and identifiers in a spreadsheet so the spreadsheet preserves spelling, precision, and leading zeros. CSV quoting supports commas, quotes, and embedded line breaks. Empty optional fields produce no corresponding triple. Nonempty text is copied exactly as supplied, including whitespace and line breaks.
+Use `--data-dir` and `--output` to select different paths. 
 
 ## Model and identifiers
 
-The birth, marriage, and death mappings follow a certificate template, which uses placeholders for unfilled fields. The generator uses their terms and URI patterns and starts with empty input files.
+The birth, marriage, and death mappings follow a certificate template, which uses placeholders for unfilled fields. 
 
 | Prefix | Namespace |
 | --- | --- |
@@ -19,7 +19,7 @@ The birth, marriage, and death mappings follow a certificate template, which use
 | `rdf:` | `http://www.w3.org/1999/02/22-rdf-syntax-ns#` |
 | `xsd:` | `http://www.w3.org/2001/XMLSchema#` |
 
-ID fields accept a local ID such as `person-001`, the equivalent `vg:person-001`, or an existing full HTTP(S) IRI. Local IDs start with an ASCII letter, digit, or underscore and may continue with those characters or `.`, `~`, and `-`. IDs and controlled values are case-sensitive. Retain established IDs across builds. Use the same person ID across certificates only when you have chosen that identity. Use distinct IDs for unresolved identities even when the names match. The generator creates no person IDs, name matches, or identity equivalence links.
+ID fields accept a local ID such as `person-001`, the equivalent `vg:person-001`, or an existing full HTTP(S) IRI.  Retain established IDs across builds. Use the same person ID across certificates only when you have chosen that identity. Use distinct IDs for unresolved identities even when the names match. The generator creates no person IDs, name matches, or identity equivalence links.
 
 The default graph holds the person registry and certificate metadata, including subject and participant links. Each named graph uses its certificate record IRI and holds that certificate's transcribed values, relationship evidence, and attribute nodes. Marriage event participation is also repeated in the marriage certificate graph to match the template. For a certificate with no named-graph evidence yet, the generator repeats its `rdf:type rico:Record` triple in the named graph so the graph survives TriG serialization. A `mentioned` appearance places that person's type in the named graph, as the template does for parents.
 
@@ -46,9 +46,9 @@ One row per certificate.
 | `title` | No | `rico:title` on the Record. |
 | `identifier` | No | `rico:identifier` on the Record. Enter the historical certificate or file number as text. |
 
-To reproduce the event IRIs in your pasted template, enter `birth-001`, `marriage-001`, and `death-001` in the corresponding `event_id` cells. The generator uses those values for event declarations, participant links, and event-type links.
+To reproduce the event IRIs in the certificate template, enter `birth-001`, `marriage-001`, and `death-001` in the corresponding `event_id` cells. The generator uses those values for event declarations, participant links, and event-type links.
 
-Event and activity IDs may repeat if you explicitly identify the same event or registration in multiple rows. A reused event ID must keep the same record type. All other resource declarations must use distinct IRIs, including across resource types. The template's NCIt mappings are preserved as configured, including the glossary's pending verification for Birth.
+Event and activity IDs may repeat if you explicitly identify the same event or registration in multiple rows. A reused event ID must keep the same record type. All other resource declarations must use distinct IRIs, including across resource types. The template's NCIt mappings are preserved as configured.
 
 | Record type | Event type and label |
 | --- | --- |
