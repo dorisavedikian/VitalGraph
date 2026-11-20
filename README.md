@@ -95,7 +95,7 @@ SKOS is being considered for future controlled terminology. SHACL validation is 
 
 The CSV-to-TriG pipeline is working for the five-certificate pilot. GraphDB Workbench supports visualization and SPARQL queries, which have been used to check recorded values, family relationships, and their supporting certificates.
 
-The **Family Knowledge** agent uses GraphDB’s **Talk to Your Graph** feature, with autocomplete for name discovery. Its answers are checked against verified SPARQL results to identify errors in relationship direction, graph scope, and value retrieval. A [sample conversation](docs/index.html) documents the testing.
+The **Family Knowledge** agent uses GraphDB’s **Talk to Your Graph** feature, with autocomplete for name discovery. Its answers are checked against verified SPARQL results to identify errors in relationship direction, graph scope, and value retrieval. A [sample conversation](https://dorisavedikian.github.io/VitalGraph/) documents the testing.
 
 Next steps include adding the eight remaining certificates, capturing residence, medical, and burial details, and automating intake from scans and spreadsheets with manual review.
 
