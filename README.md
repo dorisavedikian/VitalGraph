@@ -20,8 +20,6 @@ But we don't quite live in that world yet. So here I am, building my own multili
 
 When I told my sister about this, she said, “Can’t you just ask Google?” I said, “Google doesn’t have the records I’ve gathered or know how I’ve connected them. It wouldn’t know that Humige, Harry, and Henry refer to the same person, or that a misspelling of our paternal grandparents’ surname originated in Lebanon.” That conversation helped shape the Family Knowledge chatbot. Its goal is to answer from the connected records, identify the supporting documents, and make clear when evidence is incomplete or records disagree.
 
-I plan to expand the graph to include baptismal, immigration, naturalization, and military service records.
-
 What began with a citizenship application has become a way for me to explore what linked data can do for my family history.
 
 ## Project Scope
@@ -54,8 +52,6 @@ VitalGraph reuses [subsets](ontology) of established ontologies and controlled v
 
 ## Knowledge Graph Model
 
-VitalGraph uses RDF and other Semantic Web technologies to represent people, family relationships, life events, and vital records in a connected knowledge graph. Its extensible model reuses selected classes and properties from the Records in Contexts Ontology (RiC-O) and other established ontologies, along with three NCI Thesaurus (NCIt) identifiers to classify birth, marriage, and death events.
-
 Each person has a persistent identifier that connects their appearances across certificates. A person can have a registry name while individual certificates preserve different recorded names and other details.
 
 The dataset is stored in TriG. The default graph contains the person registry, record metadata, life events, registration activities, and links identifying record subjects and event participants. Each certificate’s named graph contains its transcribed values and relationship evidence.
@@ -75,7 +71,7 @@ The [CSV data dictionary](data-compiled/CSV-DATA-DICTIONARY.md) explains how to 
 ## Visuals
 
 - [Application Profile — Classes and Relationships](diagrams/VitalGraph-ApplicationProfile-Classes%26Relationships.pdf) shows the classes, relationships, and recorded-value fields used in VitalGraph.
-- [UML Diagram](diagrams/VitalGraph-Application-Profile.png) provides the application profile as UML diagram.
+- [UML Diagram](diagrams/VitalGraph-Application-Profile.png) provides the application profile as a UML diagram.
 - [Model and Example Records](diagrams/VitalGraph-Model%26Example-Records.png) connects ontology definitions to example people and records.
 - [Five-Certificate Pilot](diagrams/VitalGraph-Five-Certificate-Pilot.png) shows the populated graph with family relationships and recorded values.
 
@@ -93,13 +89,13 @@ The [CSV data dictionary](data-compiled/CSV-DATA-DICTIONARY.md) explains how to 
 | [Talk to Your Graph](https://graphdb.ontotext.com/documentation/11.5/talk-to-graph.html) | Test natural-language questions through the Family Knowledge agent |
 | [PlantUML](https://plantuml.com/) | Maintain an editable class and relationship diagram |
 
-SKOS is being considered for future natively controlled terminology. SHACL validation is planned for a later development phase.
+SKOS is being considered for future controlled terminology. SHACL validation is planned for a later development phase.
 
 ## Development Status
 
-The pilot contains five family certificates—three birth, one death, and one marriage—transcribed into five CSV files and converted to TriG using Python and RDFLib. Persistent person IDs connect records, while certificate-specific named graphs preserve their wording and relationship evidence.
+The CSV-to-TriG pipeline is working for the five-certificate pilot. Recorded values and family relationships have been checked through SPARQL queries in GraphDB.
 
-GraphDB Workbench supports visualization and SPARQL queries that retrieve relationships and recorded values with their supporting certificates. The repository includes model diagrams, editable PlantUML source, and pilot screenshots.
+GraphDB Workbench supports visualization and SPARQL queries that retrieve relationships and recorded values with their supporting certificates. 
 
 The **Family Knowledge** agent uses GraphDB’s **Talk to Your Graph** feature, with autocomplete for name discovery. Its answers are checked against SPARQL results as testing addresses errors in relationship direction, graph scope, and value retrieval. A [sample conversation](docs/index.html) documents the testing; a converter produces HTML transcripts from GraphDB chat exports.
 
