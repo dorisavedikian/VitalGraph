@@ -93,14 +93,12 @@ SKOS is being considered for future controlled terminology. SHACL validation is 
 
 ## Development Status
 
-The CSV-to-TriG pipeline is working for the five-certificate pilot. Recorded values and family relationships have been checked through SPARQL queries in GraphDB.
+The CSV-to-TriG pipeline is working for the five-certificate pilot. GraphDB Workbench supports visualization and SPARQL queries, which have been used to check recorded values, family relationships, and their supporting certificates.
 
-GraphDB Workbench supports visualization and SPARQL queries that retrieve relationships and recorded values with their supporting certificates. 
-
-The **Family Knowledge** agent uses GraphDB’s **Talk to Your Graph** feature, with autocomplete for name discovery. Its answers are checked against SPARQL results as testing addresses errors in relationship direction, graph scope, and value retrieval. A [sample conversation](docs/index.html) documents the testing; a converter produces HTML transcripts from GraphDB chat exports.
+The **Family Knowledge** agent uses GraphDB’s **Talk to Your Graph** feature, with autocomplete for name discovery. Its answers are checked against verified SPARQL results to identify errors in relationship direction, graph scope, and value retrieval. A [sample conversation](docs/index.html) documents the testing.
 
 Next steps include adding the eight remaining certificates, capturing residence, medical, and burial details, and automating intake from scans and spreadsheets with manual review.
 
-Later work includes civil and church records from Syria and Lebanon, plus searches for immigration, naturalization, and military service records through the National Archives Catalog API. Plans also include Armenian labels, validation, provenance enhancements, and exploring mappings to HL7 FHIR vital-records reporting standards.
+Later work includes civil, medical and church records from Syria and Lebanon, plus searches for immigration, naturalization, and military service records through the National Archives Catalog API. Plans also include Armenian labels, validation, provenance enhancements, and exploring mappings to HL7 FHIR vital-records reporting standards.
 
 See the [Development Roadmap](DEVELOPMENT.md) for details.

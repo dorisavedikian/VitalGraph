@@ -28,16 +28,18 @@ Evaluate DCTAP as a spreadsheet-based way to maintain VitalGraph’s application
 
 Use the [National Archives Catalog API v2](https://catalog.archives.gov/api/v2/api-docs/) to search for records related to family members’ immigration, naturalization, and military service. Use names and known spelling variants, dates, and places to identify candidate records. Capture each result’s title, National Archives Identifier (NAID) when available, and Catalog link so the underlying record can be accessed or requested.
 
-Potential sources include Alien Files (A-Files) held by the National Archives and Records Administration (NARA). The USCIS Genealogy Program is a separate research avenue for naturalization Certificate Files (C-Files).
+Potential sources include Alien Files (A-Files) held by the National Archives and Records Administration (NARA). 
+
+The USCIS Genealogy Program is a separate research avenue for naturalization Certificate Files (C-Files).
 
 ### Family Records in Syria and Lebanon
 
-Investigate records concerning my father and paternal grandparents, including my father’s birth in Syria and subsequent move to Lebanon. The aim is to document their identities, family relationships, places of residence, and migration history, while preserving the names and other details recorded by each source.
+Investigate records concerning my father and paternal grandparents, including my father’s birth in Syria and subsequent move to Lebanon. The aim is to try to document their identities, family relationships, places of residence, and migration history, while preserving the names and other details recorded by each source.
 
 #### Starting References
 
 - [Syrian civil-document guide](https://travel.state.gov/content/travel/en/us-visas/Visa-Reciprocity-and-Civil-Documents-by-Country/Syria.html)
-- [Lebanese Embassy civil-document request guidance](https://lebanonembassyus.org/consular-services/other/)
+- [Lebanese Embassy](https://lebanonembassyus.org)
 - [Armenian Prelacy of Lebanon certificate services](https://armprelacylb.org/azk-arachnortaran/services/hasdadakirner/)
 
 ### 6. Vital-Records Interoperability
