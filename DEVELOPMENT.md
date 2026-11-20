@@ -16,24 +16,19 @@ Expand the model and CSV tables to capture additional details from the certifica
 
 Build an import step that maps scanned PDFs and tabular sources into the existing VitalGraph CSV tables so they can feed the current CSV-to-RDF generator.
 
-- **Scanned PDFs.** Read certificate scans and map the information into the existing CSV tables. Flag hard-to-read text or unclear field matches so they can be checked against the original certificate.
-- **Spreadsheets and CSV files.** Define reusable mappings from source columns to the existing table fields. Preserve original values alongside normalized values when both are needed.
-
 ### 3. Armenian Display Labels
 
-Add reviewed Armenian labels using `rdfs:label` with `@hy`, starting with the people and terms visible in the graph. Test an Armenian-language question against its verified SPARQL result.
+Add reviewed Armenian labels using `rdfs:label` with `@hy`, starting with the people and terms visible in the graph. 
 
 ### 4. Application Profile and Validation
 
-Evaluate DCTAP as a spreadsheet-based way to maintain VitalGraph’s application profile and generate SHACL shapes. Compare it with writing a small set of SHACL shapes directly before adopting it.
+Evaluate DCTAP as a spreadsheet-based way to maintain VitalGraph’s application profile and generate SHACL shapes. 
 
 ### 5. Historical and Archival Records
 
 Use the [National Archives Catalog API v2](https://catalog.archives.gov/api/v2/api-docs/) to search for records related to family members’ immigration, naturalization, and military service. Use names and known spelling variants, dates, and places to identify candidate records. Capture each result’s title, National Archives Identifier (NAID) when available, and Catalog link so the underlying record can be accessed or requested.
 
 Potential sources include Alien Files (A-Files) held by the National Archives and Records Administration (NARA). The USCIS Genealogy Program is a separate research avenue for naturalization Certificate Files (C-Files).
-
-Review the underlying documents and check that they refer to the right person before adding facts to the graph. Link each new assertion to its archival source and, where available, the page or field that supports it.
 
 ### Family Records in Syria and Lebanon
 

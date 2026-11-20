@@ -10,8 +10,6 @@
 /scripts/extract_person.py
 /scripts/extract_ncit_terms.py
 
-/Vault-LD_VG/
-
 /Talk-2-VG/chat_to_html.py
 /Talk-2-VG/chit-chat_thread.json
 /Talk-2-VG/chat_template.html
