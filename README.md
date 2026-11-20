@@ -72,7 +72,7 @@ The [CSV data dictionary](data-compiled/CSV-DATA-DICTIONARY.md) explains how to 
 
 - [Application Profile — Classes and Relationships](diagrams/VitalGraph-ApplicationProfile-Classes%26Relationships.pdf) shows the classes, relationships, and recorded-value fields used in VitalGraph.
 - [UML Diagram](diagrams/VitalGraph-Application-Profile.png) provides the application profile as a UML diagram.
-- [Model and Example Records](diagrams/VitalGraph-Model%26Example-Records.png) connects ontology definitions to example people and records.
+- [Model and Example Records](diagrams/VitalGraph-Model&Example-person-001.png) connects ontology definitions to example people and records.
 - [Five-Certificate Pilot](diagrams/VitalGraph-Five-Certificate-Pilot.png) shows the populated graph with family relationships and recorded values.
 
 ## Technologies and Standards
