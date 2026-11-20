@@ -62,9 +62,9 @@ Dates, places, occupations, and demographic groups are represented as resources,
 
 This structure preserves differences in spellings, ages, places, and demographic values across records while allowing each certificate-specific statement to be traced to its supporting record.
 
-The [model reference](ontology/model-reference.txt) summarizes the classes, properties, and controlled terms used in VitalGraph.
+The [model reference](ontology/model-reference.ttl) summarizes the classes, properties, and controlled terms used in VitalGraph.
 
-The [single-person example](data-compiled/data_instances/single-person.txt) is a structural template containing placeholders. It illustrates how one persistent person identifier connects appearances across birth, marriage, and death records, with source-specific details in each certificate’s named graph.
+The [single-person example](data-compiled/data_instances/single-person.ttl) is a structural template containing placeholders. It illustrates how one persistent person identifier connects appearances across birth, marriage, and death records, with source-specific details in each certificate’s named graph.
 
 The [CSV data dictionary](data-compiled/CSV-DATA-DICTIONARY.md) explains how to enter certificate data, reuse person identifiers, and map CSV fields to RDF.
 
