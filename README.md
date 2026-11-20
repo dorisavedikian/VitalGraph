@@ -87,6 +87,7 @@ The [CSV data dictionary](data-compiled/CSV-DATA-DICTIONARY.md) explains how to 
 | [Python](https://docs.python.org/3/) / [RDFLib](https://rdflib.readthedocs.io/) | Build the TriG dataset from certificate CSVs |
 | [GraphDB Workbench](https://graphdb.ontotext.com/documentation/11.5/working-with-workbench.html) | Import TriG, visualize the graph, and run SPARQL queries |
 | [Talk to Your Graph](https://graphdb.ontotext.com/documentation/11.5/talk-to-graph.html) | Test natural-language questions through the Family Knowledge agent |
+| [OpenAI API](https://platform.openai.com/docs/overview) | Provide the language model used by the Family Knowledge agent through GraphDB |
 | [PlantUML](https://plantuml.com/) | Maintain an editable class and relationship diagram |
 
 SKOS is being considered for future controlled terminology. SHACL validation is planned for a later development phase.
