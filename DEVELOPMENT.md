@@ -40,7 +40,7 @@ Investigate records concerning my father and paternal grandparents, including my
 
 - [Syrian civil-document guide](https://travel.state.gov/content/travel/en/us-visas/Visa-Reciprocity-and-Civil-Documents-by-Country/Syria.html)
 - [Lebanese Embassy](https://lebanonembassyus.org)
-- [Armenian Prelacy of Lebanon certificate services](https://armprelacylb.org/azk-arachnortaran/services/hasdadakirner/)
+- [Armenian Prelacy of Lebanon certificate services](https://armprelacylb.org)
 
 ### 6. Vital-Records Interoperability
 
