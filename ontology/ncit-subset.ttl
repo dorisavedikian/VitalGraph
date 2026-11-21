@@ -2,6 +2,16 @@
 @prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+<https://example.org/vitalgraph/ncit-subset>
+    dcterms:title "VitalGraph NCIt subset"@en ;
+    dcterms:license
+        <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:bibliographicCitation
+        "National Cancer Institute. NCI Thesaurus (NCIt), release 26.10d."@en ;
+    dcterms:references
+        <https://evs.nci.nih.gov/ftp1/NCI_Thesaurus/ThesaurusTermsofUse.htm> ;
+    dcterms:description
+        "Extracted for VitalGraph from the NCI EVS API. Contains labels and NCI definitions for concepts C25155, C28554, and C48033."@en .
 
 ncit:C25155 rdfs:label "Birth" ;
     ncit:P97 "The event of being born." .

@@ -5,6 +5,18 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 
+<https://example.org/vitalgraph/foaf-subset>
+    a owl:Ontology ;
+    dcterms:title "VitalGraph FOAF subset"@en ;
+    dcterms:source <http://xmlns.com/foaf/0.1/> ;
+    dcterms:references <https://xmlns.com/foaf/spec/> ;
+    dcterms:creator "Dan Brickley", "Libby Miller" ;
+    dcterms:rights
+        "Copyright © 2000–2014 Dan Brickley and Libby Miller."@en ;
+    dcterms:license <https://creativecommons.org/licenses/by/1.0/> ;
+    dcterms:description
+        "Extracted for VitalGraph. Includes foaf:age and the definition of its domain."@en .
+
 foaf:Agent a rdfs:Class,
         owl:Class ;
     rdfs:label "Agent" ;

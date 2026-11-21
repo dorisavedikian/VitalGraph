@@ -49,12 +49,13 @@ VitalGraph reuses [subsets](ontology) of established ontologies and controlled v
 - **NCI Thesaurus (NCIt)** provides controlled identifiers for categorizing birth, marriage, and death events. [NCIt browser](https://evsexplore.semantics.cancer.gov/evsexplore/welcome?terminology=ncit)
 - **Person Ontology** provides properties for representing names and gender. [Person Ontology reference](https://w3id.org/MON/person.owl)
 - **FOAF** provides the `foaf:age` property for representing reported age. [FOAF vocabulary specification](https://xmlns.com/foaf/spec/)
+- **RDF Schema (RDFS)** provides labels, class hierarchies, and links to related resources through properties such as `rdfs:label`, `rdfs:subClassOf`, and `rdfs:seeAlso`. [RDFS specification](https://www.w3.org/TR/rdf-schema/)
 
 **Armenian labels.** Armenian display labels are planned using `rdfs:label` with the `@hy` language tag. Original certificate text is preserved in the source graphs.
 
-## Knowledge Graph Model
+See [Attributions and third-party licenses](ontology/ATTRIBUTIONS.md) for source credits, license information, and details of the extracted subsets.
 
-This reads clearly and matches your script. I’d change “relationship evidence” to “relationships recorded in that certificate” because the graph identifies the supporting certificate, while individual fields still need their own citations.
+## Knowledge Graph Model
 
 Each person has a persistent identifier that connects their appearances across certificates. The person registry holds a preferred name, while each certificate preserves the names and details recorded there.
 
@@ -79,7 +80,7 @@ The dataset is generated from the CSV files by [`scripts/build_graph.py`](script
 - [Application Profile — Classes and Relationships](diagrams/VitalGraph-ApplicationProfile-Classes%26Relationships.pdf) shows the classes, relationships, and recorded-value fields used in VitalGraph.
 - [UML Diagram](diagrams/VitalGraph-Application-Profile.png) provides the application profile as a UML diagram.
 - [Model and Example Data Instance](diagrams/VitalGraph-Model&Example-person-001.png) illustrates the model using a single person, `person-001`, and hypothetical birth, marriage, and death certificates.
-- [Five-Certificate Pilot](diagrams/VitalGraph-Five-Certificate-Pilot.png) shows the populated graph with family relationships and recorded values based on 5 certificate records.
+- [Five-Certificate Pilot](diagrams/VitalGraph-Five-Certificate-Pilot.png) shows the populated graph with family relationships and recorded values drawn from five certificates.
 
 ## Technologies and Standards
 
@@ -96,7 +97,7 @@ The dataset is generated from the CSV files by [`scripts/build_graph.py`](script
 | [OpenAI API](https://platform.openai.com/docs/overview) | Provide the language model used by the Family Knowledge agent through GraphDB |
 | [PlantUML](https://plantuml.com/) | Maintain an editable class and relationship diagram |
 
-SKOS is being considered for future controlled terminology if necessary however, I think this project will be able to reuse a lot of terms from NCIt and other thesauri. SHACL validation is planned for a later development phase. 
+SKOS may be used for controlled terminology as needed, though I expect to reuse existing terms from NCIt and other thesauri. SHACL validation is planned for a later phase of development.
 
 ## Development Status
 
@@ -109,3 +110,8 @@ Next steps include adding the eight remaining certificates, capturing residence,
 Later work includes civil, medical and church records from Syria and Lebanon, plus searches for immigration, naturalization, and military service records through the U.S. National Archives Catalog API. Plans also include Armenian labels, validation, provenance enhancements on the existing and future records, and exploring mappings to HL7 FHIR vital-records reporting standards.
 
 See the [Development Roadmap](DEVELOPMENT.md) for details.
+
+## Feedback and contributions
+
+This is a personal project. Questions, corrections, and suggestions are welcome through GitHub issues, particularly on the RDF model, terminology reuse, future Armenian labels, and provenance.
+

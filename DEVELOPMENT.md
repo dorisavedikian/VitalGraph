@@ -14,7 +14,7 @@ Expand the model and CSV tables to capture additional details from the certifica
 
 ### 2. Automated Data Intake
 
-Build an import step that maps scanned PDFs and tabular sources into the existing VitalGraph CSV tables so they can feed the current CSV-to-RDF generator.
+Build an import step that maps scanned PDFs and tabular sources into the existing VitalGraph CSV tables. Review extracted values against the source documents before generating RDF, and flag uncertain or unreadable entries.
 
 ### 3. Armenian Display Labels
 
@@ -23,9 +23,13 @@ Build an import step that maps scanned PDFs and tabular sources into the existin
 
 ### 4. Application Profile and Validation
 
-Evaluate DCTAP as a spreadsheet-based way to maintain VitalGraph’s application profile and generate SHACL shapes. 
+Evaluate DCTAP as a tabular way to maintain VitalGraph’s application profile. Define SHACL shapes to check required links, resource types, literal datatypes, and allowed values. Test whether DCTAP can support generating and maintaining those shapes.
 
-### 5. Historical and Archival Records
+### 5. Provenance
+
+Extend the existing certificate-level named graphs with details about transcription, review, and supporting fields. Record who entered or reviewed the data and when. Preserve exact field labels and recorded values where needed to explain a relationship or conflicting information.
+
+### 6. Historical and Archival Records
 
 Use the [National Archives Catalog API v2](https://catalog.archives.gov/api/v2/api-docs/) to search for records related to family members’ immigration, naturalization, and military service. Use names and known spelling variants, dates, and places to identify candidate records. Capture each result’s National Archives Identifier (NAID) when available, and Catalog link so the underlying record can be accessed or requested.
 
@@ -43,7 +47,7 @@ Investigate records concerning my father and paternal grandparents, including my
 - [Lebanese Embassy](https://lebanonembassyus.org)
 - [Armenian Prelacy of Lebanon certificate services](https://armprelacylb.org)
 
-### 6. Vital-Records Interoperability
+### 7. Vital-Records Interoperability
 
 Investigate how vital-record information is collected, registered, and exchanged across U.S. government and healthcare systems, including processes involving state registrars, the Social Security Administration, and CDC’s National Center for Health Statistics.
 

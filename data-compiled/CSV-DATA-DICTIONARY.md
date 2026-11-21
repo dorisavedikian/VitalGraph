@@ -55,9 +55,13 @@ One row per certificate.
 | `title` | No | `rico:title` on the Record. |
 | `identifier` | No | `rico:identifier` on the Record. Enter the historical certificate or file number as text. |
 
-To reproduce the event IRIs in the certificate template, enter `birth-001`, `marriage-001`, and `death-001` in the corresponding `event_id` cells. The generator uses those values for event declarations, participant links, and event-type links.
+To reproduce the event IRIs in the certificate template, enter `birth-001`, `marriage-001`, and `death-001` in the corresponding `event_id` cells. 
+The generator uses those values for event declarations, participant links, and event-type links.
 
-Event and activity IDs may repeat if you explicitly identify the same event or registration in multiple rows. A reused event ID must keep the same record type. All other resource declarations must use distinct IRIs, including across resource types. The template's NCIt mappings are preserved as configured.
+Event and activity IDs may repeat if you explicitly identify the same event or registration in multiple rows. 
+A reused event ID must keep the same record type. 
+All other resource declarations must use distinct IRIs, including across resource types. 
+The template's NCIt mappings are preserved as configured.
 
 | Record type | Event type and label |
 | --- | --- |
@@ -82,7 +86,8 @@ One row per certificate and person pair. Subject and participant roles reflect y
 
 ## record_relationships.csv
 
-One row per relationship asserted by a certificate. The generator writes both directions shown in the template. Enter each relationship once. Its inverse or reversed symmetric spelling would be a duplicate.
+One row per relationship asserted by a certificate. The generator writes both directions shown in the template. 
+Enter each relationship once. Its inverse or reversed symmetric spelling would be a duplicate.
 
 | Field | Required | RDF mapping or use |
 | --- | --- | --- |
@@ -105,7 +110,9 @@ One row per attribute resource as recorded on a particular certificate.
 | `normalized_value` | No | Date attributes only. Adds `rico:normalizedDateValue` as supplied. The generator does not calculate or validate date normalization. |
 | `see_also_url` | No | Enter a full HTTP(S) URL. Adds `rdfs:seeAlso` from the attribute resource to the URL as an IRI in the certificate’s named graph. Leave blank to omit the link. The formal range is `rdfs:Resource`. |
 
-The generator accepts `see_also_url` for every attribute type. For a `birth_place` or `death_place` row, it links the `rico:Place` resource to a reference. Keep the place name as written on the certificate in `expressed_value`.
+The generator accepts `see_also_url` for every attribute type. 
+For a `birth_place` or `death_place` row, it links the `rico:Place` resource to a reference. 
+Keep the place name as written on the certificate in `expressed_value`.
 
 | Attribute type | Class | Person → resource | Resource → Person |
 | --- | --- | --- | --- |
@@ -116,4 +123,5 @@ The generator accepts `see_also_url` for every attribute type. For a `birth_plac
 | `demographic_group` | `rico:DemographicGroup` | `rico:hasOrHadDemographicGroup` | `rico:isOrWasDemographicGroupOf` |
 | `occupation` | `rico:OccupationType` | `rico:hasOrHadOccupationOfType` | `rico:isOrWasOccupationTypeOf` |
 
-Relationship and attribute rows can refer directly to a registered person. Add a `record_persons.csv` row when the certificate also supplies personal fields or an explicit appearance role.
+Relationship and attribute rows can refer directly to a registered person. 
+Add a `record_persons.csv` row when the certificate also supplies personal fields or an explicit appearance role.

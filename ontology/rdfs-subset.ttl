@@ -1,5 +1,16 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<https://example.org/vitalgraph/rdfs-subset>
+    a owl:Ontology ;
+    dcterms:title "VitalGraph RDFS subset"@en ;
+    dcterms:source <http://www.w3.org/2000/01/rdf-schema#> ;
+    dcterms:publisher "World Wide Web Consortium (W3C)" ;
+    dcterms:references <https://www.w3.org/TR/rdf-schema/> ;
+    dcterms:description
+        "Extracted for VitalGraph. Includes definitions of rdfs:seeAlso, rdfs:Resource, and rdfs:Literal."@en .
 
 rdfs:Literal a rdfs:Class ;
     rdfs:label "Literal" ;

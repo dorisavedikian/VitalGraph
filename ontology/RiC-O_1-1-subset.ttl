@@ -3,6 +3,21 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<https://example.org/vitalgraph/rico-subset>
+    a owl:Ontology ;
+    dcterms:title "VitalGraph RiC-O subset"@en ;
+    dcterms:source
+        <https://www.ica.org/standards/RiC/ontology/1.1> ;
+    dcterms:license
+        <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:rights
+        "Source ontology copyright 2019-, International Council on Archives (ICA)."@en ;
+    dcterms:bibliographicCitation
+        "International Council on Archives Expert Group on Archival Description (ICA EGAD). Records in Contexts Ontology (RiC-O), version 1.1, 2025."@en ;
+    dcterms:description
+        "Extracted for VitalGraph. Includes selected classes and properties and their referenced blank-node structures. Omits skos:changeNote and rico:RiCCMCorrespondingComponent annotations."@en .
 
 :Record a owl:Class ;
     rdfs:label "Record"@de,
