@@ -1,6 +1,10 @@
 # VitalGraph Glossary of Terms
 
-The RiC-O definitions below summarize the English comments in RiC-O 1.1. The `rico:` prefix denotes the same namespace as the default `:` prefix in the diagram. The `person:` prefix denotes `https://w3id.org/MON/person.owl#`, and `foaf:` denotes `http://xmlns.com/foaf/0.1/`.
+The RiC-O definitions below summarize the English comments in RiC-O 1.1. 
+
+The `rico:` prefix denotes the same namespace as the default `:` prefix in the diagram. 
+
+The `person:` prefix denotes `https://w3id.org/MON/person.owl#`, and `foaf:` denotes `http://xmlns.com/foaf/0.1/`.
 
 ## Classes
 
@@ -56,7 +60,9 @@ The RiC-O definitions below summarize the English comments in RiC-O 1.1. The `ri
 
 ## Datatype Properties
 
-The six RiC-O properties have `rdfs:Literal` as their declared range. The three Person Ontology properties declare `person:Person` as their domain and `xsd:string` as their range. VitalGraph uses those three properties and `foaf:age` on its `rico:Person` nodes.
+The six RiC-O properties have `rdfs:Literal` as their declared range. 
+The three Person Ontology properties declare `person:Person` as their domain and `xsd:string` as their range. 
+VitalGraph uses those three properties and `foaf:age` on its `rico:Person` nodes.
 
 | Term | Definition / VitalGraph Use |
 | --- | --- |

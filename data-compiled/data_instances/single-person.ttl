@@ -1,7 +1,5 @@
 ##################################################################################
 ##################################################################################
-##################################################################################
-##################################################################################
 # VitalGraph example: One person across three certificates
 #
 # This example uses placeholders to show how VitalGraph structures data
@@ -11,8 +9,7 @@
 # Default graph: Statements outside the { ... } blocks link the person
 # to their birth, marriage, and death events and the corresponding records.
 #
-# Named graphs: Each block holds the details and relationships reported
-# by one certificate.
+# Named graphs: Each block holds the details and relationships reported by one certificate.
 #   vg:birth-record-001    Birth certificate
 #   vg:marriage-record-001 Marriage certificate
 #   vg:death-record-001    Death certificate
@@ -20,8 +17,6 @@
 # The same identifier serves two roles. In the default graph,
 # vg:birth-record-001 identifies the certificate. Before a { ... } block,
 # it names the graph that holds the evidence from that certificate.
-##################################################################################
-##################################################################################
 ##################################################################################
 ##################################################################################
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .

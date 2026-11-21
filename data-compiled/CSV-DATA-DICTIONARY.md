@@ -19,9 +19,18 @@ The birth, marriage, and death mappings follow a certificate template, which use
 | `rdf:` | `http://www.w3.org/1999/02/22-rdf-syntax-ns#` |
 | `xsd:` | `http://www.w3.org/2001/XMLSchema#` |
 
-ID fields accept a local ID such as `person-001`, the equivalent `vg:person-001`, or an existing full HTTP(S) IRI.  Retain established IDs across builds. Use the same person ID across certificates only when you have chosen that identity. Use distinct IDs for unresolved identities even when the names match. The generator creates no person IDs, name matches, or identity equivalence links.
+ID fields accept a local ID such as `person-001`, the equivalent `vg:person-001`, or an existing full HTTP(S) IRI.  
+Retain established IDs across builds. Use the same person ID across certificates only when you have chosen that identity. 
 
-The default graph holds the person registry and certificate metadata, including subject and participant links. Each named graph uses its certificate record IRI and holds that certificate's transcribed values, relationship evidence, and attribute nodes. Marriage event participation is also repeated in the marriage certificate graph to match the template. For a certificate with no named-graph evidence yet, the generator repeats its `rdf:type rico:Record` triple in the named graph so the graph survives TriG serialization. A `mentioned` appearance places that person's type in the named graph, as the template does for parents.
+Use distinct IDs for unresolved identities even when the names match. The generator creates no person IDs, name matches, or identity equivalence links.
+
+The default graph holds the person registry and certificate metadata, including subject and participant links. 
+
+Each named graph uses its certificate record IRI and holds that certificate's transcribed values, relationship evidence, and attribute nodes. 
+
+Marriage event participation is also repeated in the marriage certificate graph to match the template. 
+
+For a certificate with no named-graph evidence yet, the generator repeats its `rdf:type rico:Record` triple in the named graph so the graph survives TriG serialization. A `mentioned` appearance places that person's type in the named graph, as the template does for parents.
 
 ## persons.csv
 

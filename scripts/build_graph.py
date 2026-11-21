@@ -59,6 +59,24 @@ ABSOLUTE_ID = re.compile(r"https?://(?=[^/?#])[^\s<>\x00-\x1f{}|^\x60\\\x22]*")
 
 
 def read_rows(directory, table):
+    """Read one CSV table and yield its source location and row dictionary.
+
+    Accept UTF-8 input with an optional byte-order mark. Require exactly the
+    schema's columns in any order and preserve cell text as recorded. Skip
+    empty rows and reject malformed headers, row lengths, CSV, or encoding.
+
+    Args:
+        directory: Path containing the five input CSV files.
+        table: Table name from SCHEMAS, without the .csv extension.
+
+    Yields:
+        A (location, row) pair containing the file and line reference and a
+        dictionary mapping column names to their recorded strings.
+
+    Raises:
+        ValueError: The CSV structure or text encoding is invalid.
+        OSError: The input file cannot be opened or read.
+    """
     path = directory / f"{table}.csv"
     with path.open(encoding="utf-8-sig", newline="") as source:
         reader = csv.reader(source, strict=True)
@@ -80,6 +98,22 @@ def read_rows(directory, table):
 
 
 def resource(value, field, location):
+    """Resolve a validated identifier to an RDF resource IRI.
+
+    Expand bare local IDs and vg: IDs under the VitalGraph namespace. Accept
+    absolute HTTP(S) IRIs matching ABSOLUTE_ID without expansion.
+
+    Args:
+        value: Identifier string from a CSV cell.
+        field: Column name to include in validation errors.
+        location: Source file and line reference for error reporting.
+
+    Returns:
+        An rdflib.URIRef identifying the resource.
+
+    Raises:
+        ValueError: The identifier does not match an accepted form.
+    """
     if value.startswith("vg:"):
         value = value[3:]
         if LOCAL_ID.fullmatch(value):
@@ -92,23 +126,70 @@ def resource(value, field, location):
 
 
 def option(value, choices, field, location):
+    """Return the mapping value for an allowed CSV option.
+
+    Args:
+        value: Exact option string supplied in the CSV.
+        choices: Mapping of accepted strings to their configured values.
+        field: Column name to include in validation errors.
+        location: Source file and line reference for error reporting.
+
+    Raises:
+        ValueError: The option is absent from choices.
+    """
     if value not in choices:
         raise ValueError(f"{location}: {field} must be one of {', '.join(choices)}")
     return choices[value]
 
 
 def add_literal(graph, subject, predicate, value, datatype=None):
+    """Add a nonempty recorded value as an RDF literal to graph.
+
+    Use the optional RDF datatype and disable RDFLib literal normalization
+    to preserve the supplied lexical form. An empty string adds no triple.
+    Mutate graph in place and return None.
+    """
     if value != "":
         graph.add((subject, predicate, Literal(value, datatype=datatype, normalize=False)))
 
 
 def link(graph, subject, predicate, obj, inverse):
+    """Add a resource link and, when supplied, its explicit inverse.
+
+    Add (subject, predicate, obj) to graph. If inverse is not None, also add
+    (obj, inverse, subject). Mutate graph in place and return None.
+    """
     graph.add((subject, predicate, obj))
     if inverse is not None:
         graph.add((obj, inverse, subject))
 
 
 def build_graph(directory):
+    """Build a dataset from the five validated CSV tables in directory.
+
+    Read persons, records, record_persons, record_relationships, and
+    record_attributes in that order. Put person identities, preferred names,
+    record metadata, registration activities, event types, subject links,
+    and event participation in the default graph.
+
+    Store recorded person fields, gender, family relationships, and attribute
+    nodes in named graphs identified by their source record IRIs. Also store
+    marriage participation in the corresponding record graph. Add supported
+    inverse links explicitly and bind the namespaces used by the dataset.
+
+    Validate identifiers, references, supported option values, duplicate
+    declarations, and attribute values before returning the dataset.
+
+    Args:
+        directory: Path containing the five CSV files defined by SCHEMAS.
+
+    Returns:
+        An rdflib.Dataset containing the default graph and record graphs.
+
+    Raises:
+        ValueError: CSV data fails one of the implemented validation checks.
+        OSError: An input file cannot be opened or read.
+    """
     dataset = Dataset()
     default = dataset.default_graph
     for prefix, namespace in (("vg", VG), ("rico", RICO), ("person", PERSON),
@@ -125,6 +206,12 @@ def build_graph(directory):
     relationships = {}
 
     def declare(node, kind, location, shared=False):
+        """Register a node's kind and source location, checking for collisions.
+
+        Allow reuse only when shared is True and the registered kind matches.
+        Mutate the enclosing identifier registry. Raise ValueError with both
+        source locations when a declaration conflicts with an existing one.
+        """
         previous = ids.get(node)
         if previous is None:
             ids[node] = (kind, location)
@@ -132,6 +219,11 @@ def build_graph(directory):
             raise ValueError(f"{location}: {node} already declared as {previous[0]} at {previous[1]}")
 
     def reference(value, field, registry, location):
+        """Resolve an identifier and require its presence in a registry.
+
+        Return the resolved URIRef when it is known. Raise ValueError with
+        the field and source location for an invalid or unknown identifier.
+        """
         node = resource(value, field, location)
         if node not in registry:
             raise ValueError(f"{location}: unknown {field} {value!r}")
@@ -242,6 +334,20 @@ def build_graph(directory):
 
 def write_trig(dataset, output):
     # A failed build leaves any existing output intact.
+    """Serialize a dataset as UTF-8 TriG and replace the output atomically.
+
+    Write to a temporary file in the output directory, then replace output
+    after serialization succeeds. Clean up the temporary file on failure.
+    The output directory must already exist.
+
+    Args:
+        dataset: RDFLib dataset to serialize, including its named graphs.
+        output: Path of the destination TriG file.
+
+    Raises:
+        OSError: Creating, writing, replacing, or removing a file fails.
+        Exception: RDFLib serialization fails.
+    """
     with NamedTemporaryFile(dir=output.parent, prefix=".vitalgraph-", delete=False) as temp:
         temporary = Path(temp.name)
     try:
@@ -252,6 +358,15 @@ def write_trig(dataset, output):
 
 
 def main():
+    """Parse command-line paths, build the dataset, and write its TriG file.
+
+    Default to data-compiled/data_csv and
+    data-compiled/data_instances/vg-instance-data.trig relative to the
+    script's grandparent directory. Reject output paths that resolve to,
+    or identify the same file as, any input CSV. Report handled input and
+    filesystem errors with exit status 1; print the output path and total
+    number of quads on success.
+    """
     root = Path(__file__).resolve().parent.parent / "data-compiled"
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data-dir", type=Path, default=root / "data_csv")

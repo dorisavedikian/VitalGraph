@@ -1,12 +1,12 @@
 ## Overview
 
-VitalGraph began with a personal goal—documenting my Armenian ancestry and gathering records for Armenian citizenship. According to guidance I received from the Armenian Consulate in Los Angeles, I need to establish an ancestor’s Armenian ethnicity, document the chain of kinship connecting that ancestor to me, and have every application document translated into Armenian.
+VitalGraph began with my search for family records for an Armenian citizenship application. The Armenian Consulate in Los Angeles advised me to document an ancestor’s Armenian ethnicity, establish the chain of kinship connecting that ancestor to me, and have the application documents translated into Armenian.
 
 Simple enough, right? Not quite.
 
-I spent hours at the county records office in Fresno, searching for birth, marriage, and death certificates under different spellings of family members’ names. A spelling variation could mean finding a record or overlooking it.
+I spent hours at the county records office in Fresno, searching for birth, marriage, and death certificates under different spellings of family members’ names. Sometimes finding a record depended on knowing which spelling to try.
 
-Then I had to connect the certificates across generations. Names and other details sometimes differed for the same person, making family relationships harder to establish. I eventually gathered enough evidence through my maternal grandfather to document his Armenian ethnicity and trace the relationships down to me.
+Once I had the certificates, I had to connect them. Names and other details differed across records, even when they referred to the same person. I eventually gathered enough evidence through my maternal grandfather to document his Armenian ethnicity and trace the family relationships down to me.
 
 I encountered a similar problem when accompanying a family member to the Social Security Administration. What SSA had on file differed from their birth certificate.
 
@@ -18,9 +18,11 @@ In an ideal world, vital records would already use interoperable standards, pers
 
 But we don't quite live in that world yet. So here I am, building my own multilingual knowledge graph.
 
-When I told my sister about this, she said, “Can’t you just ask Google?” I said, “Google doesn’t have the records I’ve gathered or know how I’ve connected them. It wouldn’t know that Humige, Harry, and Henry refer to the same person, or that a misspelling of our paternal grandparents’ surname originated in Lebanon.” That conversation helped shape the Family Knowledge chatbot. Its goal is to answer from the connected records, identify the supporting documents, and make clear when evidence is incomplete or records disagree.
+When I told my sister about this, she said, “Can’t you just ask Google?” I explained that Google wouldn’t have the records I’d gathered or the connections I’d worked out. It wouldn’t know that Humige, Harry, and Henry referred to the same person, or how a misspelling of our paternal grandparents’ surname originated in Lebanon. 
 
-What began with a citizenship application has become a way for me to explore what linked data can do for my family history.
+That conversation helped shape the Family Knowledge chatbot. I want to ask questions about my family and get answers grounded in the records I’ve collected, with references to the supporting certificates and an indication when information is missing or conflicting.
+
+I started this project to gather documents for citizenship. Along the way, it became a way to make the research readable, connected, and easier to share with my family.
 
 ## Project Scope
 
@@ -52,15 +54,17 @@ VitalGraph reuses [subsets](ontology) of established ontologies and controlled v
 
 ## Knowledge Graph Model
 
-Each person has a persistent identifier that connects their appearances across certificates. A person can have a registry name while individual certificates preserve different recorded names and other details.
+This reads clearly and matches your script. I’d change “relationship evidence” to “relationships recorded in that certificate” because the graph identifies the supporting certificate, while individual fields still need their own citations.
 
-The dataset is stored in TriG. The default graph contains the person registry, record metadata, life events, registration activities, and links identifying record subjects and event participants. Each certificate’s named graph contains its transcribed values and relationship evidence.
+Each person has a persistent identifier that connects their appearances across certificates. The person registry holds a preferred name, while each certificate preserves the names and details recorded there.
 
-The model distinguishes a life event from its registration activity. People participate in birth, marriage, and death events, while certificates document the corresponding registration activities.
+The dataset is stored in TriG. The default graph contains the person registry, record metadata, life events, registration activities, and links identifying record subjects and event participants. Each certificate’s named graph contains its transcribed values and the relationships recorded in that certificate.
 
-Dates, places, occupations, and demographic groups are represented as resources, with their recorded wording stored inside the relevant certificate graph. Parent and spouse relationships are also asserted within the certificate graph that supplies the evidence.
+The model distinguishes life events from registration activities. People participate in birth, marriage, and death events, while certificates document the corresponding registration activities.
 
-This structure preserves differences in spellings, ages, places, and demographic values across records while allowing each certificate-specific statement to be traced to its supporting record.
+Dates, places, occupations, and demographic groups are represented as resources, with their recorded wording stored in the relevant certificate graph. Parent and spouse relationships are asserted in the graph of the certificate that supports them.
+
+This structure preserves differences in spellings, ages, places, and demographic values across records. Each statement in a certificate’s named graph can be traced to that source.
 
 The [model reference](ontology/model-reference.ttl) summarizes the classes, properties, and controlled terms used in VitalGraph.
 
@@ -68,12 +72,14 @@ The [single-person example](data-compiled/data_instances/single-person.ttl) is a
 
 The [CSV data dictionary](data-compiled/CSV-DATA-DICTIONARY.md) explains how to enter certificate data, reuse person identifiers, and map CSV fields to RDF.
 
+The dataset is generated from the CSV files by [`scripts/build_graph.py`](scripts/build_graph.py).
+
 ## Visuals
 
 - [Application Profile — Classes and Relationships](diagrams/VitalGraph-ApplicationProfile-Classes%26Relationships.pdf) shows the classes, relationships, and recorded-value fields used in VitalGraph.
 - [UML Diagram](diagrams/VitalGraph-Application-Profile.png) provides the application profile as a UML diagram.
-- [Model and Example Records](diagrams/VitalGraph-Model&Example-person-001.png) connects ontology definitions to example people and records.
-- [Five-Certificate Pilot](diagrams/VitalGraph-Five-Certificate-Pilot.png) shows the populated graph with family relationships and recorded values.
+- [Model and Example Data Instance](diagrams/VitalGraph-Model&Example-person-001.png) illustrates the model using a single person, `person-001`, and hypothetical birth, marriage, and death certificates.
+- [Five-Certificate Pilot](diagrams/VitalGraph-Five-Certificate-Pilot.png) shows the populated graph with family relationships and recorded values based on 5 certificate records.
 
 ## Technologies and Standards
 
@@ -90,7 +96,7 @@ The [CSV data dictionary](data-compiled/CSV-DATA-DICTIONARY.md) explains how to 
 | [OpenAI API](https://platform.openai.com/docs/overview) | Provide the language model used by the Family Knowledge agent through GraphDB |
 | [PlantUML](https://plantuml.com/) | Maintain an editable class and relationship diagram |
 
-SKOS is being considered for future controlled terminology. SHACL validation is planned for a later development phase.
+SKOS is being considered for future controlled terminology if necessary however, I think this project will be able to reuse a lot of terms from NCIt and other thesauri. SHACL validation is planned for a later development phase. 
 
 ## Development Status
 
@@ -100,6 +106,6 @@ The **Family Knowledge** agent uses GraphDB’s **Talk to Your Graph** feature, 
 
 Next steps include adding the eight remaining certificates, capturing residence, medical, and burial details, and automating intake from scans and spreadsheets with manual review.
 
-Later work includes civil, medical and church records from Syria and Lebanon, plus searches for immigration, naturalization, and military service records through the National Archives Catalog API. Plans also include Armenian labels, validation, provenance enhancements, and exploring mappings to HL7 FHIR vital-records reporting standards.
+Later work includes civil, medical and church records from Syria and Lebanon, plus searches for immigration, naturalization, and military service records through the U.S. National Archives Catalog API. Plans also include Armenian labels, validation, provenance enhancements on the existing and future records, and exploring mappings to HL7 FHIR vital-records reporting standards.
 
 See the [Development Roadmap](DEVELOPMENT.md) for details.

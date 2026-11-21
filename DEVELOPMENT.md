@@ -18,7 +18,8 @@ Build an import step that maps scanned PDFs and tabular sources into the existin
 
 ### 3. Armenian Display Labels
 
-Add reviewed Armenian labels using `rdfs:label` with `@hy`, starting with the people and terms visible in the graph. 
+- Add *reviewed* Armenian labels using `rdfs:label` with `@hy` to the people, classes, object properties, datatype properties, and vocabulary concepts visible in the graph. 
+- Test the **Family Knowledge** agent in GraphDB’s **Talk to Your Graph** with English and Armenian questions, checking that it retrieves the correct people, relationships, and supporting certificate evidence.
 
 ### 4. Application Profile and Validation
 
@@ -26,7 +27,7 @@ Evaluate DCTAP as a spreadsheet-based way to maintain VitalGraph’s application
 
 ### 5. Historical and Archival Records
 
-Use the [National Archives Catalog API v2](https://catalog.archives.gov/api/v2/api-docs/) to search for records related to family members’ immigration, naturalization, and military service. Use names and known spelling variants, dates, and places to identify candidate records. Capture each result’s title, National Archives Identifier (NAID) when available, and Catalog link so the underlying record can be accessed or requested.
+Use the [National Archives Catalog API v2](https://catalog.archives.gov/api/v2/api-docs/) to search for records related to family members’ immigration, naturalization, and military service. Use names and known spelling variants, dates, and places to identify candidate records. Capture each result’s National Archives Identifier (NAID) when available, and Catalog link so the underlying record can be accessed or requested.
 
 Potential sources include Alien Files (A-Files) held by the National Archives and Records Administration (NARA). 
 

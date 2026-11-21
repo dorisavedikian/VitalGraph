@@ -26,8 +26,8 @@
 
 # Event types from NCIt
 ncit:C25155 rdf:type :EventType . # Birth
-ncit:C28554 rdf:type :EventType . # Death - reconsider
-ncit:C48033 rdf:type :EventType . # Marriage - reconsider
+ncit:C28554 rdf:type :EventType . # Death
+ncit:C48033 rdf:type :EventType . # Marriage 
 
 # Object property patterns
 :DemographicGroup  :isOrWasDemographicGroupOf  :Person
@@ -57,7 +57,7 @@ ncit:C48033 rdf:type :EventType . # Marriage - reconsider
 
 # Datatype property patterns
 :Record            :title                      rdfs:Literal
-:Record            :identifier                 rdfs:Literal # Local or state file number
+:Record            :identifier                 rdfs:Literal                         # Local or state file number
 :Place             :name                       rdfs:Literal
 :Place             rdfs:seeAlso                <URI>
 :DemographicGroup  :name                       rdfs:Literal
