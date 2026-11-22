@@ -1,6 +1,6 @@
 ## Overview
 
-VitalGraph began with my search for family records for an Armenian citizenship application. The Armenian Consulate in Los Angeles advised me to document an ancestor’s Armenian ethnicity, establish the chain of kinship connecting that ancestor to me, and have the application documents translated into Armenian.
+VitalGraph began with a personal goal—documenting my Armenian ancestry and gathering records for Armenian citizenship. According to guidance I received from the Armenian Consulate in Los Angeles, I need to establish an ancestor’s Armenian ethnicity, document the chain of kinship connecting that ancestor to me, and have every application document translated into Armenian.
 
 Simple enough, right? Not quite.
 
@@ -22,7 +22,7 @@ When I told my sister about this, she said, “Can’t you just ask Google?” I
 
 That conversation helped shape the Family Knowledge chatbot. I want to ask questions about my family and get answers grounded in the records I’ve collected, with references to the supporting certificates and an indication when information is missing or conflicting.
 
-I started this project to gather documents for citizenship. Along the way, it became a way to make the research readable, connected, and easier to share with my family.
+What began with a citizenship application has become a way for me to explore what linked data can do for my family history.
 
 ## Project Scope
 
@@ -40,6 +40,12 @@ The objective is to demonstrate how information from multiple certificates can b
 - Test natural-language questions with the Family Knowledge agent.
 
 Person identities are assigned and reviewed manually. The pipeline reuses those identifiers across certificates.
+
+## Privacy
+
+The repository includes diagrams, screenshots, and sample conversations that show selected information from the family graph. The underlying certificates, CSV transcriptions, and populated RDF dataset are excluded to protect family members’ privacy.
+
+The [single-person example](data-compiled/data_instances/single-person.ttl) contains placeholders and illustrates how one person identifier connects appearances across hypothetical birth, marriage, and death records, with details preserved in each certificate’s named graph.
 
 ## Ontology and Terminology
 
@@ -68,8 +74,6 @@ Dates, places, occupations, and demographic groups are represented as resources,
 This structure preserves differences in spellings, ages, places, and demographic values across records. Each statement in a certificate’s named graph can be traced to that source.
 
 The [model reference](ontology/model-reference.ttl) summarizes the classes, properties, and controlled terms used in VitalGraph.
-
-The [single-person example](data-compiled/data_instances/single-person.ttl) is a structural template containing placeholders. It illustrates how one persistent person identifier connects appearances across birth, marriage, and death records, with source-specific details in each certificate’s named graph.
 
 The [CSV data dictionary](data-compiled/CSV-DATA-DICTIONARY.md) explains how to enter certificate data, reuse person identifiers, and map CSV fields to RDF.
 
@@ -107,7 +111,7 @@ The **Family Knowledge** agent uses GraphDB’s **Talk to Your Graph** feature, 
 
 Next steps include adding the eight remaining certificates, capturing residence, medical, and burial details, and automating intake from scans and spreadsheets with manual review.
 
-Later work includes civil, medical and church records from Syria and Lebanon, plus searches for immigration, naturalization, and military service records through the U.S. National Archives Catalog API. Plans also include Armenian labels, validation, provenance enhancements on the existing and future records, and exploring mappings to HL7 FHIR vital-records reporting standards.
+Later work includes civil, medical and church records from Syria and Lebanon, plus searches for immigration, naturalization, and military service records through the U.S. National Archives Catalog API. Plans also include Armenian labels, validation and provenance enhancements on the existing and future records, and exploring mappings to HL7 FHIR vital-records reporting standards.
 
 See the [Development Roadmap](DEVELOPMENT.md) for details.
 

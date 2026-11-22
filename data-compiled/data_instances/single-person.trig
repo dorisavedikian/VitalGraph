@@ -27,7 +27,7 @@
 @prefix vg: <https://example.org/vitalgraph/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-# To do: Add rdfs:Label ""@hy
+# To do: Add rdfs:label ""@hy
 vg:person-001 a rico:Person ;                                                           
     rico:hasOrHadName vg:name-001 ;
     rico:isOrWasParticipantIn vg:birth-001, vg:death-001, vg:marriage-001 ;
