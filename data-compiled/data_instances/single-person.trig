@@ -28,129 +28,133 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 # To do: Add rdfs:label ""@hy
-vg:person-001 a rico:Person ;                                                           
-    rico:hasOrHadName vg:name-001 ;
-    rico:isOrWasParticipantIn vg:birth-001, vg:death-001, vg:marriage-001 ;
-    rico:isOrWasSubjectOf vg:birth-record-001, vg:death-record-001, vg:marriage-record-001 .
-vg:person-002 a rico:Person ;                                                           
-    rico:hasOrHadName vg:name-002 ;
-    rico:isOrWasParticipantIn vg:marriage-001 ;
-    rico:isOrWasSubjectOf vg:marriage-record-001 .
-vg:person-003 a rico:Person ; rico:hasOrHadName vg:name-003 .
-vg:person-004 a rico:Person ; rico:hasOrHadName vg:name-004 .
-vg:person-005 a rico:Person ; rico:hasOrHadName vg:name-005 .
-vg:person-006 a rico:Person ; rico:hasOrHadName vg:name-006 .
-vg:name-001 a rico:Name ;                                                              
-    rico:textualValue [rdfs:Literal] ;
-    rico:isOrWasNameOf vg:person-001 .
-vg:name-002 a rico:Name ;                                                               
-    rico:textualValue [rdfs:Literal] ;
-    rico:isOrWasNameOf vg:person-002 .
-vg:name-003 a rico:Name ;                                                               
-    rico:textualValue [rdfs:Literal] ;
-    rico:isOrWasNameOf vg:person-003 .
-vg:name-004 a rico:Name ;                                                               
-    rico:textualValue [rdfs:Literal] ;
-    rico:isOrWasNameOf vg:person-004 .
-vg:name-005 a rico:Name ;                                                               
-    rico:textualValue [rdfs:Literal] ;
-    rico:isOrWasNameOf vg:person-005 .
-vg:name-006 a rico:Name ;                                                               
-    rico:textualValue [rdfs:Literal] ;
-    rico:isOrWasNameOf vg:person-006 .
-ncit:C25155 a rico:EventType ;
-    rdfs:label "Birth"@en ;
-    rico:isEventTypeOf vg:birth-001 .
-ncit:C48033 a rico:EventType ;
-    rdfs:label "Marriage"@en ;
-    rico:isEventTypeOf vg:marriage-001 .
-ncit:C28554 a rico:EventType ;
-    rdfs:label "Dead"@en ;
-    rico:isEventTypeOf vg:death-001 .
-vg:birth-001 a rico:Event ;
-    rico:hasEventType ncit:C25155 ;
-    rico:hasOrHadParticipant vg:person-001 .
-vg:marriage-001 a rico:Event ;
-    rico:hasEventType ncit:C48033 ;
-    rico:hasOrHadParticipant vg:person-001, vg:person-002 .
-vg:death-001 a rico:Event ;
-    rico:hasEventType ncit:C28554 ;
-    rico:hasOrHadParticipant vg:person-001 .
-vg:birth-registration a rico:Activity ; rico:documentedBy vg:birth-record-001 .
-vg:marriage-registration a rico:Activity ; rico:documentedBy vg:marriage-record-001 .
-vg:death-registration a rico:Activity ; rico:documentedBy vg:death-record-001 .
-vg:birth-record-001 a rico:Record ;
-    rico:title [rdfs:Literal] ;
-    rico:identifier [rdfs:Literal] ;
-    rico:hasOrHadSubject vg:person-001 ;
-    rico:documents vg:birth-registration .
-vg:marriage-record-001 a rico:Record ;
-    rico:title [rdfs:Literal] ;
-    rico:identifier [rdfs:Literal] ;
-    rico:hasOrHadSubject vg:person-001, vg:person-002 ;
-    rico:documents vg:marriage-registration .
-vg:death-record-001 a rico:Record ;
-    rico:title [rdfs:Literal] ;
-    rico:identifier [rdfs:Literal] ;
-    rico:hasOrHadSubject vg:person-001 ;
-    rico:documents vg:death-registration .
+{
+    vg:person-001 a rico:Person ;                                                           
+        rico:hasOrHadName vg:name-001 ;
+        rico:isOrWasParticipantIn vg:birth-001, vg:death-001, vg:marriage-001 ;
+        rico:isOrWasSubjectOf vg:birth-record-001, vg:death-record-001, vg:marriage-record-001 .
+    vg:person-002 a rico:Person ;                                                           
+        rico:hasOrHadName vg:name-002 ;
+        rico:isOrWasParticipantIn vg:marriage-001 ;
+        rico:isOrWasSubjectOf vg:marriage-record-001 .
+    vg:person-003 a rico:Person ; rico:hasOrHadName vg:name-003 .
+    vg:person-004 a rico:Person ; rico:hasOrHadName vg:name-004 .
+    vg:person-005 a rico:Person ; rico:hasOrHadName vg:name-005 .
+    vg:person-006 a rico:Person ; rico:hasOrHadName vg:name-006 .
+    vg:name-001 a rico:Name ;                                                              
+        rico:textualValue rdfs:Literal ;
+        rico:isOrWasNameOf vg:person-001 .
+    vg:name-002 a rico:Name ;                                                               
+        rico:textualValue rdfs:Literal ;
+        rico:isOrWasNameOf vg:person-002 .
+    vg:name-003 a rico:Name ;                                                               
+        rico:textualValue rdfs:Literal ;
+        rico:isOrWasNameOf vg:person-003 .
+    vg:name-004 a rico:Name ;                                                               
+        rico:textualValue rdfs:Literal ;
+        rico:isOrWasNameOf vg:person-004 .
+    vg:name-005 a rico:Name ;                                                               
+        rico:textualValue rdfs:Literal ;
+        rico:isOrWasNameOf vg:person-005 .
+    vg:name-006 a rico:Name ;                                                               
+        rico:textualValue rdfs:Literal ;
+        rico:isOrWasNameOf vg:person-006 .
+    ncit:C25155 a rico:EventType ;
+        rdfs:label "Birth"@en ;
+        rico:isEventTypeOf vg:birth-001 .
+    ncit:C48033 a rico:EventType ;
+        rdfs:label "Marriage"@en ;
+        rico:isEventTypeOf vg:marriage-001 .
+    ncit:C28554 a rico:EventType ;
+        rdfs:label "Dead"@en ;
+        rico:isEventTypeOf vg:death-001 .
+    vg:birth-001 a rico:Event ;
+        rico:hasEventType ncit:C25155 ;
+        rico:hasOrHadParticipant vg:person-001 .
+    vg:marriage-001 a rico:Event ;
+        rico:hasEventType ncit:C48033 ;
+        rico:hasOrHadParticipant vg:person-001, vg:person-002 .
+    vg:death-001 a rico:Event ;
+        rico:hasEventType ncit:C28554 ;
+        rico:hasOrHadParticipant vg:person-001 .
+    vg:birth-registration a rico:Activity ; rico:documentedBy vg:birth-record-001 .
+    vg:marriage-registration a rico:Activity ; rico:documentedBy vg:marriage-record-001 .
+    vg:death-registration a rico:Activity ; rico:documentedBy vg:death-record-001 .
+
+    vg:birth-record-001 a rico:Record ;
+        rico:title rdfs:Literal ;
+        rico:identifier rdfs:Literal ;
+        rico:hasOrHadSubject vg:person-001 ;
+        rico:documents vg:birth-registration .
+    vg:marriage-record-001 a rico:Record ;
+        rico:title rdfs:Literal ;
+        rico:identifier rdfs:Literal ;
+        rico:hasOrHadSubject vg:person-001, vg:person-002 ;
+        rico:documents vg:marriage-registration .
+    vg:death-record-001 a rico:Record ;
+        rico:title rdfs:Literal ;
+        rico:identifier rdfs:Literal ;
+        rico:hasOrHadSubject vg:person-001 ;
+        rico:documents vg:death-registration .
+}
+
 vg:birth-record-001 {
     vg:person-001
-        person:hasGender [person:Female OR person:Male] ;                     
-        person:firstName [xsd:string] ;
-        person:lastName [xsd:string] ;
+        person:hasGender person:Female ;                     
+        person:firstName xsd:string ;
+        person:lastName xsd:string ;
         rico:isChildOf vg:person-003, vg:person-004 ;
         rico:hasBirthDate vg:birth-record-birth-date-001 ;
         rico:hasBirthPlace vg:birth-record-birth-place-001 .
     vg:birth-record-birth-date-001 a rico:Date ;
-        rico:expressedDate [rdfs:Literal] ;
-        rico:normalizedDateValue [rdfs:Literal] .
+        rico:expressedDate rdfs:Literal ;
+        rico:normalizedDateValue rdfs:Literal .
     vg:birth-record-birth-place-001 a rico:Place ;
-        rico:name [rdfs:Literal] ;
+        rico:name rdfs:Literal ;
         rico:isBirthPlaceOf vg:person-001 .
     vg:person-003 a rico:Person ;
         rico:hasChild vg:person-001 ;
-        person:firstName [xsd:string] ;
-        person:lastName [xsd:string] ;
-        person:maidenName [xsd:string] ;
-        foaf:age [xsd:string] ;
+        person:firstName xsd:string ;
+        person:lastName xsd:string ;
+        person:maidenName xsd:string ;
+        foaf:age xsd:string ;
         rico:hasBirthDate vg:birth-record-birth-date-002 ;
         rico:hasBirthPlace vg:birth-record-birth-place-002 ;
         rico:hasOrHadDemographicGroup vg:birth-record-group-001 ;
         rico:hasOrHadOccupationOfType vg:birth-record-occupation-001 .
     vg:birth-record-group-001 a rico:DemographicGroup ;
-        rico:name [rdfs:Literal] ;
+        rico:name rdfs:Literal ;
         rico:isOrWasDemographicGroupOf vg:person-003 .
     vg:birth-record-occupation-001 a rico:OccupationType ;
-        rico:name [rdfs:Literal] ;
+        rico:name rdfs:Literal ;
         rico:isOrWasOccupationTypeOf vg:person-003 .
     vg:birth-record-birth-date-002 a rico:Date ;
-        rico:expressedDate [rdfs:Literal] ;
-        rico:normalizedDateValue [rdfs:Literal] .
+        rico:expressedDate rdfs:Literal ;
+        rico:normalizedDateValue rdfs:Literal .
     vg:birth-record-birth-place-002 a rico:Place ;
-        rico:name [rdfs:Literal] ;
+        rico:name rdfs:Literal ;
         rico:isBirthPlaceOf vg:person-003 .
     vg:person-004 a rico:Person ;
         rico:hasChild vg:person-001 ;
-        person:firstName [xsd:string] ;
-        person:lastName [xsd:string] ;
-        person:maidenName [xsd:string] ;
-        foaf:age [xsd:string] ;
+        person:firstName xsd:string ;
+        person:lastName xsd:string ;
+        person:maidenName xsd:string ;
+        foaf:age xsd:string ;
         rico:hasBirthDate vg:birth-record-birth-date-003 ;
         rico:hasBirthPlace vg:birth-record-birth-place-003 ;
         rico:hasOrHadDemographicGroup vg:birth-record-group-002 ;
         rico:hasOrHadOccupationOfType vg:birth-record-occupation-002 .
     vg:birth-record-birth-date-003 a rico:Date ;
-        rico:expressedDate [rdfs:Literal] ;
-        rico:normalizedDateValue [rdfs:Literal] .
+        rico:expressedDate rdfs:Literal ;
+        rico:normalizedDateValue rdfs:Literal .
     vg:birth-record-birth-place-003 a rico:Place ;
-        rico:name [rdfs:Literal] ;
+        rico:name rdfs:Literal ;
         rico:isBirthPlaceOf vg:person-004 .
     vg:birth-record-group-002 a rico:DemographicGroup ;
-        rico:name [rdfs:Literal] ;
+        rico:name rdfs:Literal ;
         rico:isOrWasDemographicGroupOf vg:person-004 .
     vg:birth-record-occupation-002 a rico:OccupationType ;
-        rico:name [rdfs:Literal] ;
+        rico:name rdfs:Literal ;
         rico:isOrWasOccupationTypeOf vg:person-004 .
 
 }
@@ -158,10 +162,10 @@ vg:birth-record-001 {
 vg:marriage-record-001 {
     vg:marriage rico:hasOrHadParticipant vg:person-001, vg:person-002 .
     vg:person-001
-        person:firstName [xsd:string] ;
-        person:lastName [xsd:string] ;
-        person:maidenName [xsd:string] ;
-        foaf:age [xsd:string] ;
+        person:firstName xsd:string ;
+        person:lastName xsd:string ;
+        person:maidenName xsd:string ;
+        foaf:age xsd:string ;
         rico:hasBirthDate vg:marriage-record-birth-date-001 ;
         rico:hasBirthPlace vg:marriage-record-birth-place-001 ;
         rico:hasOrHadDemographicGroup vg:marriage-record-group-001 ;
@@ -169,22 +173,22 @@ vg:marriage-record-001 {
         rico:isChildOf vg:person-003, vg:person-004 ;
         rico:hasOrHadSpouse vg:person-002 .
     vg:marriage-record-birth-date-001 a rico:Date ;
-        rico:expressedDate [rdfs:Literal] ;
-        rico:normalizedDateValue [rdfs:Literal] .
+        rico:expressedDate rdfs:Literal ;
+        rico:normalizedDateValue rdfs:Literal .
     vg:marriage-record-birth-place-001 a rico:Place ;
-        rico:name [rdfs:Literal] ;
+        rico:name rdfs:Literal ;
         rico:isBirthPlaceOf vg:person-001 .
     vg:marriage-record-group-001 a rico:DemographicGroup ;
-        rico:name [rdfs:Literal] ;
+        rico:name rdfs:Literal ;
         rico:isOrWasDemographicGroupOf vg:person-001 .
     vg:marriage-record-occupation-001 a rico:OccupationType ;
-        rico:name [rdfs:Literal] ;
+        rico:name rdfs:Literal ;
         rico:isOrWasOccupationTypeOf vg:person-001 .
     vg:person-002
-        person:firstName [xsd:string] ;
-        person:lastName [xsd:string] ;
-        person:maidenName [xsd:string] ;
-        foaf:age [xsd:string] ;
+        person:firstName xsd:string ;
+        person:lastName xsd:string ;
+        person:maidenName xsd:string ;
+        foaf:age xsd:string ;
         rico:hasBirthDate vg:marriage-record-birth-date-002 ;
         rico:hasBirthPlace vg:marriage-record-birth-place-002 ;
         rico:hasOrHadDemographicGroup vg:marriage-record-group-002 ;
@@ -192,62 +196,62 @@ vg:marriage-record-001 {
         rico:isChildOf vg:person-005, vg:person-006 ;
         rico:hasOrHadSpouse vg:person-001 .
     vg:marriage-record-birth-date-002 a rico:Date ;
-        rico:expressedDate [rdfs:Literal] ;
-        rico:normalizedDateValue [rdfs:Literal] .
+        rico:expressedDate rdfs:Literal ;
+        rico:normalizedDateValue rdfs:Literal .
     vg:marriage-record-birth-place-002 a rico:Place ;
-        rico:name [rdfs:Literal] ;
+        rico:name rdfs:Literal ;
         rico:isBirthPlaceOf vg:person-002 .
     vg:marriage-record-group-002 a rico:DemographicGroup ;
-        rico:name [rdfs:Literal] ;
+        rico:name rdfs:Literal ;
         rico:isOrWasDemographicGroupOf vg:person-002 .
     vg:marriage-record-occupation-002 a rico:OccupationType ;
-        rico:name [rdfs:Literal] ;
+        rico:name rdfs:Literal ;
         rico:isOrWasOccupationTypeOf vg:person-002 .
     vg:person-003 a rico:Person ;
         rico:hasChild vg:person-001 ;
         rico:hasBirthPlace vg:marriage-record-birth-place-003 ;
-        person:firstName [xsd:string] ;
-        person:lastName [xsd:string] ;
-        person:maidenName [xsd:string] .
+        person:firstName xsd:string ;
+        person:lastName xsd:string ;
+        person:maidenName xsd:string .
     vg:person-004 a rico:Person ;
         rico:hasChild vg:person-001 ;
         rico:hasBirthPlace vg:marriage-record-birth-place-004 ;
-        person:firstName [xsd:string] ;
-        person:lastName [xsd:string] ;
-        person:maidenName [xsd:string] .
+        person:firstName xsd:string ;
+        person:lastName xsd:string ;
+        person:maidenName xsd:string .
      vg:person-005 a rico:Person ;
         rico:hasChild vg:person-002 ;
         rico:hasBirthPlace vg:marriage-record-birth-place-005 ;
-        person:firstName [xsd:string] ;
-        person:lastName [xsd:string] ;
-        person:maidenName [xsd:string] .
+        person:firstName xsd:string ;
+        person:lastName xsd:string ;
+        person:maidenName xsd:string .
     vg:person-006 a rico:Person ;
         rico:hasChild vg:person-002 ;
         rico:hasBirthPlace vg:marriage-record-birth-place-006 ;
-        person:firstName [xsd:string] ;
-        person:lastName [xsd:string] ;
-        person:maidenName [xsd:string] .
+        person:firstName xsd:string ;
+        person:lastName xsd:string ;
+        person:maidenName xsd:string .
     vg:marriage-record-birth-place-003 a rico:Place ;
-        rico:name [rdfs:Literal] ;
+        rico:name rdfs:Literal ;
         rico:isBirthPlaceOf vg:person-003 .
     vg:marriage-record-birth-place-004 a rico:Place ;
-        rico:name [rdfs:Literal] ;
+        rico:name rdfs:Literal ;
         rico:isBirthPlaceOf vg:person-004 .
     vg:marriage-record-birth-place-005 a rico:Place ;
-        rico:name [rdfs:Literal] ;
+        rico:name rdfs:Literal ;
         rico:isBirthPlaceOf vg:person-005 .
     vg:marriage-record-birth-place-006 a rico:Place ;
-        rico:name [rdfs:Literal] ;
+        rico:name rdfs:Literal ;
         rico:isBirthPlaceOf vg:person-006 .
 }
 
 vg:death-record-001 {
     vg:person-001
-        person:hasGender [person:Female OR person:Male] ;  
-        person:firstName [xsd:string] ;
-        person:lastName [xsd:string] ;
-        person:maidenName [xsd:string] ;
-        foaf:age [xsd:string] ;
+        person:hasGender person:Female ;  
+        person:firstName xsd:string ;
+        person:lastName xsd:string ;
+        person:maidenName xsd:string ;
+        foaf:age xsd:string ;
         rico:hasDeathDate vg:death-record-death-date ;
         rico:hasDeathPlace vg:death-record-death-place ;
         rico:hasOrHadDemographicGroup vg:death-record-group ;
@@ -256,37 +260,37 @@ vg:death-record-001 {
         rico:hasOrHadSpouse vg:person-002 .
 
     vg:death-record-death-date a rico:Date ;
-        rico:expressedDate [rdfs:Literal] ;
-        rico:normalizedDateValue [rdfs:Literal] .
+        rico:expressedDate rdfs:Literal ;
+        rico:normalizedDateValue rdfs:Literal .
 
     vg:death-record-death-place a rico:Place ;
-        rico:name [rdfs:Literal] ;
+        rico:name rdfs:Literal ;
         rico:isDeathPlaceOf vg:person-001 .
     vg:death-record-group a rico:DemographicGroup ;
-        rico:name [rdfs:Literal] ;
+        rico:name rdfs:Literal ;
         rico:isOrWasDemographicGroupOf vg:person-001 .
 
     vg:death-record-occupation a rico:OccupationType ;
-        rico:name [rdfs:Literal] ;
+        rico:name rdfs:Literal ;
         rico:isOrWasOccupationTypeOf vg:person-001 .
 
     vg:person-003 a rico:Person ;
         rico:hasChild vg:person-001 ;
-        person:firstName [xsd:string] ;
-        person:lastName [xsd:string] ;
-        person:maidenName [xsd:string] ;
+        person:firstName xsd:string ;
+        person:lastName xsd:string ;
+        person:maidenName xsd:string ;
         rico:hasBirthPlace vg:death-record-birth-place-001 .
 
     vg:person-004 a rico:Person ;
         rico:hasChild vg:person-001 ;
-        person:firstName [xsd:string] ;
-        person:lastName [xsd:string] ;
-        person:maidenName [xsd:string] ;
+        person:firstName xsd:string ;
+        person:lastName xsd:string ;
+        person:maidenName xsd:string ;
         rico:hasBirthPlace vg:death-record-birth-place-002 .
     vg:death-record-birth-place-001 a rico:Place ;
-        rico:name [rdfs:Literal] ;
+        rico:name rdfs:Literal ;
         rico:isBirthPlaceOf vg:person-003 .
     vg:death-record-birth-place-002 a rico:Place ;
-        rico:name [rdfs:Literal] ;
+        rico:name rdfs:Literal ;
         rico:isBirthPlaceOf vg:person-004 .
 }

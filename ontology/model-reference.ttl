@@ -30,46 +30,47 @@ ncit:C28554 rdf:type :EventType . # Death
 ncit:C48033 rdf:type :EventType . # Marriage 
 
 # Object property patterns
-:DemographicGroup  :isOrWasDemographicGroupOf  :Person
-:Event             :hasEventType               :EventType
-:Event             :hasOrHadParticipant        :Person
-:EventType         :isEventTypeOf              :Event
-:OccupationType    :isOrWasOccupationTypeOf    :Person
-:Person            :isOrWasParticipantIn       :Event
-:Person            :hasChild                   :Person
-:Person            :isChildOf                  :Person
-:Person            :hasOrHadSpouse             :Person
-:Person            :hasBirthDate               :Date
-:Person            :hasDeathDate               :Date
-:Person            :hasBirthPlace              :Place
-:Person            :hasDeathPlace              :Place
-:Person            :hasOrHadDemographicGroup   :DemographicGroup
-:Person            :hasOrHadOccupationOfType   :OccupationType
-:Place             :isBirthPlaceOf             :Person
-:Place             :isDeathPlaceOf             :Person
-:Record            :hasOrHadSubject            :Person
-:Person            :isOrWasSubjectOf           :Record
-:Activity          :documentedBy               :Record
-:Record            :documents                  :Activity
-:Name              :isOrWasNameOf              :Person
-:Person            :hasOrHadName               :Name
-:Person            person:hasGender            [person:Male OR person:Female]
+:DemographicGroup  :isOrWasDemographicGroupOf  :Person . 
+:Event             :hasEventType               :EventType . 
+:Event             :hasOrHadParticipant        :Person . 
+:EventType         :isEventTypeOf              :Event . 
+:OccupationType    :isOrWasOccupationTypeOf    :Person .
+:Person            :isOrWasParticipantIn       :Event .
+:Person            :hasChild                   :Person .
+:Person            :isChildOf                  :Person .
+:Person            :hasOrHadSpouse             :Person .
+:Person            :hasBirthDate               :Date .
+:Person            :hasDeathDate               :Date .
+:Person            :hasBirthPlace              :Place . 
+:Person            :hasDeathPlace              :Place .
+:Person            :hasOrHadDemographicGroup   :DemographicGroup . 
+:Person            :hasOrHadOccupationOfType   :OccupationType .
+:Place             :isBirthPlaceOf             :Person .
+:Place             :isDeathPlaceOf             :Person .
+:Record            :hasOrHadSubject            :Person .
+:Person            :isOrWasSubjectOf           :Record .
+:Activity          :documentedBy               :Record .
+:Record            :documents                  :Activity .
+:Name              :isOrWasNameOf              :Person .
+:Person            :hasOrHadName               :Name .
+:Person            person:hasGender            person:Male . 
+:Person            person:hasGender            person:Female .
 
 # Datatype property patterns
-:Record            :title                      rdfs:Literal
-:Record            :identifier                 rdfs:Literal                         # Local or state file number
-:Place             :name                       rdfs:Literal
-:Place             rdfs:seeAlso                <URI>
-:DemographicGroup  :name                       rdfs:Literal
-:OccupationType    :name                       rdfs:Literal
-:Name              :textualValue               rdfs:Literal
-:Date              :expressedDate              rdfs:Literal
-:Date              :normalizedDateValue        rdfs:Literal
+:Record            :title                      rdfs:Literal . 
+:Record            :identifier                 rdfs:Literal .                      # Local or state file number
+:Place             :name                       rdfs:Literal .
+:Place             rdfs:seeAlso                <URI> .
+:DemographicGroup  :name                       rdfs:Literal .
+:OccupationType    :name                       rdfs:Literal . 
+:Name              :textualValue               rdfs:Literal .
+:Date              :expressedDate              rdfs:Literal .
+:Date              :normalizedDateValue        rdfs:Literal .
 
 # Datatype property patterns from the Person Ontology
-:Person            person:firstName            xsd:string
-:Person            person:lastName             xsd:string
-:Person            person:maidenName           xsd:string
+:Person            person:firstName            xsd:string .
+:Person            person:lastName             xsd:string .
+:Person            person:maidenName           xsd:string .
 
 # Datatype property pattern from FOAF
-:Person            foaf:age                    xsd:string
+:Person            foaf:age                    xsd:string .
