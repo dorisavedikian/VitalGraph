@@ -23,7 +23,9 @@ Build an import step that maps scanned PDFs and tabular sources into the existin
 
 ### 4. Application Profile and Validation
 
-Evaluate [DCTAP](https://www.dublincore.org/specifications/dctap/primer/) as a tabular way to maintain VitalGraph’s application profile. Define SHACL shapes to check required links, resource types, literal datatypes, and allowed values. [Test whether DCTAP can support generating and maintaining those shapes.](https://codeberg.org/philbarker/TAP2SHACL)
+Evaluate [DCTAP](https://www.dublincore.org/specifications/dctap/primer/) as a tabular way to maintain VitalGraph’s application profile. Define SHACL shapes to check required links, resource types, literal datatypes, and allowed values. Test whether DCTAP can support generating and maintaining those shapes using [TAP2SHACL](https://codeberg.org/philbarker/TAP2SHACL)
+
+Once this is hammered out I will update the UML and other diagrams.
 
 ### 5. Provenance
 

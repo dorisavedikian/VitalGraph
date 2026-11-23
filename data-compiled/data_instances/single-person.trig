@@ -85,7 +85,6 @@
     vg:marriage-registration a rico:Activity ; rico:documentedBy vg:marriage-record-001 .
     vg:death-registration a rico:Activity ; rico:documentedBy vg:death-record-001 .
 
-    
     vg:birth-record-001 a rico:Record ;
         rico:title rdfs:Literal ;
         rico:identifier rdfs:Literal ;
