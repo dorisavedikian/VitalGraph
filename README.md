@@ -63,6 +63,8 @@ See [Attributions and third-party licenses](ontology/ATTRIBUTIONS.md) for source
 
 ## Knowledge Graph Model
 
+The VitalGraph application profile documents how selected terms from RiC-O and other vocabularies are used to represent family certificate data. The diagram shows its classes and relationships, while the CSV data dictionary and generation script describe and implement local data-entry rules. Formal validation is planned.
+
 Each person has a persistent identifier that connects their appearances across certificates. The person registry holds a preferred name, while each certificate preserves the names and details recorded there.
 
 The dataset is stored in TriG. The default graph contains the person registry, record metadata, life events, registration activities, and links identifying record subjects and event participants. Each certificate’s named graph contains its transcribed values and the relationships recorded in that certificate.

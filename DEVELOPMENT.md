@@ -25,7 +25,9 @@ Build an import step that maps scanned PDFs and tabular sources into the existin
 
 Evaluate [DCTAP](https://www.dublincore.org/specifications/dctap/primer/) as a tabular way to maintain VitalGraph’s application profile. Define SHACL shapes to check required links, resource types, literal datatypes, and allowed values. Test whether DCTAP can support generating and maintaining those shapes using [TAP2SHACL](https://codeberg.org/philbarker/TAP2SHACL)
 
-Once this is hammered out I will update the UML and other diagrams.
+Compare [pySHACL](https://github.com/rdflib/pyshacl) to [GraphDB's SHACL](https://graphdb.ontotext.com/documentation/11.5/shacl-validation.html#) validation to determine which bettter supports default graph and certificate specific named graphs, ease of integration and correctness of validation reports. Test both with known valid and invalid graphs.
+
+Once the validation rules are finalized, I’ll update the UML and other [diagrams](diagrams) to show the corresponding cardinality and value constraints.
 
 ### 5. Provenance
 
