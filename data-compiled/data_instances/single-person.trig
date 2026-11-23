@@ -41,6 +41,7 @@
     vg:person-004 a rico:Person ; rico:hasOrHadName vg:name-004 .
     vg:person-005 a rico:Person ; rico:hasOrHadName vg:name-005 .
     vg:person-006 a rico:Person ; rico:hasOrHadName vg:name-006 .
+    
     vg:name-001 a rico:Name ;                                                              
         rico:textualValue rdfs:Literal ;
         rico:isOrWasNameOf vg:person-001 .
@@ -59,6 +60,7 @@
     vg:name-006 a rico:Name ;                                                               
         rico:textualValue rdfs:Literal ;
         rico:isOrWasNameOf vg:person-006 .
+    
     ncit:C25155 a rico:EventType ;
         rdfs:label "Birth"@en ;
         rico:isEventTypeOf vg:birth-001 .
@@ -68,6 +70,7 @@
     ncit:C28554 a rico:EventType ;
         rdfs:label "Dead"@en ;
         rico:isEventTypeOf vg:death-001 .
+    
     vg:birth-001 a rico:Event ;
         rico:hasEventType ncit:C25155 ;
         rico:hasOrHadParticipant vg:person-001 .
@@ -77,10 +80,12 @@
     vg:death-001 a rico:Event ;
         rico:hasEventType ncit:C28554 ;
         rico:hasOrHadParticipant vg:person-001 .
+    
     vg:birth-registration a rico:Activity ; rico:documentedBy vg:birth-record-001 .
     vg:marriage-registration a rico:Activity ; rico:documentedBy vg:marriage-record-001 .
     vg:death-registration a rico:Activity ; rico:documentedBy vg:death-record-001 .
 
+    
     vg:birth-record-001 a rico:Record ;
         rico:title rdfs:Literal ;
         rico:identifier rdfs:Literal ;
@@ -96,6 +101,7 @@
         rico:identifier rdfs:Literal ;
         rico:hasOrHadSubject vg:person-001 ;
         rico:documents vg:death-registration .
+        
 }
 
 vg:birth-record-001 {
