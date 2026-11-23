@@ -45,7 +45,7 @@ Person identities are assigned and reviewed manually. The pipeline reuses those 
 
 The repository includes diagrams, screenshots, and sample conversations that show selected information from the family graph. The underlying certificates, CSV transcriptions, and populated RDF dataset are excluded to protect family members’ privacy.
 
-The [single-person example](data-compiled/data_instances/single-person.ttl) contains placeholders and illustrates how one person identifier connects appearances across hypothetical birth, marriage, and death records, with details preserved in each certificate’s named graph.
+The [single-person example](data-compiled/data_instances/single-person.trig) contains placeholders and illustrates how one person identifier connects appearances across hypothetical birth, marriage, and death records, with details preserved in each certificate’s named graph.
 
 ## Ontology and Terminology
 
