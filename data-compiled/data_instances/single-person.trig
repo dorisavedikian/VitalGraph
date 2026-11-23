@@ -263,29 +263,24 @@ vg:death-record-001 {
         rico:hasOrHadOccupationOfType vg:death-record-occupation ;
         rico:isChildOf vg:person-003, vg:person-004 ;
         rico:hasOrHadSpouse vg:person-002 .
-
     vg:death-record-death-date a rico:Date ;
         rico:expressedDate rdfs:Literal ;
         rico:normalizedDateValue rdfs:Literal .
-
     vg:death-record-death-place a rico:Place ;
         rico:name rdfs:Literal ;
         rico:isDeathPlaceOf vg:person-001 .
     vg:death-record-group a rico:DemographicGroup ;
         rico:name rdfs:Literal ;
         rico:isOrWasDemographicGroupOf vg:person-001 .
-
     vg:death-record-occupation a rico:OccupationType ;
         rico:name rdfs:Literal ;
         rico:isOrWasOccupationTypeOf vg:person-001 .
-
     vg:person-003 a rico:Person ;
         rico:hasChild vg:person-001 ;
         person:firstName xsd:string ;
         person:lastName xsd:string ;
         person:maidenName xsd:string ;
         rico:hasBirthPlace vg:death-record-birth-place-001 .
-
     vg:person-004 a rico:Person ;
         rico:hasChild vg:person-001 ;
         person:firstName xsd:string ;
