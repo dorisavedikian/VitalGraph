@@ -1,0 +1,202 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#> .
+@prefix person: <https://w3id.org/MON/person.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rico: <https://www.ica.org/standards/RiC/ontology#> .
+
+ncit:C25155 rdfs:label "Birth",
+        ""@hy .
+
+ncit:C28554 rdfs:label "Dead",
+        ""@hy .
+
+ncit:C48033 rdfs:label "Marriage",
+        ""@hy .
+
+rdf:type rdfs:label "type"@en,
+        ""@hy .
+
+rdfs:Literal rdfs:label "Literal",
+        ""@hy .
+
+rdfs:Resource rdfs:label "Resource",
+        ""@hy .
+
+rdfs:label rdfs:label "label"@en,
+        ""@hy .
+
+rdfs:seeAlso rdfs:label "seeAlso",
+        ""@hy .
+
+rdfs:subClassOf rdfs:label "subClassOf"@en,
+        ""@hy .
+
+foaf:Agent rdfs:label "Agent",
+        ""@hy .
+
+foaf:age rdfs:label "age",
+        ""@hy .
+
+person:Female rdfs:label "Female"@en,
+        ""@hy .
+
+person:Male rdfs:label "Male"@en,
+        ""@hy .
+
+person:Person rdfs:label "Person"@en,
+        ""@hy .
+
+person:Sex rdfs:label "Sex",
+        ""@hy .
+
+person:firstName rdfs:label "first name"@en,
+        ""@hy .
+
+person:hasGender rdfs:label "has gender"@en,
+        ""@hy .
+
+person:lastName rdfs:label "last name"@en,
+        ""@hy .
+
+person:maidenName rdfs:label "maiden name"@en,
+        ""@hy .
+
+rico:Activity rdfs:label "Activity"@en,
+        ""@hy .
+
+rico:ActivityType rdfs:label "Activity Type"@en,
+        ""@hy .
+
+rico:Agent rdfs:label "Agent"@en,
+        ""@hy .
+
+rico:Appellation rdfs:label "Appellation"@en,
+        ""@hy .
+
+rico:Concept rdfs:label "Concept"@en,
+        ""@hy .
+
+rico:Date rdfs:label "Date"@en,
+        ""@hy .
+
+rico:DemographicGroup rdfs:label "Demographic Group"@en,
+        ""@hy .
+
+rico:Event rdfs:label "Event"@en,
+        ""@hy .
+
+rico:EventType rdfs:label "Event Type"@en,
+        ""@hy .
+
+rico:Name rdfs:label "Name"@en,
+        ""@hy .
+
+rico:OccupationType rdfs:label "Occupation Type"@en,
+        ""@hy .
+
+rico:Person rdfs:label "Person"@en,
+        ""@hy .
+
+rico:Place rdfs:label "Place"@en,
+        ""@hy .
+
+rico:Record rdfs:label "Record"@en,
+        ""@hy .
+
+rico:RecordResource rdfs:label "Record Resource"@en,
+        ""@hy .
+
+rico:Thing rdfs:label "Thing"@en,
+        ""@hy .
+
+rico:Type rdfs:label "Type"@en,
+        ""@hy .
+
+rico:documentedBy rdfs:label "documented by"@en,
+        ""@hy .
+
+rico:documents rdfs:label "documents"@en,
+        ""@hy .
+
+rico:expressedDate rdfs:label "expressed date"@en,
+        ""@hy .
+
+rico:hasBirthDate rdfs:label "has birth date"@en,
+        ""@hy .
+
+rico:hasBirthPlace rdfs:label "has birth place"@en,
+        ""@hy .
+
+rico:hasChild rdfs:label "has child"@en,
+        ""@hy .
+
+rico:hasDeathDate rdfs:label "has death date"@en,
+        ""@hy .
+
+rico:hasDeathPlace rdfs:label "has death place"@en,
+        ""@hy .
+
+rico:hasEventType rdfs:label "has event type"@en,
+        ""@hy .
+
+rico:hasOrHadDemographicGroup rdfs:label "has or had demographic group"@en,
+        ""@hy .
+
+rico:hasOrHadName rdfs:label "has or had name"@en,
+        ""@hy .
+
+rico:hasOrHadOccupationOfType rdfs:label "has or had occupation of type"@en,
+        ""@hy .
+
+rico:hasOrHadParticipant rdfs:label "has or had participant"@en,
+        ""@hy .
+
+rico:hasOrHadSpouse rdfs:label "has or had spouse"@en,
+        ""@hy .
+
+rico:hasOrHadSubject rdfs:label "has or had subject"@en,
+        ""@hy .
+
+rico:identifier rdfs:label "identifier"@en,
+        ""@hy .
+
+rico:isBirthPlaceOf rdfs:label "is birth place of"@en,
+        ""@hy .
+
+rico:isChildOf rdfs:label "is child of"@en,
+        ""@hy .
+
+rico:isDeathPlaceOf rdfs:label "is death place of"@en,
+        ""@hy .
+
+rico:isEventTypeOf rdfs:label "is event type of"@en,
+        ""@hy .
+
+rico:isOrWasDemographicGroupOf rdfs:label "is or was demographic group of"@en,
+        ""@hy .
+
+rico:isOrWasNameOf rdfs:label "is or was name of"@en,
+        ""@hy .
+
+rico:isOrWasOccupationTypeOf rdfs:label "is or was occupation type of"@en,
+        ""@hy .
+
+rico:isOrWasParticipantIn rdfs:label "is or was participant in"@en,
+        ""@hy .
+
+rico:isOrWasSubjectOf rdfs:label "is or was subject of"@en,
+        ""@hy .
+
+rico:name rdfs:label "name"@en,
+        ""@hy .
+
+rico:normalizedDateValue rdfs:label "normalized date value"@en,
+        ""@hy .
+
+rico:textualValue rdfs:label "textual value"@en,
+        ""@hy .
+
+rico:title rdfs:label "title"@en,
+        ""@hy .
+

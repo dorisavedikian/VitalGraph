@@ -3,6 +3,7 @@
 /source-data/
 /data-compiled/data/
 /data-compiled/data_instances/vg-instance-data.trig
+/data-compiled/data_instances/data-labels-hy.ttl
 
 /scripts/extract_foaf.py
 /scripts/extract_rico.py
@@ -13,3 +14,5 @@
 /Talk-2-VG/
 
 /diagrams/VitalGraph-Application-Profile.puml
+
+/ontology/armenian-ontology-labels-dictionary.csv

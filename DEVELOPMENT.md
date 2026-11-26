@@ -18,7 +18,7 @@ Build an import step that maps scanned PDFs and tabular sources into the existin
 
 ### 3. Armenian Display Labels
 
-- Add Armenian labels using `rdfs:label` with `@hy` to the people, classes, object properties, datatype properties, and vocabulary concepts visible in the graph. 
+- Add reviewed Armenian labels using `rdfs:label` with `@hy` to the people, classes, object properties, datatype properties, and vocabulary concepts visible in the graph. 
 - Test the **Family Knowledge** agent in GraphDB’s **Talk to Your Graph** with English and Armenian questions, checking that it retrieves the correct people, relationships, and supporting certificate evidence.
 
 ### 4. Application Profile and Validation
