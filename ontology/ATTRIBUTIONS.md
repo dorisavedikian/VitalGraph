@@ -10,4 +10,6 @@ VitalGraph reuses the following resources.
 
 - **FOAF Vocabulary**, by Dan Brickley and Libby Miller. Copyright © 2000–2014 Dan Brickley and Libby Miller. The specification and accompanying RDF documentation are licensed under [CC BY 1.0](https://creativecommons.org/licenses/by/1.0/). VitalGraph extracts `foaf:age` and its domain definition. [FOAF specification](https://xmlns.com/foaf/spec/)
 
-- **RDF Schema (RDFS)**, published by the World Wide Web Consortium (W3C). VitalGraph uses RDFS for labels, class hierarchies, and other schema statements, and extracts definitions of `rdfs:seeAlso`, `rdfs:Resource`, and `rdfs:Literal`. [RDFS specification](https://www.w3.org/TR/rdf-schema/)
+- **RDF and RDF Schema (RDFS)**, published by the World Wide Web Consortium (W3C). VitalGraph uses these standards to describe resources, types, labels, and class hierarchies. Its dictionary includes `rdf:type`, `rdfs:label`, `rdfs:subClassOf`, `rdfs:seeAlso`, `rdfs:Resource`, and `rdfs:Literal`. [RDF specification](https://www.w3.org/TR/rdf11-concepts/) · [RDFS specification](https://www.w3.org/TR/rdf-schema/)
+
+The glossary and Armenian-label dictionary include English labels and definitions from the resources credited above. VitalGraph-specific explanations and Armenian translations are project additions. Armenian labels are being prepared and reviewed, with review status tracked in the [glossary of terms](../VG-glossary-of-terms-hy.md).

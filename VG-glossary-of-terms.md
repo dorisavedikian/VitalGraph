@@ -10,6 +10,13 @@ The `person:` prefix denotes `https://w3id.org/MON/person.owl#`, and `foaf:` den
 
 | Term | Definition / VitalGraph Use |
 | --- | --- |
+| [`foaf:Agent`](http://xmlns.com/foaf/0.1/Agent) | An agent, such as a person, group, software, or physical artifact. Included in VitalGraph as the domain of `foaf:age`. |
+| [`person:Female`](https://w3id.org/MON/person.owl#Female) | Declared as both a class and a named individual in the Person ontology. VitalGraph uses the individual as a Female value of `person:hasGender`. |
+| [`person:Male`](https://w3id.org/MON/person.owl#Male) | Declared as both a class and a named individual in the Person ontology. VitalGraph uses the individual as a Male value of `person:hasGender`. |
+| [`person:Person`](https://w3id.org/MON/person.owl#Person) | The Person ontology's class for people. It is the domain of `person:firstName`, `person:lastName`, `person:maidenName`, and `person:hasGender`. Using these properties on VitalGraph person resources also implies this type. |
+| [`person:Sex`](https://w3id.org/MON/person.owl#Sex) | The class of values used by `person:hasGender`. VitalGraph's subset includes `person:Female` and `person:Male` as individuals of this class. |
+| [`rdfs:Literal`](http://www.w3.org/2000/01/rdf-schema#Literal) | The class of literal values, including strings, language-tagged strings, and other typed values. Used as the declared range of the selected RiC-O datatype properties. |
+| [`rdfs:Resource`](http://www.w3.org/2000/01/rdf-schema#Resource) | The class of all resources. It is the declared domain and range of `rdfs:seeAlso`. |
 | [`rico:Activity`](https://www.ica.org/standards/RiC/ontology?utm_source=chatgpt.com#Activity) | An Event in which one or more Agents act for a purpose. VitalGraph uses this class for registration activities that generate certificate records. |
 | [`rico:ActivityType`](https://www.ica.org/standards/RiC/ontology?utm_source=chatgpt.com#ActivityType) | Categorization of an Activity. |
 | [`rico:Agent`](https://www.ica.org/standards/RiC/ontology?utm_source=chatgpt.com#Agent) | A Person, Group, Mechanism, or Position that acts in the world. |
@@ -76,6 +83,14 @@ VitalGraph uses those three properties and `foaf:age` on its `rico:Person` nodes
 | [`rico:normalizedDateValue`](https://www.ica.org/standards/RiC/ontology?utm_source=chatgpt.com#normalizedDateValue) | A machine-readable date expressed according to a public technical standard. VitalGraph: Optional on `rico:Date`. Store a standardized date at the precision supported by the source. |
 | [`rico:textualValue`](https://www.ica.org/standards/RiC/ontology?utm_source=chatgpt.com#textualValue) | A textual expression of an Appellation or Date. Its declared domain also includes Extent. VitalGraph: On `rico:Name`, store the written form of the name. |
 | [`rico:title`](https://www.ica.org/standards/RiC/ontology?utm_source=chatgpt.com#title) | An identifying name of a Record Resource, Instantiation, or Rule. VitalGraph: On `rico:Record`, store the certificate title. |
+
+## RDF and RDFS Properties
+
+| Term | Definition / VitalGraph Use |
+| --- | --- |
+| [`rdf:type`](http://www.w3.org/1999/02/22-rdf-syntax-ns#type) | States that a resource is an instance of a class. VitalGraph uses it to type people, records, events, dates, and other resources. In Turtle, `a` is shorthand for `rdf:type`. |
+| [`rdfs:label`](http://www.w3.org/2000/01/rdf-schema#label) | A human-readable name for a resource. VitalGraph uses language-tagged labels, including `@hy`, to provide Armenian display text for classes, properties, vocabulary concepts, and instance resources. |
+| [`rdfs:subClassOf`](http://www.w3.org/2000/01/rdf-schema#subClassOf) | States that every instance of one class is also an instance of another class. VitalGraph retains class hierarchies such as `rico:Person rdfs:subClassOf rico:Agent`. |
 
 ## NCIt Event Types Used in VitalGraph
 
