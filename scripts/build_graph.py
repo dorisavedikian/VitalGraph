@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Build a VitalGraph TriG dataset from five UTF-8 CSV files."""
+"""Build a VitalGraph TriG dataset and Armenian instance-label template from CSV."""
 import argparse
 import csv
 import re
 from pathlib import Path
 from tempfile import NamedTemporaryFile
-from rdflib import Dataset, Literal, Namespace, RDF, RDFS, URIRef, XSD
+from rdflib import Dataset, Graph, Literal, Namespace, RDF, RDFS, URIRef, XSD
+from rdflib.plugins.serializers.turtle import SUBJECT, TurtleSerializer
 
 VG = Namespace("https://example.org/vitalgraph/")
 RICO = Namespace("https://www.ica.org/standards/RiC/ontology#")
@@ -332,58 +333,202 @@ def build_graph(directory):
     return dataset
 
 
-def write_trig(dataset, output):
-    # A failed build leaves any existing output intact.
-    """Serialize a dataset as UTF-8 TriG and replace the output atomically.
+def build_instance_labels(dataset, output):
+    """Add Armenian label placeholders for instance resources in the dataset.
 
-    Write to a temporary file in the output directory, then replace output
-    after serialization succeeds. Clean up the temporary file on failure.
-    The output directory must already exist.
-
-    Args:
-        dataset: RDFLib dataset to serialize, including its named graphs.
-        output: Path of the destination TriG file.
-
-    Raises:
-        OSError: Creating, writing, replacing, or removing a file fails.
-        Exception: RDFLib serialization fails.
+    Read existing labels from output when present and preserve their values,
+    including labels for resources no longer in the CSVs. Include typed people,
+    names, records, events, registration activities, and attribute resources
+    across all graphs. Event-type concepts are covered by ontology labels.
+    Return a Graph without modifying the dataset or writing a file.
     """
-    with NamedTemporaryFile(dir=output.parent, prefix=".vitalgraph-", delete=False) as temp:
-        temporary = Path(temp.name)
+    labels = Graph()
+    if output.exists():
+        labels.parse(output, format="turtle")
+    for prefix, namespace in dataset.namespaces():
+        labels.bind(prefix, namespace)
+
+    instances = {
+        subject
+        for subject, _, rdf_type, _ in dataset.quads((None, RDF.type, None, None))
+        if isinstance(subject, URIRef) and rdf_type != RICO.EventType
+    }
+    for instance in sorted(instances):
+        armenian = [
+            value for value in labels.objects(instance, RDFS.label)
+            if isinstance(value, Literal) and value.language
+            and value.language.lower().split("-")[0] == "hy"
+        ]
+        if any(str(value) for value in armenian):
+            labels.remove((instance, RDFS.label, Literal("", lang="hy")))
+        elif not armenian:
+            labels.add((instance, RDFS.label, Literal("", lang="hy")))
+    return labels
+
+
+def instance_label_context(dataset):
+    """Return deduplicated recorded-property and value comments for each IRI.
+
+    Preserve literal wording for translation reference. Repeated copies of
+    the same property and value across certificates yield one comment.
+    Person entries include recorded first-name, last-name, and maiden-name values.
+    Certificate identifiers are excluded from translation comments.
+    Entries without an eligible recorded value receive no hint comment.
+    """
+    manager = dataset.namespace_manager
+    people = {
+        subject for subject, _, _, _ in dataset.quads((None, RDF.type, RICO.Person, None))
+    }
+    context = {}
+    for subject, predicate, value, _ in dataset.quads((None, None, None, None)):
+        if not isinstance(subject, URIRef) or not isinstance(value, Literal):
+            continue
+        if predicate == RICO.identifier:
+            continue
+        if subject in people and predicate not in (
+            PERSON.firstName, PERSON.lastName, PERSON.maidenName
+        ):
+            continue
+        comment = f"Recorded {manager.normalizeUri(predicate)}: {str(value)!r}"
+        context.setdefault(subject, set()).add(comment)
+
+    return {subject: sorted(comments) for subject, comments in context.items()}
+
+
+class InstanceLabelSerializer(TurtleSerializer):
+    """Write ordinary Turtle with generated source comments before each entry."""
+
+    def __init__(self, graph, context):
+        super().__init__(graph)
+        self.context = context
+
+    def preprocess(self):
+        """Declare the prefixes used by both labels and source comments."""
+        super().preprocess()
+        for prefix, namespace in self.store.namespaces():
+            if prefix in {"vg", "rico", "person", "foaf", "rdfs", "ncit"}:
+                self.addNamespace(prefix, namespace)
+
+    def s_default(self, subject):
+        """Keep each comment immediately above its matching resource statement."""
+        self.write("\n" + self.indent())
+        for comment in self.context.get(subject, ()):
+            for line in comment.splitlines():
+                self.write("# " + line + "\n" + self.indent())
+        self.path(subject, SUBJECT)
+        self.predicateList(subject)
+        self.write(" .")
+        return True
+
+
+def write_rdf_outputs(outputs, label_context=None):
+    """Stage RDF files before replacing outputs, restoring them on failure.
+
+    Each item is a (graph, destination Path, RDF format) tuple. Serialize all
+    files first, then replace the destinations. If a replacement fails,
+    restore already replaced files from their previous contents. Destination
+    directories must exist. Remove temporary files on completion or failure.
+    When label_context is supplied, add those source comments to Turtle output.
+    """
+    staged = []
+    replaced = []
     try:
-        dataset.serialize(destination=str(temporary), format="trig", encoding="utf-8")
-        temporary.replace(output)
+        for graph, output, rdf_format in outputs:
+            previous = output.read_bytes() if output.exists() else None
+            with NamedTemporaryFile(
+                dir=output.parent, prefix=".vitalgraph-", delete=False
+            ) as temp:
+                temporary = Path(temp.name)
+            staged.append((temporary, output, previous))
+            if rdf_format == "turtle" and label_context is not None:
+                with temporary.open("wb") as stream:
+                    InstanceLabelSerializer(graph, label_context).serialize(
+                        stream, encoding="utf-8"
+                    )
+            else:
+                graph.serialize(
+                    destination=str(temporary), format=rdf_format, encoding="utf-8"
+                )
+        try:
+            for temporary, output, previous in staged:
+                temporary.replace(output)
+                replaced.append((temporary, output, previous))
+        except OSError:
+            for temporary, output, previous in reversed(replaced):
+                if previous is None:
+                    output.unlink()
+                else:
+                    temporary.write_bytes(previous)
+                    temporary.replace(output)
+            raise
     finally:
-        temporary.unlink(missing_ok=True)
+        for temporary, _, _ in staged:
+            temporary.unlink(missing_ok=True)
+
+
+def write_trig(dataset, output):
+    """Serialize a dataset as UTF-8 TriG and atomically replace output.
+
+    Keep the existing single-output entry point available to callers.
+    The output directory must already exist.
+    """
+    write_rdf_outputs(((dataset, output, "trig"),))
 
 
 def main():
-    """Parse command-line paths, build the dataset, and write its TriG file.
+    """Build the dataset and write TriG plus an Armenian instance-label file.
 
-    Default to data-compiled/data_csv and
+    Default to data-compiled/data and
     data-compiled/data_instances/vg-instance-data.trig relative to the
-    script's grandparent directory. Reject output paths that resolve to,
+    script's grandparent directory. Write data-labels-hy.ttl beside the
+    TriG output unless --labels-output is specified. Retain existing
+    translations on rebuild. Reject output paths that resolve to,
     or identify the same file as, any input CSV. Report handled input and
     filesystem errors with exit status 1; print the output path and total
     number of quads on success.
     """
     root = Path(__file__).resolve().parent.parent / "data-compiled"
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--data-dir", type=Path, default=root / "data_csv")
+    parser.add_argument("--data-dir", type=Path, default=root / "data")
     parser.add_argument("--output", type=Path, default=root / "data_instances" / "vg-instance-data.trig")
+    parser.add_argument(
+        "--labels-output", type=Path,
+        help="Armenian instance labels. Defaults to data-labels-hy.ttl beside --output.",
+    )
     args = parser.parse_args()
     try:
         output = args.output.resolve()
-        for table in SCHEMAS:
-            source = args.data_dir / f"{table}.csv"
-            if output == source.resolve() or (output.exists() and source.exists() and output.samefile(source)):
-                raise ValueError("the output path must differ from all five input paths")
+        labels_output = (
+            args.labels_output or output.with_name("data-labels-hy.ttl")
+        ).resolve()
+        if output == labels_output or (
+            output.exists() and labels_output.exists() and output.samefile(labels_output)
+        ):
+            raise ValueError("the TriG and labels output paths must differ")
+        for destination in (output, labels_output):
+            for table in SCHEMAS:
+                source = args.data_dir / f"{table}.csv"
+                if destination == source.resolve() or (
+                    destination.exists() and source.exists() and destination.samefile(source)
+                ):
+                    raise ValueError("output paths must differ from all five input paths")
         dataset = build_graph(args.data_dir)
-        write_trig(dataset, output)
-    except (OSError, ValueError) as exc:
+        triple_count = sum(1 for _ in dataset.quads((None, None, None, None)))
+        if triple_count == 0:
+            raise ValueError(
+                f"No RDF statements generated from {args.data_dir.resolve()}. "
+                "The input CSVs contain no data rows. Select populated CSVs with --data-dir. "
+                "Existing output files have been preserved."
+            )
+        labels = build_instance_labels(dataset, labels_output)
+        write_rdf_outputs((
+            (dataset, output, "trig"),
+            (labels, labels_output, "turtle"),
+        ), label_context=instance_label_context(dataset))
+    except (OSError, ValueError, SyntaxError) as exc:
         parser.exit(1, f"VitalGraph: {exc}\n")
-    triple_count = sum(1 for _ in dataset.quads((None, None, None, None)))
     print(f"Wrote {output}")
+    print(f"Wrote Armenian instance labels to {labels_output}")
     print(f"RDF triples across all graphs: {triple_count:,}")
 
 

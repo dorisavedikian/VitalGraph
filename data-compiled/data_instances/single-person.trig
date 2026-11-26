@@ -27,7 +27,6 @@
 @prefix vg: <https://example.org/vitalgraph/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-# To do: Add rdfs:label ""@hy
 {
     vg:person-001 a rico:Person ;                                                           
         rico:hasOrHadName vg:name-001 ;
@@ -42,25 +41,30 @@
     vg:person-005 a rico:Person ; rico:hasOrHadName vg:name-005 .
     vg:person-006 a rico:Person ; rico:hasOrHadName vg:name-006 .
     
-    vg:name-001 a rico:Name ;                                                              
+    vg:name-001 a rico:Name ;
         rico:textualValue rdfs:Literal ;
         rico:isOrWasNameOf vg:person-001 .
-    vg:name-002 a rico:Name ;                                                               
+
+    vg:name-002 a rico:Name ;
         rico:textualValue rdfs:Literal ;
         rico:isOrWasNameOf vg:person-002 .
-    vg:name-003 a rico:Name ;                                                               
+
+    vg:name-003 a rico:Name ;
         rico:textualValue rdfs:Literal ;
         rico:isOrWasNameOf vg:person-003 .
-    vg:name-004 a rico:Name ;                                                               
+
+    vg:name-004 a rico:Name ;
         rico:textualValue rdfs:Literal ;
         rico:isOrWasNameOf vg:person-004 .
-    vg:name-005 a rico:Name ;                                                               
+
+    vg:name-005 a rico:Name ;
         rico:textualValue rdfs:Literal ;
         rico:isOrWasNameOf vg:person-005 .
-    vg:name-006 a rico:Name ;                                                               
+
+    vg:name-006 a rico:Name ;
         rico:textualValue rdfs:Literal ;
         rico:isOrWasNameOf vg:person-006 .
-    
+        
     ncit:C25155 a rico:EventType ;
         rdfs:label "Birth"@en ;
         rico:isEventTypeOf vg:birth-001 .
@@ -252,7 +256,7 @@ vg:marriage-record-001 {
 
 vg:death-record-001 {
     vg:person-001
-        person:hasGender person:Female ;  
+        person:hasGender [person:Male OR person:Female] ;  
         person:firstName xsd:string ;
         person:lastName xsd:string ;
         person:maidenName xsd:string ;
