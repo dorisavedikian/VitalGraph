@@ -1,26 +1,24 @@
 ## Overview
 
-VitalGraph began with a personal goal—documenting my Armenian ancestry and gathering records for Armenian citizenship. According to guidance I received from the Armenian Consulate in Los Angeles, I need to establish an ancestor’s Armenian ethnicity, document the chain of kinship connecting that ancestor to me, and have every application document translated into Armenian.
+VitalGraph began with a personal goal—documenting my Armenian ancestry for a citizenship application. The Armenian Consulate in Los Angeles advised me to establish an ancestor’s Armenian ethnicity, document the chain of kinship connecting that ancestor to me, and have the application documents translated into Armenian.
 
 Simple enough, right? Not quite.
 
-I spent hours at the county records office in Fresno, searching for birth, marriage, and death certificates under different spellings of family members’ names. Sometimes finding a record depended on knowing which spelling to try.
+I spent hours at the county records office in Fresno searching for birth, marriage, and death certificates under different spellings of family members’ names. Connecting those records across generations meant reconciling names and other details. I eventually gathered enough evidence through my maternal grandfather to document his Armenian ethnicity and trace the relationships down to me.
 
-Once I had the certificates, I had to connect them. Names and other details differed across records, even when they referred to the same person. I eventually gathered enough evidence through my maternal grandfather to document his Armenian ethnicity and trace the family relationships down to me.
+I encountered a similar problem while accompanying a family member to the Social Security Administration. What SSA had on file differed from their birth certificate.
 
-I encountered a similar problem when accompanying a family member to the Social Security Administration. What SSA had on file differed from their birth certificate.
+I couldn't help but see a broader problem.
 
-I couldn't help but see a broader problem. **Why is connecting and reconciling information across official records so difficult?**
+**Why is connecting and reconciling information across official records so difficult?**
 
-The certificates were created decades apart, using the forms and technology of their time. It makes sense that connecting them takes detective work, but I started thinking about what could make it easier.
-
-In an ideal world, vital records would already use interoperable standards, persistent identifiers, and shared vocabularies with multilingual labels. That would help connect records across systems and generations despite spelling differences, and perhaps identify discrepancies earlier. I could explore the information in Armenian while seeing exactly what each certificate says. The institution reviewing my application could follow those same connections and check the evidence.
+In an ideal world, vital records would use interoperable standards, persistent identifiers, and shared vocabularies with multilingual labels. That would help connect records across systems and generations despite spelling differences, and perhaps identify discrepancies earlier. I could explore my family’s records in Armenian, follow the connections across generations, and see exactly which documents support them. Someone reviewing my application could follow that same evidence.
 
 But we don't quite live in that world yet. So here I am, building my own multilingual knowledge graph.
 
-When I told my sister about this, she said, “Can’t you just ask Google?” I explained that Google wouldn’t have the records I’d gathered or the connections I’d worked out. It wouldn’t know that Humige, Harry, and Henry referred to the same person, or how a misspelling of our paternal grandparents’ surname originated in Lebanon. 
+When I told my sister, she asked, “Can’t you just ask Google?” I explained that Google wouldn’t have the records I’d gathered or the connections I’d worked out—that Humige, Harry, and Henry referred to the same person, or that a misspelling of our paternal grandparents’ surname originated in Lebanon.
 
-That conversation helped shape the Family Knowledge chatbot. I want to ask questions about my family and get answers grounded in the records I’ve collected, with references to the supporting certificates and an indication when information is missing or conflicting.
+That conversation helped shape the Family Knowledge chatbot. Its goal is to answer questions from the connected records, identify the supporting records, and show where information is missing or conflicting.
 
 What began with a citizenship application has become a way for me to explore what linked data can do for my family history.
 

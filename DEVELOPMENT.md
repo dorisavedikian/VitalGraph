@@ -45,8 +45,8 @@ Investigate records concerning my father and paternal grandparents, including re
 #### Starting References
 
 - [Syrian civil-document guide](https://syriaishome.org/en/documents-and-legal/)
-- [Ministry of Foreign Affairs and Expatriates](https://mofaex.gov.sy/en/services/استخراج-وثيقة-أحوال-مدنية)
-- [Forty Martyrs Armenian Cathedral (Aleppo)](https://en.wikipedia.org/wiki/Forty_Martyrs_Cathedral)
+- [Syrian Ministry of Foreign Affairs and Expatriates](https://mofaex.gov.sy/en/services/استخراج-وثيقة-أحوال-مدنية)
+- [Forty Martyrs Armenian Cathedral in Aleppo, Syria)](https://en.wikipedia.org/wiki/Forty_Martyrs_Cathedral)
 - [Lebanese Embassy](https://lebanonembassyus.org)
 - [Armenian Prelacy of Lebanon certificate services](https://armprelacylb.org)
 
