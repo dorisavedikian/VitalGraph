@@ -256,7 +256,7 @@ vg:marriage-record-001 {
 
 vg:death-record-001 {
     vg:person-001
-        person:hasGender [person:Male OR person:Female] ;  
+        person:hasGender person:Male, person:Female ;  
         person:firstName xsd:string ;
         person:lastName xsd:string ;
         person:maidenName xsd:string ;

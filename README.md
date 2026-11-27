@@ -26,7 +26,7 @@ What began with a citizenship application has become a way for me to explore wha
 
 ## Project Scope
 
-The initial proof of concept focuses on family birth, marriage, and death certificates. The current pilot contains five certificates—three birth, one death, and one marriage.
+The initial proof of concept focuses on family birth, marriage, and death certificates. 
 
 The objective is to demonstrate how information from multiple certificates can be integrated into a unified knowledge graph to:
 
@@ -38,8 +38,6 @@ The objective is to demonstrate how information from multiple certificates can b
 - Explore people, relationships, and recorded values in GraphDB.
 - Query family relationships and their supporting certificates using SPARQL.
 - Test natural-language questions with the Family Knowledge agent.
-
-Person identities are assigned and reviewed manually. The pipeline reuses those identifiers across certificates.
 
 ## Privacy
 
@@ -56,24 +54,21 @@ VitalGraph reuses [subsets](ontology) of established ontologies and controlled v
 - **Person Ontology** provides properties for representing names and gender. [Person Ontology reference](https://w3id.org/MON/person.owl)
 - **FOAF** provides the `foaf:age` property for representing reported age. [FOAF vocabulary specification](https://xmlns.com/foaf/spec/)
 - **RDF Schema (RDFS)** provides labels, class hierarchies, and links to related resources through properties such as `rdfs:label`, `rdfs:subClassOf`, and `rdfs:seeAlso`. [RDFS specification](https://www.w3.org/TR/rdf-schema/)
-
-**Armenian labels.** Armenian display labels are planned using `rdfs:label` with the `@hy` language tag. Original certificate text is preserved in the source graphs.
+- **Armenian labels.** Armenian labels use `rdfs:label` with the `@hy` language tag for ontology terms and instance resources, including people, places, records, and events. Original certificate text is preserved in the source graphs. See the [Armenian glossary of terms](VG-glossary-of-terms-hy.md).
 
 See [Attributions and third-party licenses](ontology/ATTRIBUTIONS.md) for source credits, license information, and details of the extracted subsets.
 
 ## Knowledge Graph Model
 
-The VitalGraph application profile documents how selected terms from RiC-O and other vocabularies are used to represent family certificate data. The diagram shows its classes and relationships, while the CSV data dictionary and generation script describe and implement local data-entry rules. Formal validation is planned.
+The VitalGraph application profile documents how selected terms from RiC-O and other vocabularies represent family certificate data. The diagram shows its classes and relationships, while the CSV data dictionary and generation script describe and implement local data-entry rules. Formal validation is planned.
 
-Each person has a persistent identifier that connects their appearances across certificates. The person registry holds a preferred name, while each certificate preserves the names and details recorded there.
+Person identities are assigned and reviewed manually. Each person has a persistent identifier reused across certificates and a preferred name in the person registry. Individual certificates preserve the names and details recorded there.
 
-The dataset is stored in TriG. The default graph contains the person registry, record metadata, life events, registration activities, and links identifying record subjects and event participants. Each certificate’s named graph contains its transcribed values and the relationships recorded in that certificate.
+The dataset is stored in TriG. The default graph contains the person registry, record metadata, life events, registration activities, and links identifying record subjects and event participants. Each certificate’s named graph contains its transcribed values and recorded relationships, allowing those statements to be traced to their source.
 
 The model distinguishes life events from registration activities. People participate in birth, marriage, and death events, while certificates document the corresponding registration activities.
 
-Dates, places, occupations, and demographic groups are represented as resources, with their recorded wording stored in the relevant certificate graph. Parent and spouse relationships are asserted in the graph of the certificate that supports them.
-
-This structure preserves differences in spellings, ages, places, and demographic values across records. Each statement in a certificate’s named graph can be traced to that source.
+Dates, places, occupations, and demographic groups are represented as resources, with their recorded wording stored in the relevant certificate graph. Parent and spouse relationships are asserted within the graph of the supporting certificate. This structure preserves differences in spellings, ages, places, and demographic values across records.
 
 The [model reference](ontology/model-reference.ttl) summarizes the classes, properties, and controlled terms used in VitalGraph.
 
@@ -86,7 +81,7 @@ The dataset is generated from the CSV files by [`scripts/build_graph.py`](script
 - [Application Profile — Classes and Relationships](diagrams/VitalGraph-ApplicationProfile-Classes%26Relationships.pdf) shows the classes, relationships, and recorded-value fields used in VitalGraph.
 - [UML Diagram](diagrams/VitalGraph-Application-Profile.png) provides the application profile as a UML diagram.
 - [Model and Example Data Instance](diagrams/VitalGraph-Model&Example-person-001.png) illustrates the model using a single person, `person-001`, and hypothetical birth, marriage, and death certificates.
-- [Five-Certificate Pilot](diagrams/VitalGraph-Five-Certificate-Pilot.png) shows the populated graph with family relationships and recorded values drawn from five certificates.
+- [13-Certificate Pilot](diagrams/VitalGraph-Five-Certificate-Pilot.png) shows the populated graph with family relationships and recorded values drawn from thirteen certificates.
 
 ## Technologies and Standards
 
@@ -102,16 +97,16 @@ The dataset is generated from the CSV files by [`scripts/build_graph.py`](script
 | [Talk to Your Graph](https://graphdb.ontotext.com/documentation/11.5/talk-to-graph.html) | Test natural-language questions through the Family Knowledge agent |
 | [OpenAI API](https://platform.openai.com/docs/overview) | Provide the language model used by the Family Knowledge agent through GraphDB |
 | [PlantUML](https://plantuml.com/) | Maintain an editable class and relationship diagram |
-
-SKOS may be used for controlled terminology as needed, though I expect to reuse existing terms from NCIt and other thesauri. SHACL validation is planned for a later phase of development.
+| [SKOS](https://www.w3.org/TR/skos-reference/) (planned) | Define and organize new controlled terminology developed for VitalGraph |
+| [SHACL](https://www.w3.org/TR/shacl/) (planned) | Express application-profile constraints as shapes and validate the RDF dataset |
 
 ## Development Status
 
-The CSV-to-TriG pipeline is working for the five-certificate pilot. GraphDB Workbench supports visualization and SPARQL queries, which have been used to check recorded values, family relationships, and their supporting certificates.
+GraphDB Workbench supports visualization and SPARQL queries, which have been used to check recorded values, family relationships, and their supporting certificates.
 
 The **Family Knowledge** agent uses GraphDB’s **Talk to Your Graph** feature, with autocomplete for name discovery. Its answers are checked against verified SPARQL results to identify errors in relationship direction, graph scope, and value retrieval. A [sample conversation](https://dorisavedikian.github.io/VitalGraph/) documents the testing.
 
-Next steps include adding the eight remaining certificates, capturing residence, medical, and burial details, and automating intake from scans and spreadsheets with manual review.
+Next steps include capturing additional information such as residence, medical, and burial details, and automating intake from scans and spreadsheets with manual review.
 
 Later work includes civil, medical and church records from Syria and Lebanon, plus searches for immigration, naturalization, and military service records through the U.S. National Archives Catalog API. Plans also include Armenian labels, validation and provenance enhancements on the existing and future records, and exploring mappings to HL7 FHIR vital-records reporting standards.
 
@@ -119,5 +114,5 @@ See the [Development Roadmap](DEVELOPMENT.md) for details.
 
 ## Feedback and contributions
 
-This is a personal project. Questions, corrections, and suggestions are welcome through GitHub issues, particularly on the RDF model, terminology reuse, future Armenian labels, and provenance.
+This is a personal project. Questions, corrections, and suggestions are welcome through GitHub issues, particularly on the RDF model, terminology reuse, Armenian labels and provenance.
 

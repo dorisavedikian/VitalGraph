@@ -8,9 +8,7 @@ For background and project scope, see the [README](README.md).
 
 ### 1. Certificate Entry and Additional Fields
 
-Transcribe the eight remaining family certificates, enter them in the CSV tables, and regenerate the RDF dataset. Preserve names and other details as recorded on each certificate, including spelling variants.
-
-Expand the model and CSV tables to capture additional details from the certificates, including residences, medical information such as cause of death, and burial details such as cemetery, location, and date. Link each detail to its source certificate and, where available, the field where it appears. Keep residences distinct from places of birth, marriage, death, or burial.
+Expand the model and CSV tables to capture additional details from the certificates, including residences, medical information such as cause of death, and burial details such as cemetery, location, and date. 
 
 ### 2. Automated Data Intake
 
@@ -18,7 +16,6 @@ Build an import step that maps scanned PDFs and tabular sources into the existin
 
 ### 3. Armenian Display Labels
 
-- Add reviewed Armenian labels using `rdfs:label` with `@hy` to the people, classes, object properties, datatype properties, and vocabulary concepts visible in the graph. 
 - Test the **Family Knowledge** agent in GraphDB’s **Talk to Your Graph** with English and Armenian questions, checking that it retrieves the correct people, relationships, and supporting certificate evidence.
 
 ### 4. Application Profile and Validation
@@ -31,7 +28,7 @@ Once the validation rules are finalized, I’ll update the UML and other [diagra
 
 ### 5. Provenance
 
-Extend the existing certificate-level named graphs with details about transcription, review, and supporting fields. Record who entered or reviewed the data and when. Preserve exact field labels and recorded values where needed to explain a relationship or conflicting information.
+Extend the existing certificate-level named graphs with details about who entered or reviewed the data and when. 
 
 ### 6. Historical and Archival Records
 
