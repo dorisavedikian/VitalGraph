@@ -97,7 +97,7 @@ The dataset is generated from the CSV files by [`scripts/build_graph.py`](script
 | [Talk to Your Graph](https://graphdb.ontotext.com/documentation/11.5/talk-to-graph.html) | Test natural-language questions through the Family Knowledge agent |
 | [OpenAI API](https://platform.openai.com/docs/overview) | Provide the language model used by the Family Knowledge agent through GraphDB |
 | [PlantUML](https://plantuml.com/) | Maintain an editable class and relationship diagram |
-| [SKOS](https://www.w3.org/TR/skos-reference/) (planned) | Define and organize new controlled terminology developed for VitalGraph |
+| [SKOS](https://www.w3.org/TR/skos-reference/) (as-needed) | Define and organize new controlled terminology developed for VitalGraph |
 | [SHACL](https://www.w3.org/TR/shacl/) (planned) | Express application-profile constraints as shapes and validate the RDF dataset |
 
 ## Development Status
@@ -108,7 +108,7 @@ The **Family Knowledge** agent uses GraphDB’s **Talk to Your Graph** feature, 
 
 Next steps include capturing additional information such as residence, medical, and burial details, and automating intake from scans and spreadsheets with manual review.
 
-Later work includes civil, medical and church records from Syria and Lebanon, plus searches for immigration, naturalization, and military service records through the U.S. National Archives Catalog API. Plans also include Armenian labels, validation and provenance enhancements on the existing and future records, and exploring mappings to HL7 FHIR vital-records reporting standards.
+Later work includes civil, medical and church records from the U.S., Syria and Lebanon, plus searches for immigration, naturalization, and military service records through the U.S. National Archives Catalog API. Plans also include Armenian labels, validation and provenance enhancements on the existing and future records, and exploring mappings to HL7 FHIR vital-records reporting standards.
 
 See the [Development Roadmap](DEVELOPMENT.md) for details.
 

@@ -16,7 +16,7 @@ Build an import step that maps scanned PDFs and tabular sources into the existin
 
 ### 3. Armenian Display Labels
 
-- Test the **Family Knowledge** agent in GraphDB’s **Talk to Your Graph** with English and Armenian questions, checking that it retrieves the correct people, relationships, and supporting certificate evidence.
+Test the **Family Knowledge** agent in GraphDB’s **Talk to Your Graph** with English and Armenian questions, checking that it retrieves the correct people, relationships, and supporting certificate evidence.
 
 ### 4. Application Profile and Validation
 
@@ -40,11 +40,13 @@ The USCIS Genealogy Program is a separate research avenue for naturalization Cer
 
 ### Family Records in Syria and Lebanon
 
-Investigate records concerning my father and paternal grandparents, including my father’s birth in Syria and subsequent move to Lebanon. The aim is to try to document their identities, family relationships, places of residence, and migration history, while preserving the names and other details recorded by each source.
+Investigate records concerning my father and paternal grandparents, including records of my father’s birth and baptism in Syria and his subsequent move to Lebanon. The aim is to document their identities, family relationships, residences, and migration history while preserving the names and details recorded in each source.
 
 #### Starting References
 
-- [Syrian civil-document guide](https://travel.state.gov/content/travel/en/us-visas/Visa-Reciprocity-and-Civil-Documents-by-Country/Syria.html)
+- [Syrian civil-document guide](https://syriaishome.org/en/documents-and-legal/)
+- [Ministry of Foreign Affairs and Expatriates](https://mofaex.gov.sy/en/services/استخراج-وثيقة-أحوال-مدنية)
+- [Forty Martyrs Armenian Cathedral (Aleppo)](https://en.wikipedia.org/wiki/Forty_Martyrs_Cathedral)
 - [Lebanese Embassy](https://lebanonembassyus.org)
 - [Armenian Prelacy of Lebanon certificate services](https://armprelacylb.org)
 
