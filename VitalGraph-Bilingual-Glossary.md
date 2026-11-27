@@ -2,7 +2,9 @@
 
 This glossary brings together the 65 terms used in VitalGraph and their Armenian-label review fields.
 
-Source definitions and English labels are reproduced from the supplied label dictionary. VitalGraph notes preserve the existing glossary’s summarized definitions and project-specific guidance. Empty translation, definition, and review fields are retained for completion.
+English labels and definitions come from the source ontologies and controlled vocabularies linked in each entry. 
+VitalGraph notes summarize term meanings and explain their use in the project.
+Empty translation, definition, and review fields are retained for completion.
 
 The `rico:` prefix denotes the same namespace as the default `:` prefix in the diagram.
 
